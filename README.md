@@ -1,18 +1,18 @@
 # HealthInsuranceApp
-##Introduction
+## Introduction
 
 The goal of this project is to create a robust web/mobile application that will allow any user in the United States and Internationals to purchase premium health care packages from US based healthcare insurance provider applicable inside United States. We plan to partner with Insurance agent in all states, get approval on annual rates and match our clients with three tiers of health care packages alongside varying rate for each package given their profile. If time allows, we plan to develop additional machine learning algorithm that predict rates depending on the parameters set on customer profile. For example: a healthy user might have lower insurance rates compared to unhealthy ones. In the health insurance packages section, we will provide the best information about health care access in the zip code, and provide health insurance purchase options. People will use our application specially because healthcare is an immediate need and if people notices we are partnered or accredited, they will sign up with us fast instead of scheduling in person appointment with other agents.
 
-##Goals and Objectives
+## Goals and Objectives
 
-*For (target customers) - Any people in USA including internationals. We partner with Insurance Companies. The private health insurance premium packages generates nearly trillion or above annually but our main objective is to provide people with the best insurance rates.
-*Who (statement of the need or opportunity) - International Student locked up with BU Aetna partnership, people have more options before landing in the USA
-*The (product name) is a (product category) - Health Insurance App
-*That (key benefit, compelling reason to buy) -  Must need 
-*Unlike (primary competitive alternative) - Other large insurance company with app
-*Our product (statement of primary differentiation) -  Provide fast easy understandable personalized plans offered to different category of group to get access health care
+* For (target customers) - Any people in USA including internationals. We partner with Insurance Companies. The private health insurance premium packages generates nearly trillion or above annually but our main objective is to provide people with the best insurance rates.
+* Who (statement of the need or opportunity) - International Student locked up with BU Aetna partnership, people have more options before landing in the USA
+* The (product name) is a (product category) - Health Insurance App
+* That (key benefit, compelling reason to buy) -  Must need 
+* Unlike (primary competitive alternative) - Other large insurance company with app
+* Our product (statement of primary differentiation) -  Provide fast easy understandable personalized plans offered to different category of group to get access health care
 
-##Features List:
+## Features List:
 Landing page with three options : MyHealth Plan, Zip Code
 User information page on MyHealth Plan: 
 → Phase 1: DOB, Gender, Height, Weight, Tobacco Use?, Residential Status: Local or Foreign
