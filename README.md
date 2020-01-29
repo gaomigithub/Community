@@ -13,17 +13,18 @@ The goal of this project is to create a robust web/mobile application that will 
 * Our product (statement of primary differentiation) -  Provide fast easy understandable personalized plans offered to different category of group to get access health care
 
 ## Features List:
-Landing page with three options : MyHealth Plan, Zip Code
-User information page on MyHealth Plan: 
+1. Landing page with three options : MyHealth Plan, Zip Code
+2. User information page on MyHealth Plan: 
+```
 → Phase 1: DOB, Gender, Height, Weight, Tobacco Use?, Residential Status: Local or Foreign
 → Phase 2: Sign up for getting quote emails with home address. phone number?
 → Provide premium plans of three tiers(bronze, silver, diamond) of partnered health insurance provider
 → Provide information on what health care they will get in three tiers, access to type of doctors in the area, access to hospital in the area, emergency room, access to pharmacy
 → Contact agent phone number
-
-Health Insurance provider Page: gives us information on how much rate for specific tiers for people of different height/weight/age/gender/ and whether they do insurance for internationals. We match the users with the Insurance plan with three tiers.
-We provide the best monthly rates or annual rates to the user(local/International)
-Create three category tiers with different insurance company rate(for example: Aetna, United, ObamaCare
-Client select any premium choices, attach their valid passport, attested medical history, other insurance forms, and then make purchase using Stripe.
-We forward the request to the Insurance Company for client insurance card, and provide a temporary Insurance Card in compliance with the Insurance Company. Client is happy and goes to the doctor for treatment or Pharmacy.
+```
+3. Health Insurance provider Page: gives us information on how much rate for specific tiers for people of different height/weight/age/gender/ and whether they do insurance for internationals. We match the users with the Insurance plan with three tiers.
+4. We provide the best monthly rates or annual rates to the user(local/International)
+5. Create three category tiers with different insurance company rate(for example: Aetna, United, ObamaCare
+6. Client select any premium choices, attach their valid passport, attested medical history, other insurance forms, and then make purchase using Stripe.
+7. We forward the request to the Insurance Company for client insurance card, and provide a temporary Insurance Card in compliance with the Insurance Company. Client is happy and goes to the doctor for treatment or Pharmacy.
 
