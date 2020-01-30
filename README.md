@@ -19,8 +19,8 @@ The goal of this project is to create a robust website that is compatible with m
 ## Features List:
 1. Landing page with two options : Enter Zip Code, GetQuote button, Contact us page
 2. User information page on MyHealth Plan:
-    a. Date of Birth, Gender, Height, Weight, Tobacco Use
-    b. Sign up for getting a quote using the home address and phone number
+    * Date of Birth, Gender, Height, Weight, Tobacco Use
+    * Sign up for getting a quote using the home address and phone number
 3. Page that provides premium plans of three tiers(bronze, silver, diamond) of partneredhealth insurances based on the age group and subsequent features
 4. Provide information on what health care they get in three tiers: access to the type ofdoctors in the area; access to the emergency room of the hospital in the area; access tothe pharmacy
 5. Client select any premium choices, attach their valid passport, attested medical history,other insurance forms, and then make a purchase using Stripe
