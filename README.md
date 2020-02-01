@@ -26,3 +26,4 @@ The goal of this project is to create a robust website that is compatible with m
 5. Client select any premium choices, attach their valid passport, attested medical history,other insurance forms, and then make a purchase using Stripe
 6. We forward the request to the Insurance Company for a client insurance card andprovide a temporary PDF Insurance Card in compliance with the Insurance Company.The client is happy and goes to the doctor for treatment or Pharmacy
 
+# Project Setup
