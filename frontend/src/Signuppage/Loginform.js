@@ -13,41 +13,75 @@ constructor(props){
 render()
 {
     return(
-    <div className="App">
-     LOGIN PAGE
-  <form>
-    <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
+    <div className="Loginpage">
+     <div className="header">Welcome to Community</div>
+    <form>
+    <div class="form-group-gender">
+    <label for="exampleFormControlSelect1">Gender:</label>
     <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      <option selected = "" value ="Default"></option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Rather not say</option>
     </select>
     </div>
-    <div class="input-group mb-3">
+
+    <div class="form-group-username">
       <div class="input-group-prepend"><span class ="input-group-text">@</span>
       </div>
+
     <input type="text" class="form-control" placeholder="Username"></input>
   </div>
-  <div class="input-group mb-3">
+
+  <div class="form-group-name">
     <div class="input-group-prepend">
       <span class="input-group-text">Person</span>
     </div>
+
     <input type="text" class="form-control" placeholder="First Name"></input>
     <input type="text" class="form-control" placeholder="Last Name"></input>
   </div>
-  <div class="form-group">
+  <div class="form-group-email">
     <label for="exampleFormControlInput1">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></input>
   </div>
-  <div class="form-group">
+
+  <div class="form-group-password">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+
+  <div class="form-group-question">
+    <label for="exampleFormControlSelect1">Do you have a dog? </label>
+    <select class="form-control" id="exampleFormControlSelect1">
+        <option selected ="" value = "Default"></option>
+        <option>Yes</option>
+        <option>No</option>
+    </select></div>
+
+    <div class="form-group-dogbreed">
+    <label for="exampleFormControlSelect1">Your's dog breed: </label>
+    <select class="form-control" id="exampleFormControlSelect1">
+    <option selected = "" value ="Default"></option>
+        <option value ="gt">Golden Retriver</option>
+        <option value ="bt">Boston Terrier</option>
+        <option value ="bd">Bull Dog</option>
+        <option value ="mt">Maltese</option>
+        <option value ="sz">Shih Tzu</option>
+        <option value ="bg">Beagle</option>
+        <option value ="ch">Chihuahua</option>
+        <option value ="gs">German  Shepherd</option>
+        <option value ="ot">Specify other breed below: </option>
+    </select></div>
+
+    <div class="form-group-extrainformation">
+        <label for="exampleFormControlTextarea1">Tell us more about your dog:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  
+        </form>
   </div>
         )
     }
