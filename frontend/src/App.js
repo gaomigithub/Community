@@ -1,16 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import { Login } from "./Signuppage/index.js";
 
-import {Button, Form, Formgroup, Label, Input}
-  from 'react-bootstrap';
-
+import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
 
 function App() {
   return (
-   <div className="APP">
-      <Login/>
-   </div>
-  )
-};
+    <div className="APP">
+      <Login />
+    </div>
+  );
+}
 export default App;
