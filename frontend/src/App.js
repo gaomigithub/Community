@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Login } from "./Signuppage/Loginform.js";
+import { Login } from "./Signuppage/index.js";
 
 import {Button, Form, Formgroup, Label, Input}
   from 'react-bootstrap';

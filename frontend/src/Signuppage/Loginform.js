@@ -15,7 +15,8 @@ render()
     return(
     <div className="Loginpage">
      <div className="header">Welcome to Community</div>
-    <form>
+     <div className = "content">
+    <form className="contentform">
     <div class="form-group-gender">
     <label for="exampleFormControlSelect1">Gender:</label>
     <select class="form-control" id="exampleFormControlSelect1">
@@ -82,6 +83,7 @@ render()
     <button type="submit" class="btn btn-primary">Submit</button>
   
         </form>
+        </div>
   </div>
         )
     }
