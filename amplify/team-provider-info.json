@@ -13,7 +13,9 @@
         },
         "categories": {
             "auth": {
-                "community8a435f31": {}
+                "community8a435f31": {
+                    "hostedUIProviderCreds": "[]"
+                }
             }
         }
     }
