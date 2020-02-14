@@ -5,6 +5,7 @@ class Header extends Component {
       <header>
         <h1>Community</h1>
         <p>Impacting Backbay & SouthEnd resident lives</p>
+
         <div>
           <button type="button">Sign Up Here!</button>
         </div>
