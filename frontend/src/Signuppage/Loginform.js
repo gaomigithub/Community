@@ -15,7 +15,7 @@ export class Login extends React.Component {
         <div className="header">Welcome to Community</div>
         <div className="content">
           <form className="contentform">
-            <div class="form-group-gender">
+            {/* <div class="form-group-gender">
               <label for="exampleFormControlSelect1">Gender:</label>
               <select class="form-control" id="exampleFormControlSelect1">
                 <option selected="" value="Default"></option>
@@ -23,9 +23,9 @@ export class Login extends React.Component {
                 <option>Female</option>
                 <option>Rather not say</option>
               </select>
-            </div>
+            </div> */}
 
-            <div class="form-group-username">
+            {/* <div class="form-group-username">
               <div class="input-group-prepend">
                 <span>@</span>
               </div>
@@ -35,7 +35,7 @@ export class Login extends React.Component {
                 class="form-control"
                 placeholder="Username"
               ></input>
-            </div>
+            </div> */}
 
             <div class="form-group-name">
               <div class="input-group-prepend">
