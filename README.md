@@ -36,3 +36,23 @@ Our product (statement of primary differentiation) - Our product provides a webs
 6. Install the libraries: `yarn`
 7. Start the React app: `yarn start`
 
+# Set-up Amplify as Development User
+1. Locate to the working branch and install Amplify CLI: `npm install -g @aws-amplify/cli`
+2. Configure Amplify as a development user: `amplify configure`
+	* Press Enter to **skip the sign in**
+	* Specify AWS region (we are using **us-east-1**)
+	* Enter your IAM username created by administrator @LmKupke 
+	* Press Enter again to **skip the sign in**
+	* Enter the access key id provided by administrator
+	* Enter the secret access key provided by administrator
+	* Create the AWS profile name in your local machine
+3. Initilize Amplify: `amplify init`
+	* Press 'Y' to use an existing environment
+	* Choose 'dev' as your environment
+	* Use `amplify pull` to pulled backend environment dev from the cloud to your local machine
+4. Other Amplify Commands:
+	* `amplify status` will show you what you've added already and if it's locally configured or deployed
+	* `amplify add <category>` will allow you to add features like user login or a backend API
+	* `amplify push` will build all your local backend resources and provision it in the cloud
+	* `amplify console` to open the Amplify Console and view your project status
+	* `amplify publish` will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
