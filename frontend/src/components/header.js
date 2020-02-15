@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import { Router, Route, Link } from "react-router";
 // import Loginform from "../signup-page/Loginform";
 
 class Header extends Component {
