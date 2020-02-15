@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+
 class Header extends Component {
   render() {
     return (
@@ -6,10 +9,10 @@ class Header extends Component {
         <h1>Community</h1>
         <p>Impacting Backbay & SouthEnd resident lives</p>
         <div>
-          <button type="button">Sign Up Here!</button>
+          <Button type="button">Sign Up Here!</Button>
         </div>
         <div>
-          <button type="button">Login</button>
+          <Button type="button">Login</Button>
         </div>
         <img src="./assets/backbaypark.png" />
       </header>
