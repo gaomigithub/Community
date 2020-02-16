@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+// import { Redirect } from "react-router-dom";
 // import Loginform from "../signup-page/Loginform";
 
 class Header extends Component {
