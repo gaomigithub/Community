@@ -3,12 +3,23 @@
     display:flex;
     flex-direction:column;
     align-items: Center;
+    background-image: url('../Signuppage/signupbackground.jpg');
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height:100vh;
+    z-index: -10;
 }
+
+
 .header{
-    margin-top: 2em;
-    margin-right: 60em;
+    margin-top: 4em;
+    margin-left: 7em;
     font-size : 24px;
     font-family: "Open Sans", sans-serif;
+    font-style: normal;
 }
 
 .inputListContainer{
@@ -18,10 +29,13 @@
 
 .content{
     margin-top: 2em;
-    margin-right: 90em;
+    margin-left: 12em;
     display: flex;
     flex-direction: column;
-    align-items: ;
+    background-color: rgba(0,0,0,0,5);
+    top: 0;
+    bottom: 0;
+    font-size: 18px;
     
 }
 
