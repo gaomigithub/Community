@@ -1,9 +1,8 @@
 import React from "react";
-
 import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
 import { render } from "react-dom";
 
-export default class Signup extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
   }
