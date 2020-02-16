@@ -24,7 +24,7 @@ Unlike (primary competitive alternative) - The two primary competitors are Faceb
 Our product (statement of primary differentiation) - Our product provides a website where residents can reserve basketball court, tennis court with a time limit of upto 1 hour. We use phone numbers and QR code for verification. Dog owners can also use QR code to access our website on their mobile phone.
 
 
-# Project Onboarding
+# Initial Project Onboarding
 1. If you don't have Homebrew please install it: https://brew.sh/
 2. After following the instructions for Homebrew. Install Node Version Manager. In the terminal write: `brew install nvm`
     * Install node version 12.0.0: `nvm install 12.0.0`
@@ -35,6 +35,14 @@ Our product (statement of primary differentiation) - Our product provides a webs
 5. Change directory `cd frontend`
 6. Install the libraries: `yarn`
 7. Start the React app: `yarn start`
+
+# How to create a new branch once project is on computer
+1. Go to the root of the project
+2. Switch to the development branch: `git checkout development`
+3. Pull down new code: `git pull`
+4. Create a new branch: `git checkout -b feature/BranchName`
+5. Make code changes and commit and push them.
+
 
 # Set-up Amplify as Development User
 1. Locate to the working branch and install Amplify CLI: `npm install -g @aws-amplify/cli`
