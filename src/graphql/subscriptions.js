@@ -58,3 +58,27 @@ export const onDeletePrivateNote = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($owner: String) {
+    onCreateUser(owner: $owner) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($owner: String) {
+    onDeleteUser(owner: $owner) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;

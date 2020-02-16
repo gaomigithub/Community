@@ -53,3 +53,34 @@ export const listPrivateNotes = /* GraphQL */ `
     }
   }
 `;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+      nextToken
+    }
+  }
+`;

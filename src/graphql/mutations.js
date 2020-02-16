@@ -76,3 +76,33 @@ export const deletePrivateNote = /* GraphQL */ `
     }
   }
 `;
+export const addUser = /* GraphQL */ `
+  mutation AddUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    addUser(input: $input, condition: $condition) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;

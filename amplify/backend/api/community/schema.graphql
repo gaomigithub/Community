@@ -17,3 +17,33 @@ type PrivateNote
   id: ID!
   content: String!
 }
+
+type User
+  @model(mutations: {create: "addUser", delete: "deleteUser"})
+  @auth(rules: [
+    {allow: owner},
+    {allow: groups, groups: ["Admin"]}
+  ]) 
+  {
+    userId: ID!
+    userName: String!
+    userEmail: String!
+    userPhone: String!
+    hasDog: Status!
+  }
+
+  enum Status {
+    YES
+    NO
+  }
+
+  type Dog 
+    @model(mutations: {create: "addDog", delete: "deleteDog"})
+    @auth(rules: [
+      {allow: owner},
+      {allow: groups, groups: ["Admin"]}
+    ])
+    {
+      userId: ID!
+      dogName: String!
+    }
