@@ -5,6 +5,8 @@
     align-items: Center;
 }
 .header{
+    margin-top: 2em;
+    margin-right: 60em;
     font-size : 24px;
     font-family: "Open Sans", sans-serif;
 }
@@ -16,12 +18,10 @@
 
 .content{
     margin-top: 2em;
+    margin-right: 90em;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: ;
     
 }
 
-.contentform {
-    align-items:left;
-}
