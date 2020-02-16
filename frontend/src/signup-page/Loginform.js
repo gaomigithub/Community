@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
+import { withRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
 
 export default class Signup extends React.Component {
   constructor(props) {
