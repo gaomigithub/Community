@@ -46,4 +46,19 @@ type User
     {
       userId: ID!
       dogName: String!
+      owner: User!
+    }
+
+  type Court
+    @model
+    @auth(rules: [allow: groups, groups: ["Admin"]])
+    {
+      courtType: Courts!
+      availableTimeSlot: [Date!]
+      reservedTimeSlot: [Date!]
+    }
+
+    enum Courts {
+      Basketball
+      Tennis
     }
