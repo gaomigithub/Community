@@ -1,10 +1,16 @@
 import React from "react";
 import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
   constructor(props) {
     super(props);
+    this.clickhandler = this.clickhandler.bind(this);
+  }
+  clickhandler() {
+    console.log(this.props.history);
+    this.props.history.push("../signup-page/Signup-report");
   }
 
   render() {
@@ -107,7 +113,12 @@ export default class Login extends React.Component {
               ></textarea>
             </div>
 
-            <Button variant="primary" type="submit" class="btn btn-primary">
+            <Button
+              variant="primary"
+              type="submit"
+              class="btn btn-primary"
+              onClick={this.clickhandler}
+            >
               Submit
             </Button>
           </form>
@@ -116,3 +127,5 @@ export default class Login extends React.Component {
     );
   }
 }
+
+// export default withRouter(Login);
