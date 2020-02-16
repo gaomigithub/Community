@@ -77,15 +77,15 @@ export class Login extends React.Component {
 
             <div className="form-group-question">
               <label htmlFor="exampleFormControlSelect1">Do you have a dog? </label>
-              <select defaultValue="Default"className="form-control" id="exampleFormControlSelect1">
+              <select defaultValue="Default"className="form-control-dog" id="exampleFormControlSelect1">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </div>
 
             <div className="form-group-dogbreed">
-              <label htmlFor="exampleFormControlSelect1">Your's dog breed: </label>
-              <select defaultValue="Default" className="form-control" id="exampleFormControlSelect1">
+              <label htmlFor="exampleFormControlSelect2">Your's dog breed: </label>
+              <select defaultValue="Default" className="form-control-breed" id="exampleFormControlSelect2">
                 <option value="gt">Golden Retriver</option>
                 <option value="bt">Boston Terrier</option>
                 <option value="bd">Bull Dog</option>
