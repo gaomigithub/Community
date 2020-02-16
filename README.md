@@ -26,7 +26,7 @@ The goal of this project is to create a robust website that is compatible with m
 5. Client select any premium choices, attach their valid passport, attested medical history,other insurance forms, and then make a purchase using Stripe
 6. We forward the request to the Insurance Company for a client insurance card andprovide a temporary PDF Insurance Card in compliance with the Insurance Company.The client is happy and goes to the doctor for treatment or Pharmacy
 
-# Project Onboarding
+# Initial Project Onboarding
 1. If you don't have Homebrew please install it: https://brew.sh/
 2. After following the instructions for Homebrew. Install Node Version Manager. In the terminal write: `brew install nvm`
     * Install node version 12.0.0: `nvm install 12.0.0`
@@ -37,6 +37,14 @@ The goal of this project is to create a robust website that is compatible with m
 5. Change directory `cd frontend`
 6. Install the libraries: `yarn`
 7. Start the React app: `yarn start`
+
+# How to create a new branch once project is on computer
+1. Go to the root of the project
+2. Switch to the development branch: `git checkout development`
+3. Pull down new code: `git pull`
+4. Create a new branch: `git checkout -b feature/BranchName`
+5. Make code changes and commit and push them.
+
 
 # Set-up Amplify as Development User
 1. Locate to the working branch and install Amplify CLI: `npm install -g @aws-amplify/cli`
