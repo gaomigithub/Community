@@ -84,3 +84,67 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
+export const getDog = /* GraphQL */ `
+  query GetDog($id: ID!) {
+    getDog(id: $id) {
+      userId
+      dogName
+      owner {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+    }
+  }
+`;
+export const listDogs = /* GraphQL */ `
+  query ListDogs(
+    $filter: ModelDogFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        userId
+        dogName
+        owner {
+          userId
+          userName
+          userEmail
+          userPhone
+          hasDog
+          owner
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const getCourt = /* GraphQL */ `
+  query GetCourt($id: ID!) {
+    getCourt(id: $id) {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
+export const listCourts = /* GraphQL */ `
+  query ListCourts(
+    $filter: ModelCourtFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        courtType
+        availableTimeSlot
+        reservedTimeSlot
+      }
+      nextToken
+    }
+  }
+`;

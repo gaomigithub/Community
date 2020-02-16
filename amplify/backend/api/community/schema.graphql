@@ -51,11 +51,11 @@ type User
 
   type Court
     @model
-    @auth(rules: [allow: groups, groups: ["Admin"]])
+    @auth(rules: [{allow: groups, groups: ["Admin"]}])
     {
       courtType: Courts!
-      availableTimeSlot: [Date!]
-      reservedTimeSlot: [Date!]
+      availableTimeSlot: [AWSDate!]
+      reservedTimeSlot: [AWSDate!]
     }
 
     enum Courts {
