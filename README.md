@@ -26,7 +26,7 @@ The goal of this project is to create a robust website that is compatible with m
 5. Client select any premium choices, attach their valid passport, attested medical history,other insurance forms, and then make a purchase using Stripe
 6. We forward the request to the Insurance Company for a client insurance card andprovide a temporary PDF Insurance Card in compliance with the Insurance Company.The client is happy and goes to the doctor for treatment or Pharmacy
 
-# Project Onboarding
+# Initial Project Onboarding
 1. If you don't have Homebrew please install it: https://brew.sh/
 2. After following the instructions for Homebrew. Install Node Version Manager. In the terminal write: `brew install nvm`
     * Install node version 12.0.0: `nvm install 12.0.0`
@@ -38,6 +38,37 @@ The goal of this project is to create a robust website that is compatible with m
 6. Install the libraries: `yarn`
 7. Start the React app: `yarn start`
 
+# How to create a new branch once project is on computer
+1. Go to the root of the project
+2. Switch to the development branch: `git checkout development`
+3. Pull down new code: `git pull`
+4. Create a new branch: `git checkout -b feature/BranchName`
+5. Make code changes and commit and push them.
+
+
+# Set-up Amplify as Development User
+1. Locate to the working branch and install Amplify CLI: `npm install -g @aws-amplify/cli`
+2. Configure Amplify as a development user: `amplify configure`
+	* Press Enter to **skip the sign in**
+	* Specify AWS region (we are using **us-east-1**)
+	* Enter your IAM username created by administrator @LmKupke 
+	* Press Enter again to **skip the sign in**
+	* Enter the access key id provided by administrator
+	* Enter the secret access key provided by administrator
+	* Create the AWS profile name in your local machine
+3. Initilize Amplify: `amplify init`
+	* Press 'Y' to use an existing environment
+	* Choose 'dev' as your environment
+	* Use `amplify pull` to pulled backend environment dev from the cloud to your local machine
+4. Other Amplify Commands:
+	* `amplify status` will show you what you've added already and if it's locally configured or deployed
+	* `amplify add <category>` will allow you to add features like user login or a backend API
+	* `amplify push` will build all your local backend resources and provision it in the cloud
+	* `amplify console` to open the Amplify Console and view your project status
+	* `amplify publish` will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+
+
+    
 REACT piece:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
