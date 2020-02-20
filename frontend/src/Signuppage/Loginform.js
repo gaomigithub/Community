@@ -1,18 +1,21 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "./Loginform.css"
-
-
+import {GoogleLogin} from 'react-google-login';
 import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
 import { render } from "react-dom";
+import "./googlelogin.js"
 
 export class Login extends React.Component {
   constructor(props) {
     super(props);
-  }
+    }
 
+  
   render() {
+    
     return (
+      
       <div className="Loginpage">
         <div className="header">Welcome to Community</div>
         <div className="content">
@@ -108,7 +111,6 @@ export class Login extends React.Component {
                 rows="3"
               ></textarea>
             </div>
-
             <Button variant="primary" type="submit" className="btn btn-primary">
               Submit
             </Button>
