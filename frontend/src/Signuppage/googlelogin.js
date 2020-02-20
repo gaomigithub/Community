@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom"
 import GoogleLogin from "react-google-login"
 
 function googleLogin () {
+  const [name,setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [url, setUrl] = useState("");
     const responseGoogle = response =>{
         console.log(response);
     };
