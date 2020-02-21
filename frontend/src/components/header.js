@@ -8,7 +8,6 @@ class Header extends Component {
     this.clickhandler = this.clickhandler.bind(this);
   }
   clickhandler() {
-    console.log(this.props.history);
     this.props.history.push("../signup");
   }
   render() {
