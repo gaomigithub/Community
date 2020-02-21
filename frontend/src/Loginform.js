@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; 
-import "./Loginform.css"
-import {GoogleLogin} from 'react-google-login';
-import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Loginform.css";
+import { withRouter } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+import { Button } from "react-bootstrap";
 import { render } from "react-dom";
-import "./googlelogin.js"
+import "./googlelogin.js";
 
-export class Login extends React.Component {
+export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-    }
+  }
 
-  
   render() {
-    
     return (
-      
       <div className="Loginpage">
         <div className="header">Welcome to Community</div>
         <div className="content">
@@ -79,16 +77,28 @@ export class Login extends React.Component {
             </div>
 
             <div className="form-group-question">
-              <label htmlFor="exampleFormControlSelect1">Do you have a dog? </label>
-              <select defaultValue="Default"className="form-control-dog" id="exampleFormControlSelect1">
+              <label htmlFor="exampleFormControlSelect1">
+                Do you have a dog?{" "}
+              </label>
+              <select
+                defaultValue="Default"
+                className="form-control-dog"
+                id="exampleFormControlSelect1"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </div>
 
             <div className="form-group-dogbreed">
-              <label htmlFor="exampleFormControlSelect2">Your's dog breed: </label>
-              <select defaultValue="Default" className="form-control-breed" id="exampleFormControlSelect2">
+              <label htmlFor="exampleFormControlSelect2">
+                Your's dog breed:{" "}
+              </label>
+              <select
+                defaultValue="Default"
+                className="form-control-breed"
+                id="exampleFormControlSelect2"
+              >
                 <option value="gt">Golden Retriver</option>
                 <option value="bt">Boston Terrier</option>
                 <option value="bd">Bull Dog</option>

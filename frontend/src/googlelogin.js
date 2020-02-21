@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import GoogleLogin from "react-google-login";
 
 function googleLogin() {
-  const [name, setName] = useState(""); //Returns a stateful value, and a function to update it.
-  const [email, setEmail] = useState("");
-  const [url, setUrl] = useState("");
+  // const [name, setName] = useState(""); //Returns a stateful value, and a function to update it.
+  // const [email, setEmail] = useState("");
+  // const [url, setUrl] = useState("");
   const responseGoogle = response => {
     console.log(response);
   };
