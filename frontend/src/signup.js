@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Loginform.css";
 import { withRouter } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
 import { Button } from "react-bootstrap";
 import { render } from "react-dom";
+//Google Login doesn't work yet; Under construction
 import "./googlelogin.js";
+import { GoogleLogin } from "react-google-login";
 
 export default class Signup extends React.Component {
   constructor(props) {

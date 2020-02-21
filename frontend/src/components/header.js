@@ -9,7 +9,7 @@ class Header extends Component {
   }
   clickhandler() {
     console.log(this.props.history);
-    this.props.history.push("../signup-page/Loginform");
+    this.props.history.push("../signup");
   }
   render() {
     return (
