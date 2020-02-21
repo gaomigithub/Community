@@ -4,7 +4,7 @@ import "./Loginform.css"
 import {GoogleLogin} from 'react-google-login';
 import { Button, Form, Formgroup, Label, Input } from "react-bootstrap";
 import { render } from "react-dom";
-import "./googlelogin.js"
+/*(import "./googlelogin.js"*/
 
 export class Login extends React.Component {
   constructor(props) {
