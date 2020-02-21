@@ -1,42 +1,39 @@
-.Loginpage{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    align-items: Center;
-    background-image: url('../Signuppage/signupbackground.jpg');
-    background-size: cover;
-    background-position: center center;
-    position: relative;
-    top: 0;
-    bottom: 0;
-    height:100vh;
-    z-index: -10;
+.Loginpage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: Center;
+  background-image: url("./img/signupbackground.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: -10;
 }
 
-
-.header{
-    margin-top: 5em;
-    margin-left: 5.5em;
-    font-family: "Open Sans", sans-serif;
-    font-style: oblique ;
-    font-size: 35px;
+.header {
+  margin-top: 5em;
+  margin-left: 5.5em;
+  font-family: "Open Sans", sans-serif;
+  font-style: oblique;
+  font-size: 35px;
 }
 
-.inputListContainer{
-    display:flex;
-    flex-direction:column;
+.inputListContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.content{
-    margin-top: 2em;
-    margin-left: 11em;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0,0,0,0,5);
-    top: 0;
-    bottom: 0;
-    font-size: 18px;
-    font-style: oblique;
-    
+.content {
+  margin-top: 2em;
+  margin-left: 11em;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0, 5);
+  top: 0;
+  bottom: 0;
+  font-size: 18px;
+  font-style: oblique;
 }
-
