@@ -19,28 +19,6 @@ export default class Signup extends React.Component {
         <div className="header">Welcome to Community</div>
         <div className="content">
           <form className="contentform">
-            {/* <div class="form-group-gender">
-              <label htmlFor="exampleFormControlSelect1">Gender:</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option selected="" value="Default"></option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Rather not say</option>
-              </select>
-            </div> }
-
-            {/* <div class="form-group-username">
-              <div class="input-group-prepend">
-                <span>@</span>
-              </div>
-
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-              ></input>
-            </div> */}
-
             <div className="form-group-name">
               <div className="input-group-prepend">
                 <span>Person</span>
