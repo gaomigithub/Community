@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Loginform.css";
-import { withRouter } from "react-router-dom";
+import "./signup.css";
 import { Button } from "react-bootstrap";
 import { render } from "react-dom";
 
@@ -11,12 +10,12 @@ export default class Signup extends React.Component {
     this.clickhandler = this.clickhandler.bind(this);
   }
   clickhandler() {
-    this.props.history.push("../signup-report");
+    this.props.history.push("/");
   }
 
   render() {
     return (
-      <div className="Loginpage">
+      <div className="signup-form">
         <div className="header">Welcome to Community</div>
         <div className="content">
           <form className="contentform">
