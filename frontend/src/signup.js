@@ -11,6 +11,10 @@ import { GoogleLogin } from "react-google-login";
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
+    this.clickhandler = this.clickhandler.bind(this);
+  }
+  clickhandler() {
+    this.props.history.push("../signup-report");
   }
 
   render() {
@@ -100,7 +104,12 @@ export default class Signup extends React.Component {
                 rows="3"
               ></textarea>
             </div>
-            <Button variant="primary" type="submit" className="btn btn-primary">
+            <Button
+              variant="primary"
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.clickhandler}
+            >
               Submit
             </Button>
           </form>
