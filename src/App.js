@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App, true, true);
+export default withAuthenticator(App, true, null);
