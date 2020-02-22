@@ -39,6 +39,9 @@ The goal of this project is to create a robust website that is compatible with m
 7. Start the React app: `yarn start`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a
 # How to create a new branch once project is on computer
 1. Go to the root of the project
 2. Switch to the development branch: `git checkout development`
@@ -67,7 +70,13 @@ The goal of this project is to create a robust website that is compatible with m
 	* `amplify push` will build all your local backend resources and provision it in the cloud
 	* `amplify console` to open the Amplify Console and view your project status
 	* `amplify publish` will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+<<<<<<< HEAD
 =======
+=======
+
+
+    
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a
 REACT piece:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -137,4 +146,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<<<<<<< HEAD
 >>>>>>> 3348c6c... Fixing folder structure
+=======
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a

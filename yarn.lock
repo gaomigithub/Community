@@ -992,8 +992,11 @@
     "@babel/plugin-transform-typescript" "^7.8.3"
 
 <<<<<<< HEAD:yarn.lock
+<<<<<<< HEAD:yarn.lock
 "@babel/runtime@7.8.4", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6":
 =======
+=======
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a:frontend/yarn.lock
 "@babel/runtime-corejs3@^7.7.4":
   version "7.8.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.8.4.tgz#ccc4e042e2fae419c67fa709567e5d2179ed3940"
@@ -1002,12 +1005,16 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
+<<<<<<< HEAD:yarn.lock
 <<<<<<< HEAD
 "@babel/runtime@7.8.4", "@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
 >>>>>>> 4db15cd... Revert "Merge pull request #16 from LmKupke/LandingPageUpdated":frontend/yarn.lock
 =======
 "@babel/runtime@7.8.4", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
 >>>>>>> 42b4f49... Update for Amplify
+=======
+"@babel/runtime@7.8.4", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a:frontend/yarn.lock
   version "7.8.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
   integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
@@ -3547,6 +3554,9 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
     ms "2.0.0"
 
 <<<<<<< HEAD:yarn.lock
+<<<<<<< HEAD:yarn.lock
+=======
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a:frontend/yarn.lock
 debug@=3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
@@ -3554,8 +3564,11 @@ debug@=3.1.0:
   dependencies:
     ms "2.0.0"
 
+<<<<<<< HEAD:yarn.lock
 =======
 >>>>>>> 4db15cd... Revert "Merge pull request #16 from LmKupke/LandingPageUpdated":frontend/yarn.lock
+=======
+>>>>>>> 42b4f490ab789b8a6421ac3416c705cbecacaa1a:frontend/yarn.lock
 debug@^3.0.0, debug@^3.1.1, debug@^3.2.5:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
