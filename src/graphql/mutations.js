@@ -1,6 +1,31 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createUser = /* GraphQL */ `
+  mutation CreateUser($input: userInput!) {
+    createUser(input: $input) {
+      userId
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      hasDog {
+        items {
+          dogId
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
+    }
+  }
+`;
 export const createTask = /* GraphQL */ `
   mutation CreateTask(
     $input: CreateTaskInput!
@@ -76,102 +101,37 @@ export const deletePrivateNote = /* GraphQL */ `
     }
   }
 `;
-export const addUser = /* GraphQL */ `
-  mutation AddUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
+export const createRecreation = /* GraphQL */ `
+  mutation CreateRecreation(
+    $input: CreateRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    addUser(input: $input, condition: $condition) {
-      userId
-      userName
-      userEmail
-      userPhone
-      hasDog
-      owner
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      userId
-      userName
-      userEmail
-      userPhone
-      hasDog
-      owner
-    }
-  }
-`;
-export const addDog = /* GraphQL */ `
-  mutation AddDog($input: CreateDogInput!, $condition: ModelDogConditionInput) {
-    addDog(input: $input, condition: $condition) {
-      userId
-      dogName
-      owner {
-        userId
-        userName
-        userEmail
-        userPhone
-        hasDog
-        owner
-      }
-    }
-  }
-`;
-export const deleteDog = /* GraphQL */ `
-  mutation DeleteDog(
-    $input: DeleteDogInput!
-    $condition: ModelDogConditionInput
-  ) {
-    deleteDog(input: $input, condition: $condition) {
-      userId
-      dogName
-      owner {
-        userId
-        userName
-        userEmail
-        userPhone
-        hasDog
-        owner
-      }
-    }
-  }
-`;
-export const createCourt = /* GraphQL */ `
-  mutation CreateCourt(
-    $input: CreateCourtInput!
-    $condition: ModelCourtConditionInput
-  ) {
-    createCourt(input: $input, condition: $condition) {
-      courtType
+    createRecreation(input: $input, condition: $condition) {
+      recreationType
       availableTimeSlot
       reservedTimeSlot
     }
   }
 `;
-export const updateCourt = /* GraphQL */ `
-  mutation UpdateCourt(
-    $input: UpdateCourtInput!
-    $condition: ModelCourtConditionInput
+export const updateRecreation = /* GraphQL */ `
+  mutation UpdateRecreation(
+    $input: UpdateRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    updateCourt(input: $input, condition: $condition) {
-      courtType
+    updateRecreation(input: $input, condition: $condition) {
+      recreationType
       availableTimeSlot
       reservedTimeSlot
     }
   }
 `;
-export const deleteCourt = /* GraphQL */ `
-  mutation DeleteCourt(
-    $input: DeleteCourtInput!
-    $condition: ModelCourtConditionInput
+export const deleteRecreation = /* GraphQL */ `
+  mutation DeleteRecreation(
+    $input: DeleteRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    deleteCourt(input: $input, condition: $condition) {
-      courtType
+    deleteRecreation(input: $input, condition: $condition) {
+      recreationType
       availableTimeSlot
       reservedTimeSlot
     }

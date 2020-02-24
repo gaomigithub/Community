@@ -1,6 +1,31 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getUsers = /* GraphQL */ `
+  query GetUsers($limit: Int, $start: Int) {
+    getUsers(limit: $limit, start: $start) {
+      userId
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      hasDog {
+        items {
+          dogId
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
+    }
+  }
+`;
 export const getTask = /* GraphQL */ `
   query GetTask($id: ID!) {
     getTask(id: $id) {
@@ -57,11 +82,24 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       userId
+      firstName
+      lastName
       userName
       userEmail
       userPhone
-      hasDog
-      owner
+      hasDog {
+        items {
+          dogId
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
     }
   }
 `;
@@ -74,11 +112,14 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         userId
+        firstName
+        lastName
         userName
         userEmail
         userPhone
-        hasDog
-        owner
+        hasDog {
+          nextToken
+        }
       }
       nextToken
     }
@@ -87,16 +128,25 @@ export const listUsers = /* GraphQL */ `
 export const getDog = /* GraphQL */ `
   query GetDog($id: ID!) {
     getDog(id: $id) {
-      userId
-      dogName
+      dogId
+      firstName
+      lastName
+      breed
+      dob
+      sex
+      bio
       owner {
         userId
+        firstName
+        lastName
         userName
         userEmail
         userPhone
-        hasDog
-        owner
+        hasDog {
+          nextToken
+        }
       }
+      picture
     }
   }
 `;
@@ -108,39 +158,45 @@ export const listDogs = /* GraphQL */ `
   ) {
     listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        userId
-        dogName
+        dogId
+        firstName
+        lastName
+        breed
+        dob
+        sex
+        bio
         owner {
           userId
+          firstName
+          lastName
           userName
           userEmail
           userPhone
-          hasDog
-          owner
         }
+        picture
       }
       nextToken
     }
   }
 `;
-export const getCourt = /* GraphQL */ `
-  query GetCourt($id: ID!) {
-    getCourt(id: $id) {
-      courtType
+export const getRecreation = /* GraphQL */ `
+  query GetRecreation($id: ID!) {
+    getRecreation(id: $id) {
+      recreationType
       availableTimeSlot
       reservedTimeSlot
     }
   }
 `;
-export const listCourts = /* GraphQL */ `
-  query ListCourts(
-    $filter: ModelCourtFilterInput
+export const listRecreations = /* GraphQL */ `
+  query ListRecreations(
+    $filter: ModelRecreationFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCourts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listRecreations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        courtType
+        recreationType
         availableTimeSlot
         reservedTimeSlot
       }
