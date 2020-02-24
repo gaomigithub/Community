@@ -76,3 +76,104 @@ export const deletePrivateNote = /* GraphQL */ `
     }
   }
 `;
+export const addUser = /* GraphQL */ `
+  mutation AddUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    addUser(input: $input, condition: $condition) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const addDog = /* GraphQL */ `
+  mutation AddDog($input: CreateDogInput!, $condition: ModelDogConditionInput) {
+    addDog(input: $input, condition: $condition) {
+      userId
+      dogName
+      owner {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+    }
+  }
+`;
+export const deleteDog = /* GraphQL */ `
+  mutation DeleteDog(
+    $input: DeleteDogInput!
+    $condition: ModelDogConditionInput
+  ) {
+    deleteDog(input: $input, condition: $condition) {
+      userId
+      dogName
+      owner {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+    }
+  }
+`;
+export const createCourt = /* GraphQL */ `
+  mutation CreateCourt(
+    $input: CreateCourtInput!
+    $condition: ModelCourtConditionInput
+  ) {
+    createCourt(input: $input, condition: $condition) {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
+export const updateCourt = /* GraphQL */ `
+  mutation UpdateCourt(
+    $input: UpdateCourtInput!
+    $condition: ModelCourtConditionInput
+  ) {
+    updateCourt(input: $input, condition: $condition) {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
+export const deleteCourt = /* GraphQL */ `
+  mutation DeleteCourt(
+    $input: DeleteCourtInput!
+    $condition: ModelCourtConditionInput
+  ) {
+    deleteCourt(input: $input, condition: $condition) {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;

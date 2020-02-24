@@ -58,3 +58,86 @@ export const onDeletePrivateNote = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($owner: String) {
+    onCreateUser(owner: $owner) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($owner: String) {
+    onDeleteUser(owner: $owner) {
+      userId
+      userName
+      userEmail
+      userPhone
+      hasDog
+      owner
+    }
+  }
+`;
+export const onCreateDog = /* GraphQL */ `
+  subscription OnCreateDog($owner: String) {
+    onCreateDog(owner: $owner) {
+      userId
+      dogName
+      owner {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+    }
+  }
+`;
+export const onDeleteDog = /* GraphQL */ `
+  subscription OnDeleteDog($owner: String) {
+    onDeleteDog(owner: $owner) {
+      userId
+      dogName
+      owner {
+        userId
+        userName
+        userEmail
+        userPhone
+        hasDog
+        owner
+      }
+    }
+  }
+`;
+export const onCreateCourt = /* GraphQL */ `
+  subscription OnCreateCourt {
+    onCreateCourt {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
+export const onUpdateCourt = /* GraphQL */ `
+  subscription OnUpdateCourt {
+    onUpdateCourt {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
+export const onDeleteCourt = /* GraphQL */ `
+  subscription OnDeleteCourt {
+    onDeleteCourt {
+      courtType
+      availableTimeSlot
+      reservedTimeSlot
+    }
+  }
+`;
