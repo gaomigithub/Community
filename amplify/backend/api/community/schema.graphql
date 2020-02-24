@@ -26,39 +26,63 @@ type User
   ]) 
   {
     userId: ID!
+    firstName: String
+    lastName: String
     userName: String!
     userEmail: String!
-    userPhone: String!
-    hasDog: Status!
+    userPhone: String
+    hasDog: [Dog!] @connection(name: "userDogs", sortField: )
   }
 
-  enum Status {
-    YES
-    NO
+type Mutation {
+  addUser(
+    id: String, 
+    firstName: String, 
+    lastName: String, 
+    userName: String, 
+    userEmail: String, 
+    userPhone: String, 
+    hasDog: [Dog!]) : User @function(name: "addUser-${env}")
+}
+
+type Query {
+  getUsers(limit: Int start: Int): [User] @function(name: "getUsers-${env}")
+}
+
+type Dog 
+  @model(mutations: {create: "addDog", delete: "deleteDog"})
+  @auth(rules: [
+    {allow: owner},
+    {allow: groups, groups: ["Admin"]}
+  ])
+  @key(name: "userDogs", sortField: )
+  {
+    dogId: ID!
+    firstName: String!
+    lastName: String
+    breed: String!
+    dob: AWSDATE!
+    sex: sex!
+    bio: String!
+    owner: User! @connection(name: "userDogs", sortField: )
+    picture: String
   }
 
-  type Dog 
-    @model(mutations: {create: "addDog", delete: "deleteDog"})
-    @auth(rules: [
-      {allow: owner},
-      {allow: groups, groups: ["Admin"]}
-    ])
-    {
-      userId: ID!
-      dogName: String!
-      owner: User!
-    }
+  enum sex {
+    MALE
+    FEMALE
+  }
 
-  type Court
-    @model
-    @auth(rules: [{allow: groups, groups: ["Admin"]}])
-    {
-      courtType: Courts!
-      availableTimeSlot: [AWSDate!]
-      reservedTimeSlot: [AWSDate!]
-    }
+type Recreation
+  @model
+  @auth(rules: [{allow: groups, groups: ["Admin"]}])
+  {
+    recreationType: recreationTypes!
+    availableTimeSlot: [AWSDate!]
+    reservedTimeSlot: [AWSDate!]
+  }
 
-    enum Courts {
-      Basketball
-      Tennis
-    }
+  enum recreationTypes {
+    Basketball
+    Tennis
+  }
