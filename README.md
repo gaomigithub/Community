@@ -52,6 +52,7 @@ The goal of this project is to create a robust website that is compatible with m
 
 1. Locate to the working branch and install Amplify CLI: `npm install -g @aws-amplify/cli`
 2. Configure Amplify as a development user: `amplify configure`
+
    - Press Enter to **skip the sign in**
    - Specify AWS region (we are using **us-east-1**)
    - Enter your IAM username created by administrator @LmKupke
@@ -59,18 +60,17 @@ The goal of this project is to create a robust website that is compatible with m
    - Enter the access key id provided by administrator
    - Enter the secret access key provided by administrator
    - Create the AWS profile name in your local machine
-3. Initilize Amplify: `amplify init`
-   - Press 'Y' to use an existing environment
-   - Choose 'dev' as your environment
-   - Use `amplify pull` to pulled backend environment dev from the cloud to your local machine
-4. Other Amplify Commands:
-   _ `amplify status` will show you what you've added already and if it's locally configured or deployed
-   _ `amplify add <category>` will allow you to add features like user login or a backend API
-   _ `amplify push` will build all your local backend resources and provision it in the cloud
-   _ `amplify console` to open the Amplify Console and view your project status \* `amplify publish` will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
 
-> > > > > > > REACT piece:
-> > > > > > > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+3. Other Amplify Commands:
+
+   - `amplify status` will show you what you've added already and if it's locally configured or deployed
+   - `amplify add <category>` will allow you to add features like user login or a backend API
+   - `amplify push` will build all your local backend resources and provision it in the cloud
+   - `amplify console` to open the Amplify Console and view your project status
+   - `amplify publish` will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+
+REACT piece:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -138,3 +138,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+> > > > > > > 39c0a2f152099e7ad2c4f9f73e7baf59853699f4
