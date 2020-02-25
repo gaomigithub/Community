@@ -18,61 +18,64 @@ type PrivateNote
   content: String!
 }
 
-type User @model(mutations: null) {
-    userId: ID!
+type User @model() {
+    id: ID!
     firstName: String
     lastName: String
     userName: String!
     userEmail: String!
     userPhone: String
-    hasDog: [Dog!] @connection(name: "userDogs")
+    dog: [Dog!] @connection(name: "userDogs")
 }
 
 
 input userInput {
-    userId: ID!
+    id: ID!
     firstName: String
     lastName: String
     userName: String!
     userEmail: String!
     userPhone: String
-    hasDog: [dogInput!]
 }
 
 
 type Mutation {
-  createUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  createUser(input: userInput!) : User @function(name: "userfunction-${env}"),
+  updateUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
+// Just One User
 type Query {
-  getUsers(limit: Int start: Int): [User] @function(name: "userfunction-${env}")
+  getUser(limit: Int start: Int): [User] @function(name: "userfunction-${env}")
 }
+
+// Mutations for dog/dogs
 
 type Dog @model(mutations: null) {
-    dogId: ID!
+    id: ID!
     firstName: String!
     lastName: String
     breed: String!
     dob: AWSDate!
-    sex: sex!
+    sex: Sex!
     bio: String!
     owner: User! @connection(name: "userDogs")
     picture: String
 }
 
 input dogInput {
-    dogId: ID!
+    id: ID!
     firstName: String!
     lastName: String
     breed: String!
     dob: AWSDate!
-    sex: sex!
+    sex: Sex!
     bio: String!
     owner: userInput!
     picture: String
 }
 
-enum sex {
+enum Sex {
   MALE
   FEMALE
 }
