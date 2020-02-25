@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./signup.css";
+import "../styles/signup.css";
 import { Button } from "react-bootstrap";
 import { render } from "react-dom";
 
