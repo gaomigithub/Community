@@ -1,5 +1,14 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.clickhandler = this.clickhandler.bind(this);
+  }
+  clickhandler() {
+    this.props.history.push("../signup");
+  }
   render() {
     return (
       <main>
@@ -60,7 +69,7 @@ class Main extends Component {
             Community is focused on trying to improve the local Boston area
             businesses and everyday life for its residents.{" "}
           </p>
-          <button className="sign-up" type="button">
+          <button className="sign-up" type="button" onClick={this.clickhandler}>
             Sign Up Here!
           </button>
         </div>
@@ -108,4 +117,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withRouter(Main);
