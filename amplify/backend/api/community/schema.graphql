@@ -44,6 +44,10 @@ type Mutation {
   updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
+type Query {
+  getUser(input: id) : User @function(name: "userfunction-${env}")
+}
+
 
 type Dog @model(mutations: null) {
     id: ID!

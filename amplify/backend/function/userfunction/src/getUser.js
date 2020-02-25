@@ -16,15 +16,12 @@ var ddb_table_name = process.env.STORAGE_USERTABLE_NAME
 
 async function createUser(event, callback) { 
 
-    const args = { ...event.arguments}
-  
     var params = {
         TableName: ddb_table_name,
-        Item: args
+        Key: {'id': {S: event.arguments}}
     };
-    console.log(params);
 
-    ddb.putItem(params, function(err, data) {
+    ddb.getItem(params, function(err, data) {
         if (err) console.log(err, err.stack);
         else console.log(data); 
     });
