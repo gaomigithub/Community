@@ -1,31 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUsers = /* GraphQL */ `
-  query GetUsers($limit: Int, $start: Int) {
-    getUsers(limit: $limit, start: $start) {
-      userId
-      firstName
-      lastName
-      userName
-      userEmail
-      userPhone
-      hasDog {
-        items {
-          dogId
-          firstName
-          lastName
-          breed
-          dob
-          sex
-          bio
-          picture
-        }
-        nextToken
-      }
-    }
-  }
-`;
 export const getTask = /* GraphQL */ `
   query GetTask($id: ID!) {
     getTask(id: $id) {
@@ -81,15 +56,15 @@ export const listPrivateNotes = /* GraphQL */ `
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
-      userId
+      id
       firstName
       lastName
       userName
       userEmail
       userPhone
-      hasDog {
+      dog {
         items {
-          dogId
+          id
           firstName
           lastName
           breed
@@ -111,13 +86,13 @@ export const listUsers = /* GraphQL */ `
   ) {
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        userId
+        id
         firstName
         lastName
         userName
         userEmail
         userPhone
-        hasDog {
+        dog {
           nextToken
         }
       }
@@ -128,7 +103,7 @@ export const listUsers = /* GraphQL */ `
 export const getDog = /* GraphQL */ `
   query GetDog($id: ID!) {
     getDog(id: $id) {
-      dogId
+      id
       firstName
       lastName
       breed
@@ -136,13 +111,13 @@ export const getDog = /* GraphQL */ `
       sex
       bio
       owner {
-        userId
+        id
         firstName
         lastName
         userName
         userEmail
         userPhone
-        hasDog {
+        dog {
           nextToken
         }
       }
@@ -158,7 +133,7 @@ export const listDogs = /* GraphQL */ `
   ) {
     listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        dogId
+        id
         firstName
         lastName
         breed
@@ -166,7 +141,7 @@ export const listDogs = /* GraphQL */ `
         sex
         bio
         owner {
-          userId
+          id
           firstName
           lastName
           userName

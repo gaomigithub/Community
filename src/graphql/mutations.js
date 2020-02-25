@@ -1,18 +1,43 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser($input: userInput!) {
-    createUser(input: $input) {
-      userId
+export const createNewUser = /* GraphQL */ `
+  mutation CreateNewUser($input: userInput!) {
+    createNewUser(input: $input) {
+      id
       firstName
       lastName
       userName
       userEmail
       userPhone
-      hasDog {
+      dog {
         items {
-          dogId
+          id
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const updateCurrentUser = /* GraphQL */ `
+  mutation UpdateCurrentUser($input: userInput!) {
+    updateCurrentUser(input: $input) {
+      id
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      dog {
+        items {
+          id
           firstName
           lastName
           breed

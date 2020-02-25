@@ -18,7 +18,7 @@ type PrivateNote
   content: String!
 }
 
-type User @model() {
+type User @model(mutations: null) {
     id: ID!
     firstName: String
     lastName: String
@@ -40,16 +40,10 @@ input userInput {
 
 
 type Mutation {
-  createUser(input: userInput!) : User @function(name: "userfunction-${env}"),
-  updateUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  createNewUser(input: userInput!) : User @function(name: "userfunction-${env}"),
+  updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
-// Just One User
-type Query {
-  getUser(limit: Int start: Int): [User] @function(name: "userfunction-${env}")
-}
-
-// Mutations for dog/dogs
 
 type Dog @model(mutations: null) {
     id: ID!
