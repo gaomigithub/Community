@@ -1,6 +1,31 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getCurrentUser = /* GraphQL */ `
+  query GetCurrentUser($input: String) {
+    getCurrentUser(input: $input) {
+      id
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      dog {
+        items {
+          id
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
+    }
+  }
+`;
 export const getTask = /* GraphQL */ `
   query GetTask($id: ID!) {
     getTask(id: $id) {
