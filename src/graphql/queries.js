@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const getCurrentUser = /* GraphQL */ `
-  query GetCurrentUser($input: String) {
-    getCurrentUser(input: $input) {
+  query GetCurrentUser($id: ID!) {
+    getCurrentUser(id: $id) {
       id
       firstName
       lastName
@@ -73,53 +73,6 @@ export const listPrivateNotes = /* GraphQL */ `
         id
         content
         owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      firstName
-      lastName
-      userName
-      userEmail
-      userPhone
-      dog {
-        items {
-          id
-          firstName
-          lastName
-          breed
-          dob
-          sex
-          bio
-          picture
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        firstName
-        lastName
-        userName
-        userEmail
-        userPhone
-        dog {
-          nextToken
-        }
       }
       nextToken
     }

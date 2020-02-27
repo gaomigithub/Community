@@ -18,7 +18,7 @@ type PrivateNote
   content: String!
 }
 
-type User @model(mutations: null) {
+type User @model(mutations: null, queries: null) {
     id: ID!
     firstName: String
     lastName: String
@@ -41,6 +41,10 @@ input userInput {
 
 type Mutation {
   createNewUser(input: userInput!) : User @function(name: "userfunction-${env}")
+}
+
+type Query {
+  getCurrentUser(id: ID!): User @function(name: "userfunction-${env}")
 }
 
 

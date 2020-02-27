@@ -26,31 +26,6 @@ export const createNewUser = /* GraphQL */ `
     }
   }
 `;
-export const updateCurrentUser = /* GraphQL */ `
-  mutation UpdateCurrentUser($input: userInput!) {
-    updateCurrentUser(input: $input) {
-      id
-      firstName
-      lastName
-      userName
-      userEmail
-      userPhone
-      dog {
-        items {
-          id
-          firstName
-          lastName
-          breed
-          dob
-          sex
-          bio
-          picture
-        }
-        nextToken
-      }
-    }
-  }
-`;
 export const createTask = /* GraphQL */ `
   mutation CreateTask(
     $input: CreateTaskInput!
