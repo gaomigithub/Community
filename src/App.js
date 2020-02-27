@@ -20,6 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // User Input Format Example
     const userInput ={input : {
       id: "25",
       firstName: "dan",
@@ -29,6 +30,7 @@ class App extends React.Component {
       userPhone: "1234567890"
       }
     };
+    // Retrive User Information by ID
     const id = "25";
     this.addUser(userInput);  
     this.getUser(id)
