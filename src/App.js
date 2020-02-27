@@ -12,45 +12,43 @@ Amplify.configure(awsconfig);
 
 class App extends React.Component {
 
+  
+
   constructor() {
     super();
     this.state = {};
   }
 
   componentDidMount() {
-    this.addData();  
-  }
-  
-  // async addData() {
-
-  //   const entry = {id:"6", email:"email6@example.com", createdAt:"2020-2-23"}
-  //   const data = await API.graphql(graphqlOperation(addEntry, entry))
-  //   console.log(data)
-  //   this.setState({data});
-  // }
-  async addData() {
     const userInput ={input : {
-      id: "24",
+      id: "25",
       firstName: "dan",
       lastName: "zhong",
       userName: "danz",
       userEmail: "dan@example.com",
       userPhone: "1234567890"
       }
-    }
+    };
+    const id = "25";
+    this.addUser(userInput);  
+    this.getUser(id)
+  }
 
+  async addUser(userInput) {
     await API.graphql(graphqlOperation(createNewUser, userInput))
       .then(data => console.log({ data }))
       .catch(err => console.log('error: ', err))
-    
-    // query
-    let currentUser = null;
-    await API.graphql(graphqlOperation(getCurrentUser, {id: "24"}))
-      .then(data => currentUser = data)
-      .catch(err => console.log('error: ', err))
-    
-    console.log("Get User Success ", currentUser)
-    console.log(currentUser.data.getCurrentUser)
+  }
+
+  async getUser(userID) {
+      let currentUser = null;
+      await API.graphql(graphqlOperation(getCurrentUser, {id: userID}))
+        .then(data => currentUser = data)
+        .catch(err => console.log('error: ', err))
+      
+      console.log("Get User Success ", currentUser)
+      console.log(currentUser.data.getCurrentUser)
+      return currentUser;
   }
 
   render() {
