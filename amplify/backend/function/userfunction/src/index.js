@@ -9,7 +9,7 @@ Amplify Params - DO NOT EDIT */
 
 const createUser = require('./createUser')
 
-exports.handler = async (event, _, callback) => {
+exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
         createUser(event, callback)
     }
