@@ -88,6 +88,6 @@ type Recreation
   }
 
   enum RecreationType {
-    Basketball
+    BASKETBALL
     Tennis
   }
