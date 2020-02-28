@@ -87,7 +87,7 @@ type Recreation
     reservedTimeSlot: [AWSDate!]
   }
 
-  enum recreationTypes {
+  enum RecreationType {
     Basketball
     Tennis
   }
