@@ -4,6 +4,7 @@ import "./App.css";
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { createNewUser }  from './graphql/mutations';
+import { updateCurrentUser }  from './graphql/mutations';
 import { getCurrentUser } from './graphql/queries';
 import { API, graphqlOperation } from "aws-amplify";
 // import { withAuthenticator } from "aws-amplify-react"; // or 'aws-amplify-react-native';
@@ -32,8 +33,22 @@ class App extends React.Component {
     };
     // Retrive User Information by ID
     const id = "25";
+    // Update User Format Example
+    const updatedUserInput = {input : {
+      id: "25",
+      firstName: "dan",
+      lastName: "zhong",
+      userName: "danz",
+      userEmail: "updateemail@example.com",
+      userPhone: "9876543210"
+      }
+    };
+    
     this.addUser(userInput);  
-    this.getUser(id)
+    this.getUser(id);
+    this.updateUser(updatedUserInput);
+    console.log("After Update")
+    this.getUser(id);
   }
 
   async addUser(userInput) {
@@ -51,6 +66,12 @@ class App extends React.Component {
       console.log("Get User Success ", currentUser)
       console.log(currentUser.data.getCurrentUser)
       return currentUser;
+  }
+
+  async updateUser(userInput) {
+    await API.graphql(graphqlOperation(updateCurrentUser, userInput))
+    .then(data => console.log("Update Success ", data.data))
+    .catch(err => console.log('error: ', err))
   }
 
   render() {

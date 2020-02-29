@@ -21,6 +21,7 @@ input userInput {
 
 type Mutation {
   createNewUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
 type Query {
@@ -62,7 +63,7 @@ type Recreation
   @model
   @auth(rules: [{allow: groups, groups: ["Admin"]}])
   {
-    recreationType: recreationTypes!
+    type: RecreationType!
     availableTimeSlot: [AWSDate!]
     reservedTimeSlot: [AWSDate!]
   }
