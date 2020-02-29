@@ -13,7 +13,7 @@ const updateUser = require('./updateUser')
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
-        if (event.fieldName === "createUser") {
+        if (event.fieldName === "createNewUser") {
             createUser(event, callback)
         }
         if (event.fieldName === "updateCurrentUser") {

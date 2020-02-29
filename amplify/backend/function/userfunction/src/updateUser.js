@@ -32,8 +32,7 @@ function updateCurrentUser(event, callback) {
             ":un" : input.userName,
             ":ue" : input.userEmail,
             ":up" : input.userPhone,
-        },
-        ReturnValues:"UPDATED_NEW"
+        }
     };
     console.log(params);
 

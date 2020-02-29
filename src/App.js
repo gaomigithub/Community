@@ -23,7 +23,7 @@ class App extends React.Component {
   componentDidMount() {
     // User Input Format Example
     const userInput ={input : {
-      id: "25",
+      id: "30",
       firstName: "dan",
       lastName: "zhong",
       userName: "danz",
@@ -32,10 +32,10 @@ class App extends React.Component {
       }
     };
     // Retrive User Information by ID
-    const id = "25";
+    const id = "30";
     // Update User Format Example
     const updatedUserInput = {input : {
-      id: "25",
+      id: "30",
       firstName: "dan",
       lastName: "zhong",
       userName: "danz",
@@ -43,12 +43,11 @@ class App extends React.Component {
       userPhone: "9876543210"
       }
     };
-    
-    this.addUser(userInput);  
-    this.getUser(id);
-    this.updateUser(updatedUserInput);
-    console.log("After Update")
-    this.getUser(id);
+
+    // this.addUser(userInput);  
+    // this.getUser(id);
+    // this.updateUser(updatedUserInput);
+    // this.getUser(id);
   }
 
   async addUser(userInput) {
