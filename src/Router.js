@@ -1,17 +1,19 @@
 import React from "react";
-import { HashRouter, Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import App from "./App";
-import Signup from "./signup";
-import Report from "./signup-report";
+import SignUp from "./components/SignUp";
+import AppWithAuth from "./components/AppWithAuth";
+import Login from "./components/Login";
 
 const BasicRoute = () => (
-  <HashRouter history={BrowserRouter}>
+  <BrowserRouter>
     <Switch>
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/AppWithAuth" component={AppWithAuth} />
+      <Route exact path="/Login" component={Login} />
       <Route exact path="/" component={App} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/signup-report" component={Report} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default BasicRoute;
