@@ -1,7 +1,16 @@
-import React, { Component } from "react";
-class Main extends Component {
-  render() {
-    return (
+import React from "react";
+import "../styles/App.css";
+import { useHistory } from "react-router-dom";
+
+export default function Landing() {
+  let history = useHistory();
+
+  const signUpClickhandler = () => {
+    history.push("/signup");
+  }
+
+  return(
+    <div>
       <main>
         <h2 className="subtitle">What we do?</h2>
         <p className="intro">
@@ -16,7 +25,7 @@ class Main extends Component {
 
         <div className="cards-container">
           <div className="card-left">
-            <img src="./assets/basketballcourt.png" />
+            <img alt="foo" src="./assets/basketballcourt.png" />
             <p className="title">Reserve Courts, no waiting!</p>
             <p>
               As a tennis player in the South End/Back Bay area, I’d like to
@@ -28,7 +37,7 @@ class Main extends Component {
           </div>
 
           <div className="card-right">
-            <img src="./assets/dogpark.png" />
+            <img alt="thing" src="./assets/dogpark.png" />
             <p className="title">Connect with dog owners!</p>
             <p>
               As a dog owner in the South End/Back Bay area, I’d like to check
@@ -60,52 +69,12 @@ class Main extends Component {
             Community is focused on trying to improve the local Boston area
             businesses and everyday life for its residents.{" "}
           </p>
-          <button className="sign-up" type="button">
+          <button className="sign-up" type="button" onClick={signUpClickhandler}>
             Sign Up Here!
           </button>
         </div>
-
-        <footer>
-          <ul>
-            <li>
-              <a href="#"> &copy; Community</a>
-            </li>
-            <li>
-              <a href="#">Terms of Use</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Contact Us</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fab fa-google-play"></i>
-              </a>
-            </li>
-          </ul>
-        </footer>
       </main>
-    );
-  }
+    </div>
+  )
 }
 
-export default Main;
