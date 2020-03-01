@@ -4,18 +4,18 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 
 const HomeItems = props => (
   <React.Fragment>
-    <Nav.ItemLink href="#/" active>
+    <Nav.ItemLink href="/" active>
       Home
       <BSpan srOnly>(current}</BSpan>
     </Nav.ItemLink>
-    <Nav.ItemLink href="#/signup">Login</Nav.ItemLink>
+    <Nav.ItemLink href="/signup">Login</Nav.ItemLink>
   </React.Fragment>
 );
 
 const LoginItems = props => (
   <React.Fragment>
-    <Nav.ItemLink href="#/">Home</Nav.ItemLink>
-    <Nav.ItemLink href="#/signup" active>
+    <Nav.ItemLink href="/">Home</Nav.ItemLink>
+    <Nav.ItemLink href="/signup" active>
       Login
       <BSpan srOnly>(current}</BSpan>
     </Nav.ItemLink>
@@ -31,12 +31,10 @@ export default class Navigator extends Component {
 
         <Navbar.Collapse id="navbarsExampleDefault">
           <Navbar.Nav mr="auto">
-            <HashRouter>
               <Switch>
                 <Route exact path="/" component={HomeItems} />
                 <Route exact path="/signup" component={LoginItems} />
               </Switch>
-            </HashRouter>
           </Navbar.Nav>
           <Navbar.Text>Greetings</Navbar.Text>
         </Navbar.Collapse>
