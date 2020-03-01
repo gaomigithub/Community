@@ -4,11 +4,12 @@ import { Switch, Route } from "react-router-dom";
 
 import AppWithAuth from "./components/AppWithAuth";
 import Landing from "./components/Landing";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
 import SignUp from "./components/SignUp";
 import awsconfig from "./aws-exports";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 Amplify.configure(awsconfig);
 
@@ -30,7 +31,7 @@ export default function App() {
             <AppWithAuth />
           </Route>
           <Route path="/login"/>
-            <Login />
+            {/* <Login /> */}
           <Route />
         </Switch>
         <Footer />
