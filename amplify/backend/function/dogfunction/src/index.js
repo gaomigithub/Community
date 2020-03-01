@@ -9,11 +9,20 @@ var storageUsertableArn = process.env.STORAGE_USERTABLE_ARN
 
 Amplify Params - DO NOT EDIT */
 
-exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    return response;
+const createNewDog = require('./createNewDog')
+const getCurrentDog = require('./getCurrentDog')
+const updateCurrentDog = require('./updateCurrentDog')
+
+exports.handler = function (event, _, callback) {
+    if (event.typeName === 'Mutation') {
+        if (event.fieldName === "createNewDog") {
+            createNewDog(event, callback)
+        }
+        if (event.fieldName === "updateCurrentDog") {
+            updateCurrentDog(event, callback)
+        }
+    }
+    if (event.typeName === 'Query') {
+        getCurrentDog(event, callback)
+      }
 };
