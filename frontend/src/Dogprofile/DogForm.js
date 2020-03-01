@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Doginfodetails from './Doginfodetails';
+import Allinfo from './Allinfo'
 
 class DogForm extends Component {
     state = {
@@ -39,6 +40,14 @@ class DogForm extends Component {
                     dogBreed = {dogBreed}
                     aboutMe = {aboutMe}
                 />);
+        if (step===2)
+            return(
+                <Allinfo
+                dogName = {dogName}
+                dogAge = {dogAge}
+                dogBreed = {dogBreed}
+                aboutMe = {aboutMe}/>
+            );
                     
     }
 
