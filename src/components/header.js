@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { isSignedIn: false };
+
     this.clickhandler = this.clickhandler.bind(this);
     this.clickhandler2 = this.clickhandler2.bind(this);
   }
