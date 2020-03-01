@@ -28,12 +28,16 @@ class DogForm extends Component {
         this.setState({[input]: e.target.value})
     }
     showStep = () =>{
-        const {step} = this.state;
+        const {step, dogName, dogAge, dogBreed, aboutMe} = this.state;
         if (step===1)
             return(
                 <Doginfodetails 
                     handleChange = {this.handleChange}
                     nextStep = {this.nextStep}
+                    dogName = {dogName}
+                    dogAge = {dogAge}
+                    dogBreed = {dogBreed}
+                    aboutMe = {aboutMe}
                 />);
                     
     }

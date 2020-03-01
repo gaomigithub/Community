@@ -1,67 +1,59 @@
-import React, { Component } from 'react'
-import Spinner from './Spinner'
-import Images from './Images'
-import Buttons from './Buttons'
-import { API_URL } from './config'
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom'
 
-
-export default class DogPictureUpload extends Component {
-  
-  state = {
-    uploading: false,
-    images: []
+class ImageUpload extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {file: '',imagePreviewUrl: ''};
   }
 
-  onChange = e => {
-    const files = Array.from(e.target.files)
-    this.setState({ uploading: true })
-
-    const formData = new FormData()
-
-    files.forEach((file, i) => {
-      formData.append(i, file)
-    })
-
-    fetch(`${API_URL}/image-upload`, {
-      method: 'POST',
-      body: formData
-    })
-    .then(res => res.json())
-    .then(images => {
-      this.setState({ 
-        uploading: false,
-        images
-      })
-    })
+  _handleSubmit(e) {
+    e.preventDefault();
+    // TODO: do something with -> this.state.file
+    console.log('handle uploading-', this.state.file);
   }
 
-  removeImage = id => {
-    this.setState({
-      images: this.state.images.filter(image => image.public_id !== id)
-    })
+  _handleImageChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
   }
-  
+
   render() {
-    const { uploading, images } = this.state
-
-    const content = () => {
-      switch(true) {
-        case uploading:
-          return <Spinner />
-        case images.length > 0:
-          return <Images images={images} removeImage={this.removeImage} />
-        default:
-          return <Buttons onChange={this.onChange} />
-      }
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img src={imagePreviewUrl} />);
+    } else {
+      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
 
     return (
-      <div>
-        <div className='buttons'>
-          {content()}
+      <div className="previewComponent">
+        <form onSubmit={(e)=>this._handleSubmit(e)}>
+          <input className="fileInput" 
+            type="file" 
+            onChange={(e)=>this._handleImageChange(e)} />
+          <button className="submitButton" 
+            type="submit" 
+            onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+        </form>
+        <div className="imgPreview">
+          {$imagePreview}
         </div>
       </div>
     )
   }
 }
-
+  
+export default ImageUpload

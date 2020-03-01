@@ -6,7 +6,7 @@ class Doginfodetails extends Component {
         this.props.nextStep();
     }
     render (){
-        const{handleChange} = this.props;
+        const{handleChange, dogName, dogAge, dogBreed, aboutMe} = this.props;
         return (
             <>
                 <h2>Puppy's Information:</h2>
@@ -16,6 +16,7 @@ class Doginfodetails extends Component {
                     type = "text"
                     name ="dogName"
                     placeholder= "Dog Name"
+                    value={dogName}
                     onChange={handleChange('dogName')}/>
                 </label>
                 <label>
@@ -23,6 +24,7 @@ class Doginfodetails extends Component {
                     type = "numeric"
                     name ="dogAge"
                     placeholder= "Dog Age"
+                    value={dogAge}
                     onChange={handleChange('dogAge')}>
                         
                     </input>
@@ -32,6 +34,7 @@ class Doginfodetails extends Component {
                     type = "text"
                     name ="dogBreed"
                     placeholder= "Breed"
+                    value={dogBreed}
                     onChange={handleChange('dogBreed')}>
                         
                     </input>
@@ -41,6 +44,7 @@ class Doginfodetails extends Component {
                     type = "text"
                     name ="aboutMe"
                     placeholder="Tell Us More About Your Pet"
+                    value={aboutMe}
                     onChange={handleChange('aboutMe')}
                     rows ="3">
                         
