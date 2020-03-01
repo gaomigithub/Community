@@ -1,23 +1,51 @@
-import React, {Component} from 'react';
-import moduleName from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, {Component} from 'react'
 
-export class Doginfodetails extends Component{
-    continue = e => {
-        e.preventDefault();
-        this.props.nextstep();
-    }
+class Doginfodetails extends Component {
     render (){
-        const {values} = this.props;
+        const{handleChange} = this.props;
         return (
-            <MuiThemeProvider>
-                
-            </MuiThemeProvider>
+            <>
+                <h2>Puppy's Information:</h2>
+                <div className="dogInfoContent">
+                <label>
+                    <input
+                    type = "text"
+                    name ="dogName"
+                    placeholder= "Dog Name"
+                    onChange={handleChange('dogName')}/>
+                </label>
+                <label>
+                    <input
+                    type = "numeric"
+                    name ="dogAge"
+                    placeholder= "Dog Age"
+                    onChange={handleChange('dogAge')}>
+                        
+                    </input>
+                </label>
+                <label>
+                    <input
+                    type = "text"
+                    name ="dogBreed"
+                    placeholder= "Breed"
+                    onChange={handleChange('dogBreed')}>
+                        
+                    </input>
+                </label>
+                <label>
+                    <textarea
+                    type = "text"
+                    name ="aboutMe"
+                    placeholder="Tell Us More About Your Pet"
+                    onChange={handleChange('aboutMe')}
+                    rows ="3">
+                        
+                    </textarea>
+                </label>
+                </div>
+            </>
         );
     }
 }
 
-export default Doginfodetails;
+export default Doginfodetails
