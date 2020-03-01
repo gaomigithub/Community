@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/signup.css";
 import { Button } from "react-bootstrap";
-import { render } from "react-dom";
 
 export default class SignUp extends React.Component {
   constructor(props) {
