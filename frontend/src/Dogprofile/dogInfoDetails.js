@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 
 class Doginfodetails extends Component {
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
     render (){
         const{handleChange} = this.props;
         return (
@@ -43,6 +47,9 @@ class Doginfodetails extends Component {
                     </textarea>
                 </label>
                 </div>
+                <button className="Next" onClick={this.continue}>
+                    Next >>
+                </button>
             </>
         );
     }

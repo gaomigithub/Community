@@ -33,6 +33,7 @@ class DogForm extends Component {
             return(
                 <Doginfodetails 
                     handleChange = {this.handleChange}
+                    nextStep = {this.nextStep}
                 />);
                     
     }
