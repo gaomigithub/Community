@@ -12,7 +12,7 @@ class Landing extends React.Component {
   }
 
   render() {
-    if (this.props.authState == "signedIn") {
+    if (this.props.authState === "signedIn") {
       return (
         <div className="container">
           <Navigator />
@@ -32,4 +32,3 @@ class Landing extends React.Component {
 }
 
 export default Landing;
-// export default withAuthenticator(App, true);
