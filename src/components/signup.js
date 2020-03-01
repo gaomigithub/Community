@@ -4,7 +4,7 @@ import "../styles/signup.css";
 import { Button } from "react-bootstrap";
 import { render } from "react-dom";
 
-export default class Signup extends React.Component {
+export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.clickhandler = this.clickhandler.bind(this);
