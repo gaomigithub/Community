@@ -2,9 +2,8 @@ import React from "react";
 import "../styles/App.css";
 import Main from "./main";
 import Header from "./header";
-import Nav from "./nav";
+// import Nav from "./nav";
 import Navigator from "./Navigator";
-import App from "../App";
 
 class Landing extends React.Component {
   constructor(props, context) {
@@ -14,7 +13,7 @@ class Landing extends React.Component {
   render() {
     if (this.props.authState === "signedIn") {
       return (
-        <div className="container">
+        <div>
           <Navigator />
           <Header />
           <Main />
