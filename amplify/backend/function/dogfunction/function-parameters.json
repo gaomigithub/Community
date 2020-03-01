@@ -1,15 +1,7 @@
 {
     "permissions": {
-        "api": {
-            "community": [
-                "create",
-                "read",
-                "update",
-                "delete"
-            ]
-        },
         "storage": {
-            "usertable": [
+            "dogtable": [
                 "create",
                 "read",
                 "update",
