@@ -4,6 +4,7 @@ import App from "./App";
 import Signup from "./components/signup";
 import Report from "./components/signup-report";
 import AppWithAuth from "./components/AppWithAuth";
+import Login from "./components/Login";
 
 const BasicRoute = () => (
   <HashRouter history={BrowserRouter}>
@@ -12,6 +13,7 @@ const BasicRoute = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/signup-report" component={Report} />
       <Route exact path="/AppWithAuth" component={AppWithAuth} />
+      <Route exact path="/Login" component={Login} />
     </Switch>
   </HashRouter>
 );

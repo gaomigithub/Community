@@ -1,7 +1,7 @@
 import React from "react";
 import { SignIn, Authenticator } from "aws-amplify-react";
 import config from "../aws-exports";
-import { CustomSignIn } from "./Login";
+import Login from "./Login";
 
 class AppWithAuth extends React.Component {
   constructor(props, context) {
@@ -12,7 +12,7 @@ class AppWithAuth extends React.Component {
     return (
       <div>
         <Authenticator hide={[SignIn]} amplifyConfig={config}>
-          <CustomSignIn />
+          <Login />
         </Authenticator>
       </div>
     );

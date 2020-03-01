@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/App.css";
+// import { withAuthenticator } from "aws-amplify-react";
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import Main from "./components/main";
@@ -34,3 +35,4 @@ class App extends React.Component {
 }
 
 export default App;
+// export default withAuthenticator(App, true);

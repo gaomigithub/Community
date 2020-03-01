@@ -25,7 +25,7 @@ const LoginItems = props => (
 export default class Navigator extends Component {
   render() {
     return (
-      <Navbar expand="md" dark bg="#229954" fixed="top">
+      <Navbar expand="md" dark bg="#229954" fixed="">
         <Navbar.Brand href="#">Community</Navbar.Brand>
         <Navbar.Toggler target="#navbarsExampleDefault" />
 

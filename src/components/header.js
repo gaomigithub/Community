@@ -11,7 +11,7 @@ class Header extends Component {
     this.clickhandler2 = this.clickhandler2.bind(this);
   }
   clickhandler() {
-    this.props.history.push("../AppWithAuth");
+    this.props.history.push("../Login");
   }
   clickhandler2() {
     this.props.history.push("./signup");
