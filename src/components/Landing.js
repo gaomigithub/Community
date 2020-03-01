@@ -1,11 +1,10 @@
 import React from "react";
 import "../styles/App.css";
-import Body from "./Body";
-import Header from "./Header";
+import Body from "./body";
+import Header from "./header";
 import Navigator from "./Navigator";
 
 class Landing extends React.Component {
-
   handleAuthStateChange(state) {
     if (state === "signedIn") {
       /* Do something when the user has signed-in */
