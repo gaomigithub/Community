@@ -1,0 +1,20 @@
+{
+    "permissions": {
+        "api": {
+            "community": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "storage": {
+            "usertable": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
