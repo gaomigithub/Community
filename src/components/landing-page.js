@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import Main from "./main";
+import Body from "./body";
 import Header from "./header";
 // import Nav from "./nav";
 import Navigator from "./Navigator";
@@ -22,7 +22,7 @@ class Landing extends React.Component {
         <div>
           <Navigator />
           <Header />
-          <Main />
+          <Body />
         </div>
       );
     } else {
