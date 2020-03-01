@@ -28,28 +28,5 @@
             "service": "S3AndCloudFront",
             "providerPlugin": "awscloudformation"
         }
-    },
-    "function": {
-        "userfunction": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "storage",
-                    "resourceName": "usertable",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        }
-    },
-    "storage": {
-        "usertable": {
-            "service": "DynamoDB",
-            "providerPlugin": "awscloudformation"
-        }
     }
 }

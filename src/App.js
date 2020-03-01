@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import UserForm from "./components/userform";
 import ImageUpload from "./components/userphoto";
@@ -43,3 +44,45 @@ export default App;
 // }
 
 // export default withAuthenticator(App, true, null);
+=======
+import React from "react";
+import Amplify from "aws-amplify";
+import { Switch, Route } from "react-router-dom";
+
+import AppWithAuth from "./components/AppWithAuth";
+import Landing from "./components/Landing";
+// import Login from "./components/Login";
+import Footer from "./components/Footer";
+import NavigationBar from "./components/NavigationBar";
+import SignUp from "./components/SignUp";
+import awsconfig from "./aws-exports";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+Amplify.configure(awsconfig);
+
+export default function App() {
+  return (
+    <div className="App">
+        <NavigationBar />
+        <Switch>
+          <Route exact path="/">
+            <Landing  />
+          </Route>
+          <Route path="/about">
+            hi
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/AppWithAuth">
+            <AppWithAuth />
+          </Route>
+          <Route path="/login"/>
+            {/* <Login /> */}
+          <Route />
+        </Switch>
+        <Footer />
+    </div>
+  );
+}
+>>>>>>> a38a2d39165dc3e1855d1bc8e91142fca3228e6e
