@@ -1,11 +1,39 @@
 import React from "react";
-import Landing from "./components/Landing";
 import Amplify from "aws-amplify";
+import { Switch, Route } from "react-router-dom";
+
+import AppWithAuth from "./components/AppWithAuth";
+import Landing from "./components/Landing";
+import Login from "./components/Login";
+import Footer from "./components/Footer";
+import NavigationBar from "./components/NavigationBar";
+import SignUp from "./components/SignUp";
 import awsconfig from "./aws-exports";
+
 Amplify.configure(awsconfig);
 
-export default class App extends React.Component {
-  render() {
-    return <Landing />;
-  }
+export default function App() {
+  return (
+    <div className="App">
+        <NavigationBar />
+        <Switch>
+          <Route exact path="/">
+            <Landing  />
+          </Route>
+          <Route path="/about">
+            hi
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/AppWithAuth">
+            <AppWithAuth />
+          </Route>
+          <Route path="/login"/>
+            <Login />
+          <Route />
+        </Switch>
+        <Footer />
+    </div>
+  );
 }
