@@ -32,9 +32,18 @@ class MyCustomSignUp extends Component {
 export default class Login extends Component {
   render() {
     return (
-      // The override prop tells the Authenticator that the SignUp component is not hidden but overridden
-      <Authenticator hideDefault={true}>
+      <Authenticator
+        // Optionally hard-code an initial state
+        authState="signIn"
+        // Fired when Authentication State changes
+        onStateChange={authState => console.log(authState)}
+        // A theme object to override the UI / styling
+        // theme={myCustomTheme}
+        // or hide all the default components
+        hideDefault={true}
+      >
         <SignIn />
+        {/* The override prop tells the Authenticator that the SignUp component is not hidden but overridden */}
         <MyCustomSignUp override={"SignUp"} />
       </Authenticator>
     );
