@@ -22,14 +22,17 @@ input userInput {
 type Mutation {
   createNewUser(input: userInput!) : User @function(name: "userfunction-${env}")
   updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  createNewDog(input: dogInput!) : Dog @function(name: "dogfunction-${env}")
+  updateDog(input: dogInput!) : Dog @function(name: "dogfunction-${env}")
 }
 
 type Query {
   getCurrentUser(id: ID!): User @function(name: "userfunction-${env}")
+  getDog(id: ID!): [Dog] @function(name: "dogfunction-${env}")
 }
 
 
-type Dog @model(mutations: null) {
+type Dog @model(mutations: null, queries: null) {
     id: ID!
     firstName: String!
     lastName: String
