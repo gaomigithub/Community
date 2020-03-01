@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserInfo from "./userinfo.js";
-import Userprofileinfo from "./userprofile.js";
+import Userprofileinfo from "./userprofileinfo.js";
 
 class UserForm extends Component {
   state = {
