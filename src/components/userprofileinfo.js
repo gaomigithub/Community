@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Formgroup, Label, Input, button } from "react-bootstrap";
 
 class Userprofileinfo extends Component {
   back = e => {
@@ -11,14 +12,26 @@ class Userprofileinfo extends Component {
     return (
       <>
         <h2>My Profile</h2>
-        User Name: <b>{username}</b>
+        UserName: <b>{username}</b>
         <br />
-        User First Name: <b>{firstName}</b>
+        First Name: <b>{firstName}</b>
         <br />
-        User Last Name: <b>{lastName}</b>
+        Last Name: <b>{lastName}</b>
         <br />
-        User Email: <b>{userEmail}</b>
+        Email: <b>{userEmail}</b>
         <br />
+        <div className="form-group-question">
+          <label htmlFor="exampleFormControlSelect1">Do you have a dog? </label>
+          <select
+            defaultValue="Default"
+            className=""
+            id="exampleFormControlSelect1"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button>Submit</button>
+        </div>
       </>
     );
   }
