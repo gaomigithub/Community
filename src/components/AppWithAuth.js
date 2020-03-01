@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Authenticator, AuthPiece } from "aws-amplify-react";
-import Report from "./test-report";
 
 class TestApp extends AuthPiece {
   constructor(props) {
@@ -17,7 +16,6 @@ class AppWithAuthenticator extends Component {
   render() {
     return (
       <Authenticator>
-        <TestApp />
       </Authenticator>
     );
   }
