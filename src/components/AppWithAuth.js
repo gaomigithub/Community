@@ -1,22 +1,26 @@
-import React from "react";
-import { SignIn, Authenticator } from "aws-amplify-react";
-import config from "../aws-exports";
+import React, { Component } from "react";
+import { Authenticator, AuthPiece } from "aws-amplify-react";
 import Report from "./test-report";
 
-class AppWithAuth extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+class TestApp extends AuthPiece {
+  constructor(props) {
+    super(props);
+    this._validAuthStates = ["signedIn"];
   }
 
+  showComponent(theme) {
+    return <div>!!!Nice!!!</div>;
+  }
+}
+
+class AppWithAuthenticator extends Component {
   render() {
     return (
-      <div>
-        <Authenticator>
-          <Report />
-        </Authenticator>
-      </div>
+      <Authenticator>
+        <TestApp />
+      </Authenticator>
     );
   }
 }
 
-export default AppWithAuth;
+export default AppWithAuthenticator;

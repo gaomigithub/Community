@@ -10,9 +10,14 @@ class Landing extends React.Component {
     super(props, context);
   }
 
+  handleAuthStateChange(state) {
+    if (state === "signedIn") {
+      /* Do something when the user has signed-in */
+    }
+  }
+
   render() {
-    // if (this.props.authState === "signedIn")
-    if ((this._validAuthStates = ["signedIn"])) {
+    if (this.props.authState === "signedIn") {
       return (
         <div>
           <Navigator />
