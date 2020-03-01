@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { isSignedIn: false };
     this.clickhandler = this.clickhandler.bind(this);
+    this.clickhandler2 = this.clickhandler2.bind(this);
   }
   clickhandler() {
-    this.props.history.push("../signup");
+    this.props.history.push("../AppWithAuth");
   }
+  clickhandler2() {
+    this.props.history.push("./signup");
+  }
+
   render() {
     return (
       <header>
@@ -18,12 +24,15 @@ class Header extends Component {
         <p>Impacting Backbay & SouthEnd resident lives</p>
         <div>
           <Button type="button" onClick={this.clickhandler}>
-            Sign Up Here!
+            Login
           </Button>
         </div>
         <div>
-          <Button type="button">Login</Button>
+          <Button type="button" onClick={this.clickhandler2}>
+            Sign Up Here!
+          </Button>
         </div>
+
         <img src="./assets/backbaypark.png" />
       </header>
     );
