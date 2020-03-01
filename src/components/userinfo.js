@@ -1,52 +1,57 @@
 import React, { Component } from "react";
 
-class Doginfodetails extends Component {
+class UserInfo extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
   render() {
-    const { handleChange, dogName, dogAge, dogBreed, aboutMe } = this.props;
+    const {
+      handleChange,
+      username,
+      firstName,
+      lastName,
+      userEmail
+    } = this.props;
     return (
       <>
-        <h2>Puppy's Information:</h2>
-        <div className="dogInfoContent">
+        <h2>User Profile:</h2>
+        <div className="userInfoContent">
           <label>
             <input
               type="text"
-              name="dogName"
-              placeholder="Dog Name"
-              value={dogName}
-              onChange={handleChange("dogName")}
+              name="username"
+              placeholder="User Name"
+              value={username}
+              onChange={handleChange("username")}
             />
           </label>
           <label>
             <input
-              type="numeric"
-              name="dogAge"
-              placeholder="Dog Age"
-              value={dogAge}
-              onChange={handleChange("dogAge")}
+              type="text"
+              name="firstName"
+              placeholder="first Name"
+              value={firstName}
+              onChange={handleChange("firstName")}
             ></input>
           </label>
           <label>
             <input
               type="text"
-              name="dogBreed"
-              placeholder="Breed"
-              value={dogBreed}
-              onChange={handleChange("dogBreed")}
+              name="lastName"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={handleChange("lastName")}
             ></input>
           </label>
           <label>
-            <textarea
-              type="text"
-              name="aboutMe"
-              placeholder="Tell Us More About Your Pet"
-              value={aboutMe}
-              onChange={handleChange("aboutMe")}
-              rows="3"
-            ></textarea>
+            <input
+              type="email"
+              name="userEmail"
+              placeholder="Your Email"
+              value={userEmail}
+              onChange={handleChange("userEmail")}
+            ></input>
           </label>
         </div>
         <button className="Next" onClick={this.continue}>
@@ -57,4 +62,4 @@ class Doginfodetails extends Component {
   }
 }
 
-export default Doginfodetails;
+export default UserInfo;

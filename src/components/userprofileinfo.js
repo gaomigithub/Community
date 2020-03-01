@@ -7,7 +7,7 @@ class Userprofileinfo extends Component {
   };
 
   render() {
-    const { username, firstName, lastName, email, mydog } = this.props;
+    const { username, firstName, lastName, userEmail } = this.props;
     return (
       <>
         <h2>My Profile</h2>
@@ -17,10 +17,7 @@ class Userprofileinfo extends Component {
         <br />
         User Last Name: <b>{lastName}</b>
         <br />
-        User Email: <b>{email}</b>
-        <br />
-        <br />
-        My Dog: <b>{mydog}</b>
+        User Email: <b>{userEmail}</b>
         <br />
       </>
     );

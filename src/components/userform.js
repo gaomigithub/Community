@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Doginfodetails from "./Doginfodetails";
-import Allinfo from "./Allinfo";
+import UserInfo from "./userinfo.js";
+import Userprofileinfo from "./userprofile.js";
 
 class UserForm extends Component {
   state = {
     step: 1,
-    dogName: "",
-    dogAge: "",
-    dogBreed: "",
-    aboutMe: ""
+    username: "",
+    firstName: "",
+    lastName: "",
+    userEmail: ""
   };
 
   nextStep = () => {
@@ -29,25 +29,25 @@ class UserForm extends Component {
     this.setState({ [input]: e.target.value });
   };
   showStep = () => {
-    const { step, dogName, dogAge, dogBreed, aboutMe } = this.state;
+    const { step, username, firstName, lastName, userEmail } = this.state;
     if (step === 1)
       return (
-        <Doginfodetails
+        <UserInfo
           handleChange={this.handleChange}
           nextStep={this.nextStep}
-          dogName={dogName}
-          dogAge={dogAge}
-          dogBreed={dogBreed}
-          aboutMe={aboutMe}
+          username={username}
+          firstName={firstName}
+          lastName={lastName}
+          userEmail={userEmail}
         />
       );
     if (step === 2)
       return (
-        <Allinfo
-          dogName={dogName}
-          dogAge={dogAge}
-          dogBreed={dogBreed}
-          aboutMe={aboutMe}
+        <Userprofileinfo
+          username={username}
+          firstName={firstName}
+          lastName={lastName}
+          userEmail={userEmail}
         />
       );
   };
@@ -56,11 +56,11 @@ class UserForm extends Component {
     const { step } = this.state;
     return (
       <>
-        <h2>Tell us about your puppies</h2>
+        <h2>User Profile</h2>
         {this.showStep()}
       </>
     );
   }
 }
 
-export default DogForm;
+export default UserForm;
