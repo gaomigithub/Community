@@ -5,7 +5,8 @@ import awsconfig from "./aws-exports";
 import Main from "./components/main";
 import Header from "./components/header";
 import Nav from "./components/nav";
-// Amplify.configure(awsconfig);
+import Navigator from "./components/Navigator";
+Amplify.configure(awsconfig);
 
 class App extends React.Component {
   constructor(props, context) {
@@ -16,7 +17,7 @@ class App extends React.Component {
     if (this.props.authState == "signedIn") {
       return (
         <div className="container">
-          <Nav />
+          <Navigator />
           <Header />
           <Main />
         </div>
@@ -24,7 +25,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <Nav />
+          <Navigator />
           <Header />
         </div>
       );
