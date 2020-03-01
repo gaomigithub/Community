@@ -76,7 +76,7 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-community-dev-190858-deployment",
+					"S3Bucket": "amplify-community-gql-105315-deployment",
 					"S3Key": "amplify-builds/userfunction-595970334e654d775462-build.zip"
 				}
 			}
