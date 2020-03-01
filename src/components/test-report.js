@@ -5,8 +5,8 @@ export default class Report extends React.Component {
     return (
       <div>
         <a>
-          Thanks for Join Us! <br />
-          Welcome!
+          Good! <br />
+          Next!
         </a>
       </div>
     );
