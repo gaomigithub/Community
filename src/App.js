@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import UserForm from "./components/userform";
-
+import ImageUpload from "./components/userphoto";
 class App extends Component {
   render() {
-    return <UserForm />;
+    return (
+      <div>
+        <ImageUpload />
+        <UserForm />
+      </div>
+    );
   }
 }
 
