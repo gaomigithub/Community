@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { createNewUser }  from './graphql/mutations';
-import { updateCurrentUser }  from './graphql/mutations';
-import { getCurrentUser } from './graphql/queries';
+import { createUser }  from './graphql/mutations';
+import { updateUser }  from './graphql/mutations';
+import { getUser } from './graphql/queries';
 import { API, graphqlOperation } from "aws-amplify";
 
 Amplify.configure(awsconfig);
@@ -43,24 +43,24 @@ class UserFunctionTesting extends Component {
     }
     
     async addUser(userInput) {
-        await API.graphql(graphqlOperation(createNewUser, userInput))
+        await API.graphql(graphqlOperation(createUser, userInput))
         .then(data => console.log({ data }))
         .catch(err => console.log('error: ', err))
     }
     
     async getUser(userID) {
         let currentUser = null;
-        await API.graphql(graphqlOperation(getCurrentUser, {id: userID}))
+        await API.graphql(graphqlOperation(getUser, {id: userID}))
             .then(data => currentUser = data)
             .catch(err => console.log('error: ', err))
         
         console.log("Get User Success ", currentUser)
-        console.log(currentUser.data.getCurrentUser)
+        console.log(currentUser.data.getUser)
         return currentUser;
     }
     
     async updateUser(userInput) {
-        await API.graphql(graphqlOperation(updateCurrentUser, userInput))
+        await API.graphql(graphqlOperation(updateUser, userInput))
         .then(data => console.log("Update Success ", data.data))
         .catch(err => console.log('error: ', err))
     }

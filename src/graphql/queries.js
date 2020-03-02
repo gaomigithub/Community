@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getCurrentUser = /* GraphQL */ `
-  query GetCurrentUser($id: ID!) {
-    getCurrentUser(id: $id) {
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
       id
       firstName
       lastName

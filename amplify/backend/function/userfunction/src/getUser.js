@@ -19,7 +19,7 @@ var documentClient = new AWS.DynamoDB.DocumentClient({region: region});
 var ddb_table_name = process.env.STORAGE_USERTABLE_NAME
 
 
-function getCurrentUser(event, callback) { 
+function getUser(event, callback) { 
 
     const userID = event.arguments
 
@@ -41,4 +41,4 @@ function getCurrentUser(event, callback) {
 
 }; 
 
-module.exports = getCurrentUser
+module.exports = getUser
