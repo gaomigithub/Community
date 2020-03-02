@@ -8,7 +8,6 @@ var storageUsertableArn = process.env.STORAGE_USERTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 var AWS = require('aws-sdk');
-// const uuid = require('uuidv4')
 var region = process.env.REGION
 AWS.config.update({region: region});
 var documentClient = new AWS.DynamoDB.DocumentClient({region: region});

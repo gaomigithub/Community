@@ -70,5 +70,5 @@ type Recreation
 
   enum RecreationType {
     BASKETBALL
-    Tennis
+    TENNIS
   }
