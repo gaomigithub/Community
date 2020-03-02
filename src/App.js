@@ -7,7 +7,7 @@ import Landing from "./components/Landing";
 // import Login from "./components/Login";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/signup";
 import awsconfig from "./aws-exports";
 // For User Function Testing
 // import { createNewUser }  from './graphql/mutations';
