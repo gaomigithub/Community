@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "storage": {
+            "dogtable": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
