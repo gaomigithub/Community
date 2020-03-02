@@ -20,7 +20,7 @@ input userInput {
 
 
 type Mutation {
-  createNewUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  createUser(input: userInput!) : User @function(name: "userfunction-${env}")
   updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
