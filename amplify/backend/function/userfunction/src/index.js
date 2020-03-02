@@ -16,7 +16,7 @@ exports.handler = function (event, _, callback) {
         if (event.fieldName === "createUser") {
             createUser(event, callback)
         }
-        if (event.fieldName === "updateCurrentUser") {
+        if (event.fieldName === "updateUser") {
             updateUser(event, callback)
         }
     }

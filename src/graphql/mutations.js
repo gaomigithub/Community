@@ -26,9 +26,9 @@ export const createUser = /* GraphQL */ `
     }
   }
 `;
-export const updateCurrentUser = /* GraphQL */ `
-  mutation UpdateCurrentUser($input: userInput!) {
-    updateCurrentUser(input: $input) {
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser($input: userInput!) {
+    updateUser(input: $input) {
       id
       firstName
       lastName

@@ -18,7 +18,7 @@ AWS.config.update({region: region});
 var documentClient = new AWS.DynamoDB.DocumentClient({region: region});
 var ddb_table_name = process.env.STORAGE_USERTABLE_NAME
 
-function updateCurrentUser(event, callback) { 
+function updateUser(event, callback) { 
 
     const input = event.arguments.input
 
@@ -48,4 +48,4 @@ function updateCurrentUser(event, callback) {
 
 }; 
 
-module.exports = updateCurrentUser
+module.exports = updateUser
