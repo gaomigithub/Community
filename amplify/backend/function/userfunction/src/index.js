@@ -8,19 +8,19 @@ var storageUsertableArn = process.env.STORAGE_USERTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 const createUser = require('./createUser')
-const getCurrentUser = require('./getCurrentUser')
+const getUser = require('./getUser')
 const updateUser = require('./updateUser')
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
-        if (event.fieldName === "createNewUser") {
+        if (event.fieldName === "createUser") {
             createUser(event, callback)
         }
-        if (event.fieldName === "updateCurrentUser") {
+        if (event.fieldName === "updateUser") {
             updateUser(event, callback)
         }
     }
     if (event.typeName === 'Query') {
-        getCurrentUser(event, callback)
+        getUser(event, callback)
       }
 };

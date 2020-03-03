@@ -13,29 +13,27 @@ AWS.config.update({region: region});
 var documentClient = new AWS.DynamoDB.DocumentClient({region: region});
 var ddb_table_name = process.env.STORAGE_USERTABLE_NAME
 
-function write(params, event, callback){
-    documentClient.put(params, function(err, data) {
-      if (err) {
-        callback(err)
-      } else {
-        callback(null, event.arguments.input)
-      }
-    })
-  }
 
-function createUser(event, callback) { 
+function getUser(event, callback) { 
 
-    const user = event.arguments.input
-  
+    const userID = event.arguments
+
     var params = {
         TableName: ddb_table_name,
-        Item: user
+        Key: userID
     };
     console.log(params);
 
-    if (Object.keys(event.arguments).length > 0) {
-        write(params, event, callback)
-    } 
+    documentClient.get(params, function(err, data){
+        if (err) console.log(err);
+        else {
+            console.log("Success")
+            console.log(data)
+            callback(err, data.Item)
+        }
+    });
+
+
 }; 
 
-module.exports = createUser
+module.exports = getUser

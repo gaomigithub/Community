@@ -1,0 +1,5 @@
+{
+    "tableName": "dogtable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}
