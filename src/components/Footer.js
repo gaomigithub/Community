@@ -1,45 +1,44 @@
-import React from 'react'
+import React from "react";
 
 export default function Footer() {
-    return(
+  return (
     <footer>
-        <ul>
-            <li>
-                <a href="#"> &copy; Community</a>
-            </li>
-            <li>
-                <a href="#">Terms of Use</a>
-            </li>
-            <li>
-                <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="#">Contact Us</a>
-            </li>
-        </ul>
-        <ul>
+      <ul>
         <li>
-            <a href="#">
+          <a href="/"> &copy; Community</a>
+        </li>
+        <li>
+          <a href="/">Terms of Use</a>
+        </li>
+        <li>
+          <a href="/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="/">Contact Us</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/">
             <i className="fab fa-facebook-f"></i>
-            </a>
+          </a>
         </li>
         <li>
-            <a href="#">
+          <a href="/">
             <i className="fab fa-twitter"></i>
-            </a>
+          </a>
         </li>
         <li>
-            <a href="#">
+          <a href="/">
             <i className="fab fa-google-plus-g"></i>
-            </a>
+          </a>
         </li>
         <li>
-            <a href="#">
+          <a href="/">
             <i className="fab fa-google-play"></i>
-            </a>
+          </a>
         </li>
-        </ul>
+      </ul>
     </footer>
-    );
+  );
 }
-

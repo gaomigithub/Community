@@ -1,0 +1,26 @@
+.image-box {
+  /* Here's the trick */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    var(sectionStyle) center center;
+  -webkit-background-size: cover;
+
+  /* Here's the same styles we applied to our content-div earlier */
+  color: white;
+  height: 100vh;
+  max-height: 90%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+} */
+h1 {
+  font-size: 100px;
+  font-family: Georgia, serif;
+}
