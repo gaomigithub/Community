@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-community-featuredan-125056-deployment",
-					"S3Key": "amplify-builds/dogfunction-587336352f7039306f41-build.zip"
+					"S3Key": "amplify-builds/dogfunction-34654f45395268484639-build.zip"
 				}
 			}
 		},
