@@ -71,11 +71,11 @@ export default function NavigationBar() {
         <Nav.Item>
           <Nav.Link
             componentClass={Link}
-            href="signup"
-            to="/signup"
-            active={location.pathname === "/signup"}
+            href="profile"
+            to="/profile"
+            active={location.pathname === "/profile"}
           >
-            Signup
+            Profile
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>

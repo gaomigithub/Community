@@ -22,15 +22,16 @@ export default function App() {
         <Route exact path="/about">
           <About />
         </Route>
-        <Route path="/signup">
+        {/* Planned to be changed to user profile in this component */}
+        <Route path="/profile">
           <SignUp />
         </Route>
         <Route path="/AppWithAuth">
           <AppWithAuthenticator />
         </Route>
-        <Route path="/login" />
-        <AppWithAuthenticator />
-        <Route />
+        <Route path="/login">
+          <AppWithAuthenticator />
+        </Route>
       </Switch>
       <Footer />
     </div>
