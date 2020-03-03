@@ -13,15 +13,15 @@ export default function Landing() {
   let history = useHistory();
 
   const clickhandler = () => {
-    history.push("/");
+    history.push("/AppWithAuth");
   };
 
   return (
     <div className="image-box" style={sectionStyle}>
       <div className="greeting">
-        Welcome to Community
+        Community
         <div className="buttons">
-          <Button variant="success" size="lg">
+          <Button variant="success" size="lg" onClick={clickhandler}>
             {" "}
             Start Your Plan
           </Button>

@@ -6,9 +6,9 @@ import { useHistory } from "react-router-dom";
 export default function SignUp() {
   let history = useHistory();
 
- const clickhandler = () => {
+  const clickhandler = () => {
     history.push("/");
-  }
+  };
 
   return (
     <div className="signup-form">
@@ -109,4 +109,3 @@ export default function SignUp() {
     </div>
   );
 }
-

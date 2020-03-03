@@ -2,14 +2,12 @@ import React from "react";
 import Amplify from "aws-amplify";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./components/Landing";
-import AppWithAuth from "./components/AppWithAuth";
+import AppWithAuthenticator from "./components/AppWithAuth";
 import About from "./components/About";
-// import Login from "./components/Login";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
 import SignUp from "./components/SignUp";
 import awsconfig from "./aws-exports";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 Amplify.configure(awsconfig);
 
@@ -28,10 +26,10 @@ export default function App() {
           <SignUp />
         </Route>
         <Route path="/AppWithAuth">
-          <AppWithAuth />
+          <AppWithAuthenticator />
         </Route>
         <Route path="/login" />
-        {/* <Login /> */}
+        <AppWithAuthenticator />
         <Route />
       </Switch>
       <Footer />
