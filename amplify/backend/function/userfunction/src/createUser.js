@@ -18,7 +18,7 @@ function write(params, event, callback){
       if (err) {
         callback(err)
       } else {
-        callback(null, event.arguments.input)
+        callback(null, data.Attributes)
       }
     })
   }
@@ -29,7 +29,8 @@ function createUser(event, callback) {
   
     var params = {
         TableName: ddb_table_name,
-        Item: user
+        Item: user,
+        ReturnValues: "ALL_OLD"
     };
     console.log(params);
 
