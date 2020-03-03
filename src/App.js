@@ -6,7 +6,7 @@ import AppWithAuthenticator from "./components/AppWithAuth";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/signup";
 import awsconfig from "./aws-exports";
 
 Amplify.configure(awsconfig);
