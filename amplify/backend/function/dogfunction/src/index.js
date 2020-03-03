@@ -7,11 +7,12 @@ var storageDogtableArn = process.env.STORAGE_DOGTABLE_ARN
 
 Amplify Params - DO NOT EDIT */
 
-exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    return response;
+const createDog = require('./createDog');
+
+exports.handler = function (event, _, callback) {
+    if (event.typeName === 'Mutation') {
+        if (event.fieldName === 'createDog') {
+            createDog(event, callback);
+        }
+    }
 };

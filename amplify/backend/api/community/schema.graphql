@@ -40,7 +40,7 @@ type Dog @model(mutations: null, queries: null) {
     dob: AWSDate!
     sex: Sex!
     bio: String!
-    owner: User! @connection(name: "userDogs")
+    owner: User @connection(name: "userDogs")
     picture: String
 }
 
@@ -52,7 +52,7 @@ input dogInput {
     dob: AWSDate!
     sex: Sex!
     bio: String!
-    owner: userInput!
+    owner: userInput
     picture: String
 }
 
