@@ -6,8 +6,10 @@ import AppWithAuthenticator from "./components/AppWithAuth";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
-import SignUp from "./components/signup";
+// import Signup from "./components/signup";
+import MainProfile from "./components/profile";
 import awsconfig from "./aws-exports";
+import "./styles/App.css";
 
 Amplify.configure(awsconfig);
 
@@ -24,7 +26,7 @@ export default function App() {
         </Route>
         {/* Planned to be changed to user profile in this component */}
         <Route path="/profile">
-          <SignUp />
+          <MainProfile />
         </Route>
         <Route path="/AppWithAuth">
           <AppWithAuthenticator />
