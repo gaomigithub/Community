@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "storage": {
+            "usertable": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
