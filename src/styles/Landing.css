@@ -5,7 +5,7 @@
   -webkit-background-size: cover;
 
   /* Here's the same styles we applied to our content-div earlier */
-  color: white;
+  color: greenyellow;
   height: 100vh;
   max-height: 90%;
   min-height: 50vh;
@@ -13,14 +13,17 @@
   align-items: center;
   justify-content: center;
 }
+.greeting {
+  font-size: 100px;
+  font-family: Caladea;
+}
+.buttons {
+  text-align: center;
+}
 
-/* html,
+html,
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-} */
-h1 {
-  font-size: 100px;
-  font-family: Georgia, serif;
 }

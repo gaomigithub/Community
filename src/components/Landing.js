@@ -1,8 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Card, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../styles/Landing.css";
 import BgImg from "../img/bg_1.jpg";
 
@@ -19,8 +18,15 @@ export default function Landing() {
 
   return (
     <div className="image-box" style={sectionStyle}>
-      <h1>Welcome to Community</h1>
-      <div></div>
+      <div className="greeting">
+        Welcome to Community
+        <div className="buttons">
+          <Button variant="success" size="lg">
+            {" "}
+            Start Your Plan
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
