@@ -6,6 +6,21 @@ class UserInfo extends Component {
     e.preventDefault();
     this.props.nextStep();
   };
+
+  createUser = () => {
+    const currentUser = this.state.currentUser;
+    const user = {
+      input: {
+        id: currentUser.attributes.sub,
+        userName: this.props.username,
+        firstName: this.props.firstName,
+        lastName: this.props.lastName,
+        userEmail: this.props.userEmail
+      }
+    };
+    this.addUser(user);
+  };
+
   render() {
     const {
       handleChange,

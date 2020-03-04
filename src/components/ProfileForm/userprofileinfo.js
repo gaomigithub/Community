@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Form, Formgroup, Label, Input, Button } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
-import { createUser } from "../../graphql/mutations"
-import { getUser } from "../../graphql/queries"
+import { createUser } from "../../graphql/mutations";
+import { getUser } from "../../graphql/queries";
 
 class Userprofileinfo extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Userprofileinfo extends Component {
 
   state = {
     currentUser: ""
-  }
+  };
 
   back = e => {
     e.preventDefault();
@@ -21,7 +21,7 @@ class Userprofileinfo extends Component {
 
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser();
-    this.setState({currentUser: user})
+    this.setState({ currentUser: user });
   }
 
   createUser = () => {
@@ -34,21 +34,14 @@ class Userprofileinfo extends Component {
         lastName: this.props.lastName,
         userEmail: this.props.userEmail
       }
-    }
-    this.addUser(user)
-    this.getUser(currentUser.attributes.sub)
-  }
+    };
+    this.addUser(user);
+  };
 
   async addUser(userInput) {
     await API.graphql(graphqlOperation(createUser, userInput))
-        .then(data => console.log("Add User Success", data))
-        .catch(err => console.log(err))
-  }
-
-  async getUser(userID) {
-    await API.graphql(graphqlOperation(getUser, {id: userID}))
-        .then(data => console.log("Get User Success", data))
-        .catch(err => console.log(err))
+      .then(data => console.log("Add User Success", data))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -70,9 +63,11 @@ class Userprofileinfo extends Component {
         </div>
         <div>
           <Button variant="success" onClick={this.back}>
-            Back
+            Edit
           </Button>
-          <Button variant="success" onClick={this.createUser}>Submit </Button>
+          <Button variant="success" onClick={this.createUser} herf="/profile">
+            Submit{" "}
+          </Button>
         </div>
       </div>
     );
