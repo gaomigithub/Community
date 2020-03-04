@@ -54,7 +54,11 @@ class ImageUpload extends React.Component {
             <Card.Body>
               <form onSubmit={e => this._handleSubmit(e)}>
                 <input type="file" onChange={e => this._handleImageChange(e)} />
-                <Button type="submit" onClick={e => this._handleSubmit(e)}>
+                <Button
+                  variant="success"
+                  type="submit"
+                  onClick={e => this._handleSubmit(e)}
+                >
                   Upload Image
                 </Button>
               </form>

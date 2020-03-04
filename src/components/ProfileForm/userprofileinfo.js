@@ -10,7 +10,7 @@ class Userprofileinfo extends Component {
   render() {
     const { username, firstName, lastName, userEmail } = this.props;
     return (
-      <>
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h2>My Profile</h2>
         UserName: <b>{username}</b>
         <br />
@@ -22,17 +22,10 @@ class Userprofileinfo extends Component {
         <br />
         <div className="form-group-question">
           <label htmlFor="exampleFormControlSelect1">Do you have a dog? </label>
-          <select
-            defaultValue="Default"
-            className=""
-            id="exampleFormControlSelect1"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
+          {/* something */}
           <button>Submit</button>
         </div>
-      </>
+      </div>
     );
   }
 }
