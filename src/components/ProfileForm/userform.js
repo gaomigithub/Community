@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import UserInfo from "./userinfo.js";
 import Userprofileinfo from "./userprofileinfo.js";
+import { Auth } from "aws-amplify";
 
 class UserForm extends Component {
+
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser();
+    this.setState({userEmail: user.attributes.email})
+    this.setState({username: user.username})
+    console.log("UserForm current User", this.state.currentUser)
+  }
+
   state = {
     step: 1,
     username: "",
     firstName: "",
     lastName: "",
-    userEmail: ""
+    userEmail: "",
   };
 
   nextStep = () => {
@@ -29,7 +38,7 @@ class UserForm extends Component {
     this.setState({ [input]: e.target.value });
   };
   showStep = () => {
-    const { step, username, firstName, lastName, userEmail } = this.state;
+    const { step, username, firstName, lastName, userEmail} = this.state;
     if (step === 1)
       return (
         <UserInfo
@@ -52,6 +61,7 @@ class UserForm extends Component {
         />
       );
   };
+
 
   render() {
     const { step } = this.state;

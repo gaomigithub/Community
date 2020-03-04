@@ -1,78 +1,89 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTask = /* GraphQL */ `
-  mutation CreateTask(
-    $input: CreateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    createTask(input: $input, condition: $condition) {
+export const createUser = /* GraphQL */ `
+  mutation CreateUser($input: userInput!) {
+    createUser(input: $input) {
       id
-      title
-      description
-      status
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      dog {
+        items {
+          id
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
     }
   }
 `;
-export const updateTask = /* GraphQL */ `
-  mutation UpdateTask(
-    $input: UpdateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    updateTask(input: $input, condition: $condition) {
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser($input: userInput!) {
+    updateUser(input: $input) {
       id
-      title
-      description
-      status
+      firstName
+      lastName
+      userName
+      userEmail
+      userPhone
+      dog {
+        items {
+          id
+          firstName
+          lastName
+          breed
+          dob
+          sex
+          bio
+          picture
+        }
+        nextToken
+      }
     }
   }
 `;
-export const deleteTask = /* GraphQL */ `
-  mutation DeleteTask(
-    $input: DeleteTaskInput!
-    $condition: ModelTaskConditionInput
+export const createRecreation = /* GraphQL */ `
+  mutation CreateRecreation(
+    $input: CreateRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    deleteTask(input: $input, condition: $condition) {
-      id
-      title
-      description
-      status
+    createRecreation(input: $input, condition: $condition) {
+      type
+      availableTimeSlot
+      reservedTimeSlot
     }
   }
 `;
-export const createPrivateNote = /* GraphQL */ `
-  mutation CreatePrivateNote(
-    $input: CreatePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
+export const updateRecreation = /* GraphQL */ `
+  mutation UpdateRecreation(
+    $input: UpdateRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    createPrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      owner
+    updateRecreation(input: $input, condition: $condition) {
+      type
+      availableTimeSlot
+      reservedTimeSlot
     }
   }
 `;
-export const updatePrivateNote = /* GraphQL */ `
-  mutation UpdatePrivateNote(
-    $input: UpdatePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
+export const deleteRecreation = /* GraphQL */ `
+  mutation DeleteRecreation(
+    $input: DeleteRecreationInput!
+    $condition: ModelRecreationConditionInput
   ) {
-    updatePrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      owner
-    }
-  }
-`;
-export const deletePrivateNote = /* GraphQL */ `
-  mutation DeletePrivateNote(
-    $input: DeletePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
-  ) {
-    deletePrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      owner
+    deleteRecreation(input: $input, condition: $condition) {
+      type
+      availableTimeSlot
+      reservedTimeSlot
     }
   }
 `;

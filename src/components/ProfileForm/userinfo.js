@@ -22,7 +22,7 @@ class UserInfo extends Component {
             <Form.Control
               type="email"
               name="userEmail"
-              placeholder="Your Email"
+              placeholder={userEmail}
               value={userEmail}
               onChange={handleChange("userEmail")}
             />
