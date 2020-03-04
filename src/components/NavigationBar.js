@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { SignOut } from "aws-amplify-react";
 import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
@@ -11,14 +11,25 @@ function checkUser() {
     .catch(err => console.log(err));
 }
 
-function signOut() {
-  Auth.signOut()
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
+// function signOut() {
+//   Auth.signOut()
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+// }
 
 export default function NavigationBar() {
   let location = useLocation();
+  let history = useHistory();
+  function signOut() {
+    history.push("/AppWithAuth");
+    Auth.signOut()
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
+  // const clickhandler = () => {
+  //   history.push("/AppWithAuth");
+  // };
 
   // in useEffect, we create the listener
   useEffect(() => {
