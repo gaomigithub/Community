@@ -48,6 +48,7 @@ class UserForm extends Component {
           firstName={firstName}
           lastName={lastName}
           userEmail={userEmail}
+          prevStep={this.prevStep}
         />
       );
   };
