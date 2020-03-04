@@ -54,12 +54,7 @@ class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    return (
-      <>
-        <h2>User Profile</h2>
-        {this.showStep()}
-      </>
-    );
+    return <>{this.showStep()}</>;
   }
 }
 

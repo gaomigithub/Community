@@ -3,9 +3,10 @@ body {
   padding: 0;
   font-family: Montserrat;
   color: #222;
-  background: #229954;
+  background: white;
+  /* background: #229954;
   background: -webkit-linear-gradient(to top, #f4d03f, #229954);
-  background: linear-gradient(to top, #f4d03f, #229954);
+  background: linear-gradient(to top, #f4d03f, #229954); */
 }
 
 body * {

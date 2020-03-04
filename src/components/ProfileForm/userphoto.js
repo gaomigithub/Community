@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { Button, Card } from "react-bootstrap";
 
 class ImageUpload extends React.Component {
   constructor(props) {
@@ -35,28 +36,31 @@ class ImageUpload extends React.Component {
     if (imagePreviewUrl) {
       $imagePreview = <img src={imagePreviewUrl} />;
     } else {
-      $imagePreview = (
-        <div className="previewText">Please select an Image for Preview</div>
-      );
+      $imagePreview = <div>Please select an Image for Preview</div>;
     }
 
     return (
-      <div className="previewComponent">
-        <form onSubmit={e => this._handleSubmit(e)}>
-          <input
-            className="fileInput"
-            type="file"
-            onChange={e => this._handleImageChange(e)}
-          />
-          <button
-            className="submitButton"
-            type="submit"
-            onClick={e => this._handleSubmit(e)}
-          >
-            Upload Image
-          </button>
-        </form>
-        <div className="imgPreview">{$imagePreview}</div>
+      <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {$imagePreview}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Card style={{ width: "30rem" }}>
+            <Card.Img variant="top"></Card.Img>
+            <Card.Body>
+              <Card.Title>Your Photo</Card.Title>
+              <Card.Text>Take a quick review after uploading.</Card.Text>
+            </Card.Body>
+            <Card.Body>
+              <form onSubmit={e => this._handleSubmit(e)}>
+                <input type="file" onChange={e => this._handleImageChange(e)} />
+                <Button type="submit" onClick={e => this._handleSubmit(e)}>
+                  Upload Image
+                </Button>
+              </form>
+            </Card.Body>
+          </Card>
+        </div>
       </div>
     );
   }
