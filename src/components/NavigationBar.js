@@ -35,7 +35,7 @@ export default function NavigationBar() {
   }, []);
 
   return (
-    <Navbar bg="light" expand="lg" fixed="top">
+    <Navbar bg="light" expand="lg" fixed="">
       <Navbar.Brand href="/">Community</Navbar.Brand>
       <Nav>
         <Nav.Item>

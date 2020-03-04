@@ -35,7 +35,22 @@ export default function App() {
           <AppWithAuthenticator />
         </Route>
       </Switch>
-      <Footer />
+      <Footer>
+        <ul>
+          <li>
+            <a href="/"> &copy; Community</a>
+          </li>
+          <li>
+            <a href="/">Terms of Use</a>
+          </li>
+          <li>
+            <a href="/">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/">Contact Us</a>
+          </li>
+        </ul>
+      </Footer>
     </div>
   );
 }
