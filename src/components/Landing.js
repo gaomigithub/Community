@@ -23,7 +23,7 @@ export default function Landing() {
         <div className="buttons">
           <Button variant="success" size="lg" onClick={clickhandler}>
             {" "}
-            Start Your Plan
+            Sign Up
           </Button>
         </div>
       </div>
