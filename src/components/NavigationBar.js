@@ -16,10 +16,10 @@ import { connect } from "react-redux";
 function NavigationBar() {
   let location = useLocation();
   let history = useHistory();
-  // function signIn() {
-  //   history.push("/AppWithAuth");
-  // }
-  function signOut() {
+  function userSignIn() {
+    history.push("/AppWithAuth");
+  }
+  function userSignOut() {
     history.push("/AppWithAuth");
     Auth.signOut()
       .then(data => console.log(data))
@@ -37,9 +37,15 @@ function NavigationBar() {
   // in useEffect, we create the listener
   useEffect(() => {
     // attempt to fetch the info of the user that was already logged in
-    loadUser();
+
     Hub.listen("auth", data => {
-      const { payload } = data;
+      Auth.currentAuthenticatedUser()
+      .then(user => {
+        console.log("current user ", user);
+        signIn(user.attributes.sub)
+    })
+      .catch(err => console.log(err));
+      
       console.log("A new auth event has happened: ", data);      
       var signout = document.getElementById("state_signout");
       var signin = document.getElementById("state_signin");
@@ -116,7 +122,7 @@ function NavigationBar() {
       <Navbar.Collapse className="justify-content-end">
         {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
         <div id="state_signin">
-          <Button variant="success" onClick={signIn} className="ml-2">
+          <Button variant="success" onClick={userSignIn} className="ml-2">
             Sign In
           </Button>
         </div>
@@ -125,7 +131,7 @@ function NavigationBar() {
           // default hide SigOut
           style={{ display: "block" }}
         >
-          <Button variant="success" onClick={signOut} className="ml-2">
+          <Button variant="success" onClick={userSignOut} className="ml-2">
             Sign Out
           </Button>
         </div>
