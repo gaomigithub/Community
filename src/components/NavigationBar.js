@@ -23,41 +23,56 @@ export default function NavigationBar() {
       .then(data => console.log(data))
       .catch(err => console.log(err));
   }
+  const [user, setUser] = React.useState(null);
+
+  function loadUser() {
+    Auth.currentAuthenticatedUser()
+      .then(user => setUser(user))
+      .catch(() => setUser(null));
+  }
 
   // in useEffect, we create the listener
   useEffect(() => {
+    // attempt to fetch the info of the user that was already logged in
+    loadUser();
+    Auth.currentAuthenticatedUser()
+      .then(user => setUser(user))
+      .catch(() => setUser(null));
     Hub.listen("auth", data => {
       const { payload } = data;
       console.log("A new auth event has happened: ", data);
       var signout = document.getElementById("state_signout");
       var signin = document.getElementById("state_signin");
-      // switch (payload.event) {
-      //   case "signIn":
-      //     signout.style.display = "block";
-      //     signin.style.display = "none";
-      //     break;
-      //   case "signOut":
-      //     signin.style.display = "block";
-      //     break;
-      //   case "signIn_failure":
-      //     signin.style.display = "block";
-      //     break;
-      //   default: {
-      //     signin.style.display = "block";
-      //     signout.style.display = "none";
-      //   }
+      switch (payload.event) {
+        case "signIn":
+          signout.style.display = "block";
+          signin.style.display = "none";
+          break;
+        case "signUp":
+          break;
+        case "signOut":
+          signin.style.display = "block";
+          signout.style.display = "none";
+          break;
+        case "signIn_failure":
+          signin.style.display = "block";
+          signout.style.display = "none";
+          break;
+        default:
+          signin.style.display = "block";
+          signout.style.display = "none";
+          break;
+      }
+      // if (payload.event === "signIn") {
+      //   console.log("a user has signed in!");
+      //   signout.style.display = "block";
+      //   signin.style.display = "none";
       // }
-
-      if (payload.event === "signIn") {
-        console.log("a user has signed in!");
-        signout.style.display = "block";
-        signin.style.display = "none";
-      }
-      if (payload.event === "signOut") {
-        console.log("a user has signed out!");
-        signin.style.display = "block";
-        signout.style.display = "none";
-      }
+      // if (payload.event === "signOut") {
+      //   console.log("a user has signed out!");
+      //   signin.style.display = "block";
+      //   signout.style.display = "none";
+      // }
     });
   }, []);
 
@@ -113,7 +128,11 @@ export default function NavigationBar() {
             Sign In
           </Button>
         </div>
-        <div id="state_signout" style={{ display: "none" }}>
+        <div
+          id="state_signout"
+          // default hide SigOut
+          style={{ display: "none" }}
+        >
           <Button variant="success" onClick={signOut} className="ml-2">
             Sign Out
           </Button>
