@@ -5,11 +5,11 @@ import { SignOut } from "aws-amplify-react";
 import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
 
-function checkUser() {
-  Auth.currentAuthenticatedUser()
-    .then(user => console.log({ user }))
-    .catch(err => console.log(err));
-}
+// function checkUser() {
+//   Auth.currentAuthenticatedUser()
+//     .then(user => console.log({ user }))
+//     .catch(err => console.log(err));
+// }
 
 // function signOut() {
 //   Auth.signOut()
@@ -95,9 +95,9 @@ export default function NavigationBar() {
           <Button variant="success" onClick={signOut} className="ml-2">
             Sign Out
           </Button>
-          <Button variant="success" onClick={checkUser} className="ml-2">
+          {/* <Button variant="success" onClick={checkUser} className="ml-2">
             Check User
-          </Button>
+          </Button> */}
         </Nav.Item>
       </Nav>
     </Navbar>
