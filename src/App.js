@@ -26,7 +26,7 @@ export default function App() {
         </Route>
         {/* Planned to be changed to user profile in this component */}
         <Route path="/profile">
-          <MainProfile />
+          <AppWithAuthenticator />
         </Route>
         <Route path="/AppWithAuth">
           <AppWithAuthenticator />
