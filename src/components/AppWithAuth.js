@@ -9,7 +9,7 @@ import { Auth } from "aws-amplify";
 //   return <Authenticator></Authenticator>;
 // }
 
-class AppID extends AuthPiece {
+class AppContent extends AuthPiece {
   constructor(props) {
     super(props);
     this._validAuthStates = ["signedIn"];
@@ -17,7 +17,7 @@ class AppID extends AuthPiece {
 
   showComponent(theme) {
     return (
-      <div className="App">
+      <div>
         <ImageUpload />
         <UserForm />
       </div>
@@ -29,7 +29,7 @@ class AppWithAuthenticator extends React.Component {
   render() {
     return (
       <Authenticator>
-        <AppID />
+        <AppContent />
       </Authenticator>
     );
   }
