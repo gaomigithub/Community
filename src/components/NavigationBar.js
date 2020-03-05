@@ -31,10 +31,6 @@ export default function NavigationBar() {
       .then(user => setUser(user))
       .catch(() => setUser(null));
   }
-  // async function userState() {
-  //   const user = await Auth.currentAuthenticatedUser();
-  //   this.setState({ authState: user.attributes.data });
-  // }
 
   // in useEffect, we create the listener
   useEffect(() => {
