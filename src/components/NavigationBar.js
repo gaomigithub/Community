@@ -98,6 +98,7 @@ export default function NavigationBar() {
             Login
           </Nav.Link>
         </Nav.Item> */}
+        {/* <div id="state_signout" style={{ display: "none" }}> */}
         <Nav.Item>
           <Nav.Link
             componentClass={Link}
@@ -108,6 +109,7 @@ export default function NavigationBar() {
             Profile
           </Nav.Link>
         </Nav.Item>
+        {/* </div> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">
         {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
