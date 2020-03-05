@@ -11,9 +11,9 @@ export default function MainProfile() {
           <h1 class="display-4">User Profile</h1>
           <p class="lead">Quickly customize your detail information here.</p>
         </div>
-        <div class="container">
+        {/* <div class="container">
           <ImageUpload />
-        </div>
+        </div> */}
         <div class="container">
           <UserForm />
         </div>

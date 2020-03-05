@@ -56,6 +56,16 @@ class UserForm extends Component {
   };
   showStep = () => {
     const { step, username, firstName, lastName, userEmail } = this.state;
+    if (step === 1)
+      return (
+        <Userprofileinfo
+          username={username}
+          firstName={firstName}
+          lastName={lastName}
+          userEmail={userEmail}
+          prevStep={this.prevStep}
+        />
+      );
     if (step === 2)
       return (
         <UserInfo
@@ -65,16 +75,6 @@ class UserForm extends Component {
           firstName={firstName}
           lastName={lastName}
           userEmail={userEmail}
-        />
-      );
-    if (step === 1)
-      return (
-        <Userprofileinfo
-          username={username}
-          firstName={firstName}
-          lastName={lastName}
-          userEmail={userEmail}
-          prevStep={this.prevStep}
         />
       );
   };

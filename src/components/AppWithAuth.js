@@ -1,6 +1,6 @@
 import React from "react";
 import { Authenticator, AuthPiece } from "aws-amplify-react";
-import TestApp from "./testcase";
+import MainProfile from "./profile";
 import UserForm from "./ProfileForm/userform";
 import ImageUpload from "./ProfileForm/userphoto";
 import { Auth } from "aws-amplify";
@@ -18,8 +18,7 @@ class AppContent extends AuthPiece {
   showComponent(theme) {
     return (
       <div>
-        <ImageUpload />
-        <UserForm />
+        <MainProfile />
       </div>
     );
   }

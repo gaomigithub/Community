@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
+import ImageUpload from "./userphoto";
 
 class UserInfo extends Component {
   continue = e => {
@@ -31,6 +32,9 @@ class UserInfo extends Component {
     } = this.props;
     return (
       <div>
+        <div class="container">
+          <ImageUpload />
+        </div>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

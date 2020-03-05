@@ -3,6 +3,7 @@ import Amplify from "aws-amplify";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./components/Landing";
 import AppWithAuthenticator from "./components/AppWithAuth";
+import ResultReport from "./components/ProfileForm/resultReport";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
@@ -30,6 +31,9 @@ export default function App() {
         </Route>
         <Route path="/AppWithAuth">
           <AppWithAuthenticator />
+        </Route>
+        <Route path="/result-report">
+          <ResultReport />
         </Route>
         <Route path="/login">
           <AppWithAuthenticator />

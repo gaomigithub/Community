@@ -7,7 +7,7 @@ export default function About() {
   let history = useHistory();
 
   const signUpClickhandler = () => {
-    history.push("/signup");
+    history.push("/login");
   };
 
   return (
@@ -48,7 +48,7 @@ export default function About() {
           </div>
         </div>
 
-        <h2 className="subtitle">Let us make your visit more meaningful!</h2>
+        {/* <h2 className="subtitle">Let us make your visit more meaningful!</h2>
         <div className="floats-container trigger">
           <img src="./assets/time.png" />
           <p>Reserve on time</p>
@@ -62,7 +62,7 @@ export default function About() {
         <div className="floats-container">
           <img src="./assets/events.png" />
           <p>Enjoy events hosted by community businesses.</p>
-        </div>
+        </div> */}
 
         <div>
           <p className="title-last">

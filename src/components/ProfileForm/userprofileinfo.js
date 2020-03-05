@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser } from "../../graphql/mutations";
@@ -15,7 +15,10 @@ class Userprofileinfo extends Component {
   state = {
     currentUser: ""
   };
-
+  continue = e => {
+    e.preventDefault();
+    this.props.nextStep();
+  };
   back = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -27,7 +30,7 @@ class Userprofileinfo extends Component {
   }
 
   createUser = () => {
-    this.props.history.push("../profile");
+    this.props.history.push("./result-report");
     const currentUser = this.state.currentUser;
     const user = {
       input: {
@@ -62,18 +65,29 @@ class Userprofileinfo extends Component {
         <br />
         {/* Own dogs: <b></b>
         <br /> */}
-        <div class="row mx-md-1">
-          <div class="col px-md-auto">
-            <Button variant="success" onClick={this.back}>
-              Edit
-            </Button>
-          </div>
-          <div class="col px-md-auto">
-            <Button variant="success" onClick={this.createUser}>
-              Submit{" "}
-            </Button>
-          </div>
-        </div>
+        <Row>
+          <Col></Col>
+          <Col>
+            <div class="row mx-md-3 " style={{ margin: "50px" }}>
+              <div class="col px-md-auto">
+                <Button size="lg" variant="success" onClick={this.back} block>
+                  Edit
+                </Button>
+              </div>
+              <div class="col px-md-auto">
+                <Button
+                  size="lg"
+                  variant="success"
+                  onClick={this.createUser}
+                  block
+                >
+                  Submit
+                </Button>
+              </div>
+            </div>
+          </Col>
+          <Col></Col>
+        </Row>
       </div>
     );
   }
