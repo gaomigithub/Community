@@ -83,44 +83,6 @@ class UserInfo extends Component {
             <Form.Check type="checkbox" label="Do you have the dog?" />
           </Form.Group>
         </Form>
-        {/* <div className="userInfoContent">
-          <label>
-            <input
-              type="text"
-              name="username"
-              placeholder="User Name"
-              value={username}
-              onChange={handleChange("username")}
-            />
-          </label>
-          <label>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="first Name"
-              value={firstName}
-              onChange={handleChange("firstName")}
-            ></input>
-          </label>
-          <label>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={handleChange("lastName")}
-            ></input>
-          </label>
-          <label>
-            <input
-              type="email"
-              name="userEmail"
-              placeholder="Your Email"
-              value={userEmail}
-              onChange={handleChange("userEmail")}
-            ></input>
-          </label>
-        </div> */}
         <Button variant="success" className="Next" onClick={this.continue}>
           Next
         </Button>

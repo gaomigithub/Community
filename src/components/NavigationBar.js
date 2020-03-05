@@ -46,7 +46,7 @@ export default function NavigationBar() {
   }, []);
 
   return (
-    <Navbar bg="light" expand="lg" fixed="">
+    <Navbar bg="light" expand="lg" fixed="top">
       <Navbar.Brand href="/">Community</Navbar.Brand>
       <Nav>
         <Nav.Item>
@@ -89,17 +89,17 @@ export default function NavigationBar() {
             Profile
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
-          <Navbar.Text>Greetings</Navbar.Text>
-          <Button variant="success" onClick={signOut} className="ml-2">
-            Sign Out
-          </Button>
-          {/* <Button variant="success" onClick={checkUser} className="ml-2">
+      </Nav>
+      <Navbar.Collapse className="justify-content-end">
+        {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
+        <Navbar.Text>Greetings</Navbar.Text>
+        <Button variant="success" onClick={signOut} className="ml-2">
+          Sign Out
+        </Button>
+        {/* <Button variant="success" onClick={checkUser} className="ml-2">
             Check User
           </Button> */}
-        </Nav.Item>
-      </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 }

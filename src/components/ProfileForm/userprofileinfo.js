@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Form, Formgroup, Label, Input, Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser } from "../../graphql/mutations";
@@ -8,6 +9,7 @@ import { getUser } from "../../graphql/queries";
 class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
+    this.createUser = this.createUser.bind(this);
   }
 
   state = {
@@ -25,6 +27,7 @@ class Userprofileinfo extends Component {
   }
 
   createUser = () => {
+    this.props.history.push("../profile");
     const currentUser = this.state.currentUser;
     const user = {
       input: {
@@ -57,24 +60,28 @@ class Userprofileinfo extends Component {
         <br />
         Email: <b>{userEmail}</b>
         <br />
-        <div className="form-group-question">
-          <label htmlFor="exampleFormControlSelect1">Do you have a dog? </label>
+        <div>
+          <label>Do you have a dog? </label>
           {/* something */}
         </div>
-        <div>
-          <Button variant="success" onClick={this.back}>
-            Edit
-          </Button>
-          <Button variant="success" onClick={this.createUser} herf="/profile">
-            Submit{" "}
-          </Button>
+        <div class="row mx-md-1">
+          <div class="col px-md-auto">
+            <Button variant="success" onClick={this.back}>
+              Edit
+            </Button>
+          </div>
+          <div class="col px-md-auto">
+            <Button variant="success" onClick={this.createUser}>
+              Submit{" "}
+            </Button>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Userprofileinfo;
+export default withRouter(Userprofileinfo);
 
 // function Userprofile() {
 //   const back = event => {
