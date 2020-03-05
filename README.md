@@ -47,9 +47,8 @@ Community is a social networking service. “Community” is mainly used for res
 3. Install `yarn` globally
     * `npm install -g yarn`
 4. Clone the project
-5. Change directory `cd frontend`
-6. Install the libraries: `yarn`
-7. Start the React app: `yarn start`
+5. Install the libraries: `yarn`
+6. Start the React app: `yarn start`
 
 # How to create a new branch once project is on computer
 1. Go to the root of the project
