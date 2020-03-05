@@ -3,15 +3,15 @@ import { SIGN_IN, SIGN_OUT } from '../actionTypes/authenticationTypes';
 export const signIn = (event) => ({
     type: SIGN_IN,
     payload: {
-        userId: event,
+        user: event,
         signedIn: true
     }
 });
 
-export const signOut = (event) => ({
+export const signOut = () => ({
     type: SIGN_OUT,
     payload: {
-        userId: null,
+        user: null,
         signedIn: false
     }
 });

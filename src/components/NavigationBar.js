@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
-import { signIn } from '../store/actions/authentication'
+// import { signIn, signOut } from '../store/actions/authentication'
 import { connect } from "react-redux";
+import { AuthUserState } from "./AuthUserState"
 
 // Function for check User
 // function checkUser() {
@@ -26,51 +27,63 @@ function NavigationBar() {
       .catch(err => console.log(err));
   }
 
-  const [user, setUser] = useState(null);
-
-  function loadUser() {
-    Auth.currentAuthenticatedUser()
-      .then(user => setUser(user))
-      .catch(() => setUser(null));
-  }
+  // function loadUser() {
+  //   Auth.currentAuthenticatedUser()
+  //     .then(user => setUser(user))
+  //     .catch(() => setUser(null));
+  // }
 
   // in useEffect, we create the listener
-  useEffect(() => {
-    // attempt to fetch the info of the user that was already logged in
-
-    Hub.listen("auth", data => {
-      Auth.currentAuthenticatedUser()
-      .then(user => {
-        console.log("current user ", user);
-        signIn(user.attributes.sub)
-    })
-      .catch(err => console.log(err));
+  // useEffect(() => {
+  //   // attempt to fetch the info of the user that was already logged in
+  //   Auth.currentAuthenticatedUser()
+  //     .then(user => {
+  //       console.log("current user ", user);
+  //       signIn(user.attributes.sub)
+  //   })
+  //     .catch(err => console.log(err));
       
-      console.log("A new auth event has happened: ", data);      
-      var signout = document.getElementById("state_signout");
-      var signin = document.getElementById("state_signin");
-      // switch (payload.event) {
-      //   case "signIn":
-      //     signout.style.display = "block";
-      //     signin.style.display = "none";
-      //     break;
-      //   case "signOut":
-      //     signin.style.display = "block";
-      //     signout.style.display = "none";
-      //     break;
-      //   // case "signUp":
-      //   //   break;
-      //   // case "signIn_failure":
-      //   //   signin.style.display = "block";
-      //   //   signout.style.display = "none";
-      //   //   break;
-      //   default:
-      //     signin.style.display = "block";
-      //     signout.style.display = "none";
-      //     break;
-      // }
-    });
-  }, []);
+  //   Hub.listen("auth", data => {
+  //     console.log("A new auth event has happened: ", data);   
+  //     switch (data.event) {
+  //       case "signIn":
+  //         Auth.currentAuthenticatedUser()
+  //         .then(user => {
+  //           console.log("current user ", user);
+  //           signIn(user.attributes.sub)
+  //       })
+  //         .catch(err => console.log(err));
+  //         break;
+  //       case "signOut":
+  //         signOut();
+  //         break;
+  //       default:
+  //         break;
+  //     }  
+  //     // var signout = document.getElementById("state_signout");
+  //     // var signin = document.getElementById("state_signin");
+  //     // switch (payload.event) {
+  //     //   case "signIn":
+  //     //     signout.style.display = "block";
+  //     //     signin.style.display = "none";
+  //     //     break;
+  //     //   case "signOut":
+  //     //     signin.style.display = "block";
+  //     //     signout.style.display = "none";
+  //     //     break;
+  //     //   // case "signUp":
+  //     //   //   break;
+  //     //   // case "signIn_failure":
+  //     //   //   signin.style.display = "block";
+  //     //   //   signout.style.display = "none";
+  //     //   //   break;
+  //     //   default:
+  //     //     signin.style.display = "block";
+  //     //     signout.style.display = "none";
+  //     //     break;
+  //     // }
+  //   });
+  // }, []);
 
   return (
     <Navbar bg="light" expand="lg" fixed="">
@@ -144,5 +157,5 @@ function NavigationBar() {
 }
 export default connect(
   null,
-  { signIn }
+  {}
 )(NavigationBar);
