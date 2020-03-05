@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
+import { signIn } from '../store/actions/authentication'
+import { connect } from "react-redux";
 
 // Function for check User
 // function checkUser() {
@@ -11,12 +13,12 @@ import { Button } from "react-bootstrap";
 //     .catch(err => console.log(err));
 // }
 
-export default function NavigationBar() {
+function NavigationBar() {
   let location = useLocation();
   let history = useHistory();
-  function signIn() {
-    history.push("/AppWithAuth");
-  }
+  // function signIn() {
+  //   history.push("/AppWithAuth");
+  // }
   function signOut() {
     history.push("/AppWithAuth");
     Auth.signOut()
@@ -24,7 +26,7 @@ export default function NavigationBar() {
       .catch(err => console.log(err));
   }
 
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = useState(null);
 
   function loadUser() {
     Auth.currentAuthenticatedUser()
@@ -38,29 +40,29 @@ export default function NavigationBar() {
     loadUser();
     Hub.listen("auth", data => {
       const { payload } = data;
-      console.log("A new auth event has happened: ", data);
+      console.log("A new auth event has happened: ", data);      
       var signout = document.getElementById("state_signout");
       var signin = document.getElementById("state_signin");
-      switch (payload.event) {
-        case "signIn":
-          signout.style.display = "block";
-          signin.style.display = "none";
-          break;
-        case "signOut":
-          signin.style.display = "block";
-          signout.style.display = "none";
-          break;
-        // case "signUp":
-        //   break;
-        // case "signIn_failure":
-        //   signin.style.display = "block";
-        //   signout.style.display = "none";
-        //   break;
-        default:
-          signin.style.display = "block";
-          signout.style.display = "none";
-          break;
-      }
+      // switch (payload.event) {
+      //   case "signIn":
+      //     signout.style.display = "block";
+      //     signin.style.display = "none";
+      //     break;
+      //   case "signOut":
+      //     signin.style.display = "block";
+      //     signout.style.display = "none";
+      //     break;
+      //   // case "signUp":
+      //   //   break;
+      //   // case "signIn_failure":
+      //   //   signin.style.display = "block";
+      //   //   signout.style.display = "none";
+      //   //   break;
+      //   default:
+      //     signin.style.display = "block";
+      //     signout.style.display = "none";
+      //     break;
+      // }
     });
   }, []);
 
@@ -121,7 +123,7 @@ export default function NavigationBar() {
         <div
           id="state_signout"
           // default hide SigOut
-          style={{ display: "none" }}
+          style={{ display: "block" }}
         >
           <Button variant="success" onClick={signOut} className="ml-2">
             Sign Out
@@ -134,3 +136,7 @@ export default function NavigationBar() {
     </Navbar>
   );
 }
+export default connect(
+  null,
+  { signIn }
+)(NavigationBar);

@@ -12,6 +12,7 @@ import MainProfile from "./components/profile";
 import awsconfig from "./aws-exports";
 import "./styles/App.css";
 
+
 Amplify.configure(awsconfig);
 
 export default function App() {
