@@ -60,10 +60,8 @@ class Userprofileinfo extends Component {
         <br />
         Email: <b>{userEmail}</b>
         <br />
-        <div>
-          <label>Do you have a dog? </label>
-          {/* something */}
-        </div>
+        {/* Own dogs: <b></b>
+        <br /> */}
         <div class="row mx-md-1">
           <div class="col px-md-auto">
             <Button variant="success" onClick={this.back}>

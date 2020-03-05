@@ -80,7 +80,12 @@ class UserInfo extends Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Do you have the dog?" />
+            <Form.Check
+              type="checkbox"
+              label="Do you have the dog?"
+              // value={}
+              // onChange={handleChange()}
+            />
           </Form.Group>
         </Form>
         <Button variant="success" className="Next" onClick={this.continue}>

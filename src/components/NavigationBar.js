@@ -20,6 +20,9 @@ import { Button } from "react-bootstrap";
 export default function NavigationBar() {
   let location = useLocation();
   let history = useHistory();
+  function signIn() {
+    history.push("/AppWithAuth");
+  }
   function signOut() {
     history.push("/AppWithAuth");
     Auth.signOut()
@@ -69,7 +72,7 @@ export default function NavigationBar() {
             About
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             componentClass={Link}
             href="/login"
@@ -78,7 +81,7 @@ export default function NavigationBar() {
           >
             Login
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item>
           <Nav.Link
             componentClass={Link}
@@ -92,7 +95,9 @@ export default function NavigationBar() {
       </Nav>
       <Navbar.Collapse className="justify-content-end">
         {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
-        <Navbar.Text>Greetings</Navbar.Text>
+        <Button variant="success" onClick={signIn} className="ml-2">
+          Sign In
+        </Button>
         <Button variant="success" onClick={signOut} className="ml-2">
           Sign Out
         </Button>
