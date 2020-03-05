@@ -1,13 +1,13 @@
 import React from "react";
-import { Authenticator, AuthPiece } from "aws-amplify-react";
+import {
+  Authenticator,
+  AuthPiece,
+  SignIn,
+  SignUp,
+  ConfirmSignUp,
+  Greetings
+} from "aws-amplify-react";
 import MainProfile from "./profile";
-import UserForm from "./ProfileForm/userform";
-import ImageUpload from "./ProfileForm/userphoto";
-import { Auth } from "aws-amplify";
-
-// export default function AppWithAuthenticator() {
-//   return <Authenticator></Authenticator>;
-// }
 
 class AppContent extends AuthPiece {
   constructor(props) {
@@ -27,7 +27,11 @@ class AppContent extends AuthPiece {
 class AppWithAuthenticator extends React.Component {
   render() {
     return (
-      <Authenticator>
+      <Authenticator hideDefault={true}>
+        <SignIn />
+        <SignUp />
+        <ConfirmSignUp />
+        {/* <Greetings /> */}
         <AppContent />
       </Authenticator>
     );
