@@ -24,10 +24,10 @@ class Userprofileinfo extends Component {
     this.props.prevStep();
   };
 
-  async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser();
-    this.setState({ currentUser: user });
-  }
+  // async componentDidMount() {
+  //   const user = await Auth.currentAuthenticatedUser();
+  //   this.setState({ currentUser: user });
+  // }
 
   createUser = () => {
     this.props.history.push("./result-report");

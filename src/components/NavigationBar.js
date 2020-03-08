@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
-// import { signIn, signOut } from '../store/actions/authentication'
+import { signIn, signOut } from '../store/actions/authentication'
 import { connect } from "react-redux";
-import { AuthUserState } from "./AuthUserState"
-
+// import { AuthUserState } from "./AuthUserState"
+import { getLoggedInState } from '../store/selectors';
+import authenticationReducer from '../store/reducers/authentication';
 // Function for check User
 // function checkUser() {
 //   Auth.currentAuthenticatedUser()
@@ -15,75 +16,68 @@ import { AuthUserState } from "./AuthUserState"
 // }
 
 function NavigationBar() {
+  const [signedIn, setSignedIn ] = useState(false);
+  let button;
+  useEffect(() => {
+    function handleStatusChange() {
+      // button = <Button variant="success" onClick={userSignOut} className="ml-2">Sign Out</Button>;
+      setSignedIn(true);
+    }
+
+    function handleSignInFailed() {
+      // button = <Button variant="success" onClick={userSignIn} className="ml-2">Sign In </Button>;
+      setSignedIn(false);
+    }
+
+    Auth.currentAuthenticatedUser()
+      .then(user => {
+        console.log("current user ", user);
+          handleStatusChange();
+      })
+      .catch((e) => {
+        console.log("error: ", e);
+        handleSignInFailed()
+      })
+      
+      Hub.listen("auth", data => {  
+        console.log("IM CALLED")
+        console.log(data); 
+        switch (data.payload.event) {
+          case "signIn":
+            handleStatusChange()
+            break;
+          case "signOut": 
+            handleSignInFailed()
+            break;
+          default:
+            break;
+        }  
+      });
+  })
+
+
+  console.log('signedIn', signedIn)
   let location = useLocation();
   let history = useHistory();
+
   function userSignIn() {
     history.push("/AppWithAuth");
   }
   function userSignOut() {
-    history.push("/AppWithAuth");
+    history.push("/");
     Auth.signOut()
-      .then(data => console.log(data))
+      .then(data => setSignedIn(false)
+      
+      )
       .catch(err => console.log(err));
   }
 
-  // function loadUser() {
-  //   Auth.currentAuthenticatedUser()
-  //     .then(user => setUser(user))
-  //     .catch(() => setUser(null));
-  // }
-
-  // in useEffect, we create the listener
-  // useEffect(() => {
-  //   // attempt to fetch the info of the user that was already logged in
-  //   Auth.currentAuthenticatedUser()
-  //     .then(user => {
-  //       console.log("current user ", user);
-  //       signIn(user.attributes.sub)
-  //   })
-  //     .catch(err => console.log(err));
-      
-  //   Hub.listen("auth", data => {
-  //     console.log("A new auth event has happened: ", data);   
-  //     switch (data.event) {
-  //       case "signIn":
-  //         Auth.currentAuthenticatedUser()
-  //         .then(user => {
-  //           console.log("current user ", user);
-  //           signIn(user.attributes.sub)
-  //       })
-  //         .catch(err => console.log(err));
-  //         break;
-  //       case "signOut":
-  //         signOut();
-  //         break;
-  //       default:
-  //         break;
-  //     }  
-  //     // var signout = document.getElementById("state_signout");
-  //     // var signin = document.getElementById("state_signin");
-  //     // switch (payload.event) {
-  //     //   case "signIn":
-  //     //     signout.style.display = "block";
-  //     //     signin.style.display = "none";
-  //     //     break;
-  //     //   case "signOut":
-  //     //     signin.style.display = "block";
-  //     //     signout.style.display = "none";
-  //     //     break;
-  //     //   // case "signUp":
-  //     //   //   break;
-  //     //   // case "signIn_failure":
-  //     //   //   signin.style.display = "block";
-  //     //   //   signout.style.display = "none";
-  //     //   //   break;
-  //     //   default:
-  //     //     signin.style.display = "block";
-  //     //     signout.style.display = "none";
-  //     //     break;
-  //     // }
-  //   });
-  // }, []);
+  console.log("I am what status: ",)
+  if (signedIn) {
+    button = <Button variant="success" onClick={userSignOut} className="ml-2">Sign Out</Button>
+  } else {
+    button = <Button variant="success" onClick={userSignIn} className="ml-2">Sign In </Button>
+  }
 
   return (
     <Navbar bg="light" expand="lg" fixed="">
@@ -133,29 +127,19 @@ function NavigationBar() {
         {/* </div> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">
-        {/* <button onClick={() => Auth.federatedSignIn()}>Sign In</button> */}
-        <div id="state_signin">
-          <Button variant="success" onClick={userSignIn} className="ml-2">
-            Sign In
-          </Button>
+        <div className="user auth">
+          {button}
         </div>
-        <div
-          id="state_signout"
-          // default hide SigOut
-          style={{ display: "block" }}
-        >
-          <Button variant="success" onClick={userSignOut} className="ml-2">
-            Sign Out
-          </Button>
-        </div>
-        {/* <Button variant="success" onClick={checkUser} className="ml-2">
-            Check User
-          </Button> */}
+        
+       
       </Navbar.Collapse>
     </Navbar>
   );
 }
-export default connect(
-  null,
-  {}
-)(NavigationBar);
+
+const mapStateToProps = state => {
+  const signedIn =  getLoggedInState(state)
+  return { signedIn };
+}
+
+export default connect(mapStateToProps)(NavigationBar);

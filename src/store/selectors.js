@@ -1,1 +1,1 @@
-export const getUserState = store => store.userState;
+export const getLoggedInState = store => store.signedIn;

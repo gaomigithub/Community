@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Amplify from "aws-amplify";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./components/Landing";
@@ -10,12 +10,16 @@ import NavigationBar from "./components/NavigationBar";
 // import Signup from "./components/signup";
 import MainProfile from "./components/profile";
 import awsconfig from "./aws-exports";
+import { signIn, signOut } from './store/actions/authentication';
 import "./styles/App.css";
+import { Auth, Hub } from "aws-amplify";
 
 
 Amplify.configure(awsconfig);
 
+
 export default function App() {
+
   return (
     <div>
       <NavigationBar />

@@ -7,12 +7,15 @@ import {
   ConfirmSignUp,
   Greetings
 } from "aws-amplify-react";
+import { signIn } from '../store/actions/authentication'
 import MainProfile from "./profile";
 
 class AppContent extends AuthPiece {
   constructor(props) {
     super(props);
     this._validAuthStates = ["signedIn"];
+    // signIn('blah')
+
   }
 
   showComponent(theme) {
@@ -30,7 +33,7 @@ class AppWithAuthenticator extends React.Component {
       <Authenticator hideDefault={true}>
         <SignIn />
         <SignUp />
-        <ConfirmSignUp />
+        <ConfirmSignUp  />
         {/* <Greetings /> */}
         <AppContent />
       </Authenticator>

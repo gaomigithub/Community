@@ -10,12 +10,12 @@ export default function(state = initialState, action) {
         case SIGN_IN:
             return {
                 user: action.payload.user,
-                signedIn: action.payload.signedIn
+                signedIn: true
             }
         case SIGN_OUT:
             return {
-                user: action.payload.user,
-                signedIn: action.payload.signedIn
+                user: null,
+                signedIn: false
             }
         default:
             return state;
