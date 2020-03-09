@@ -16,6 +16,10 @@
                 "community8a435f31": {
                     "hostedUIProviderCreds": "[]"
                 }
+            },
+            "function": {
+                "userfunction": {},
+                "usertable": {}
             }
         }
     }
