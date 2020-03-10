@@ -20,15 +20,12 @@ input userInput {
 
 
 type Mutation {
-  createNewUser(input: userInput!) : User @function(name: "userfunction-${env}")
-  updateCurrentUser(input: userInput!) : User @function(name: "userfunction-${env}")
-  createNewDog(input: dogInput!) : Dog @function(name: "dogfunction-${env}")
-  updateCurrentDog(input: dogInput!) : Dog @function(name: "dogfunction-${env}")
+  createUser(input: userInput!) : User @function(name: "userfunction-${env}")
+  updateUser(input: userInput!) : User @function(name: "userfunction-${env}")
 }
 
 type Query {
-  getCurrentUser(id: ID!): User @function(name: "userfunction-${env}")
-  getCurrentDog(id: ID!): [Dog] @function(name: "dogfunction-${env}")
+  getUser(id: ID!): User @function(name: "userfunction-${env}")
 }
 
 
@@ -73,5 +70,5 @@ type Recreation
 
   enum RecreationType {
     BASKETBALL
-    Tennis
+    TENNIS
   }

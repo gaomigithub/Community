@@ -8,17 +8,12 @@ var storageUsertableArn = process.env.STORAGE_USERTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 var AWS = require('aws-sdk');
-// const uuid = require('uuidv4')
 var region = process.env.REGION
 AWS.config.update({region: region});
-
-// var accessKeyId = process.env.DYNAMODB_ACCESS_KEY_ID;
-// var secretAccessKey = process.env.DYNAMODB_SECRET_ACCESS_KEY;
-
 var documentClient = new AWS.DynamoDB.DocumentClient({region: region});
 var ddb_table_name = process.env.STORAGE_USERTABLE_NAME
 
-function updateCurrentUser(event, callback) { 
+function updateUser(event, callback) { 
 
     const input = event.arguments.input
 
@@ -48,4 +43,4 @@ function updateCurrentUser(event, callback) {
 
 }; 
 
-module.exports = updateCurrentUser
+module.exports = updateUser

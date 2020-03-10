@@ -8,7 +8,6 @@ var storageUsertableArn = process.env.STORAGE_USERTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 var AWS = require('aws-sdk');
-// const uuid = require('uuidv4')
 var region = process.env.REGION
 AWS.config.update({region: region});
 var documentClient = new AWS.DynamoDB.DocumentClient({region: region});
@@ -19,7 +18,7 @@ function write(params, event, callback){
       if (err) {
         callback(err)
       } else {
-        callback(null, event.arguments.input)
+        callback(null, data.Attributes)
       }
     })
   }
@@ -30,7 +29,8 @@ function createUser(event, callback) {
   
     var params = {
         TableName: ddb_table_name,
-        Item: user
+        Item: user,
+        ReturnValues: "ALL_OLD"
     };
     console.log(params);
 

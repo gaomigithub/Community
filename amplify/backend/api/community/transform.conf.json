@@ -46,8 +46,8 @@
         "DogTable": "Dog",
         "DogIAMRole": "Dog",
         "DogDataSource": "Dog",
-        "GetDogResolver": "Dog 2",
-        "ListDogResolver": "Dog 2",
+        "GetDogResolver": "Dog",
+        "ListDogResolver": "Dog",
         "GetAttDogTableStreamArn": "Dog",
         "GetAttDogDataSourceName": "Dog",
         "GetAttDogTableName": "Dog",
@@ -70,6 +70,7 @@
         "GetAttRecreationDataSourceName": "Recreation",
         "GetAttRecreationTableName": "Recreation",
         "MutationupdateCurrentUserResolver": "FunctionDirectiveStack",
-        "QuerygetCurrentUserResolver": "FunctionDirectiveStack"
+        "QuerygetCurrentUserResolver": "FunctionDirectiveStack",
+        "MutationcreateUserResolver": "FunctionDirectiveStack"
     }
 }
