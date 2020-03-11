@@ -21,15 +21,14 @@ function updateDog(event, callback) {
     var params = {
         TableName: ddb_table_name,
         Key: {id: input.id},
-        UpdateExpression: "set firstName = :fn, lastName = :ln, breed = :br, dob = :dob, sex = :sex, bio = :bio, picture = :pic",
+        UpdateExpression: "set firstName = :fn, lastName = :ln, breed = :br, dob = :dob, sex = :sex, bio = :bio",
         ExpressionAttributeValues: {
             ":fn" : input.firstName,
             ":ln" : input.lastName,
             ":br" : input.breed,
             ":dob" : input.dob,
             ":sex" : input.sex,
-            ":bio" : input.bio,
-            ":pic" : input.pic
+            ":bio" : input.bio
         }
     };
     console.log(params);

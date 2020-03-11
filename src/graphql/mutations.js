@@ -51,6 +51,56 @@ export const updateUser = /* GraphQL */ `
     }
   }
 `;
+export const createDog = /* GraphQL */ `
+  mutation CreateDog($input: dogInput!) {
+    createDog(input: $input) {
+      id
+      firstName
+      lastName
+      breed
+      dob
+      sex
+      bio
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
+export const updateDog = /* GraphQL */ `
+  mutation UpdateDog($input: dogInput!) {
+    updateDog(input: $input) {
+      id
+      firstName
+      lastName
+      breed
+      dob
+      sex
+      bio
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
 export const createRecreation = /* GraphQL */ `
   mutation CreateRecreation(
     $input: CreateRecreationInput!

@@ -36,7 +36,7 @@ class UserFunctionTesting extends Component {
             }
         };
     
-        // this.addUser(userInput);  
+        this.addUser(userInput);  
         // this.getUser(id);
         // this.updateUser(updatedUserInput);
         // this.getUser(id);
