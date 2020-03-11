@@ -5,13 +5,13 @@
 		"env": {
 			"Type": "String"
 		},
-		"storageusertableName": {
+		"storagedogtableName": {
 			"Type": "String",
-			"Default": "storageusertableName"
+			"Default": "storagedogtableName"
 		},
-		"storageusertableArn": {
+		"storagedogtableArn": {
 			"Type": "String",
-			"Default": "storageusertableArn"
+			"Default": "storagedogtableArn"
 		}
 	},
 	"Conditions": {
@@ -36,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"userfunction",
+						"dogfunction",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"userfunction",
+									"dogfunction",
 									"-",
 									{
 										"Ref": "env"
@@ -59,11 +59,11 @@
 						"REGION": {
 							"Ref": "AWS::Region"
 						},
-						"STORAGE_USERTABLE_NAME": {
-							"Ref": "storageusertableName"
+						"STORAGE_DOGTABLE_NAME": {
+							"Ref": "storagedogtableName"
 						},
-						"STORAGE_USERTABLE_ARN": {
-							"Ref": "storageusertableArn"
+						"STORAGE_DOGTABLE_ARN": {
+							"Ref": "storagedogtableArn"
 						}
 					}
 				},
@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-community-featuredan-125056-deployment",
-					"S3Key": "amplify-builds/userfunction-4b2f3368426979447a53-build.zip"
+					"S3Key": "amplify-builds/dogfunction-34654f45395268484639-build.zip"
 				}
 			}
 		},
@@ -87,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"communityLambdaRole657310fd",
+						"communityLambdaRolee615948e",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"communityLambdaRole657310fd",
+									"communityLambdaRolee615948e",
 									"-",
 									{
 										"Ref": "env"
@@ -196,14 +196,14 @@
 							],
 							"Resource": [
 								{
-									"Ref": "storageusertableArn"
+									"Ref": "storagedogtableArn"
 								},
 								{
 									"Fn::Join": [
 										"/",
 										[
 											{
-												"Ref": "storageusertableArn"
+												"Ref": "storagedogtableArn"
 											},
 											"index/*"
 										]
