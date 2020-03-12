@@ -16,6 +16,7 @@ input userInput {
     userName: String!
     userEmail: String!
     userPhone: String
+    dog: [dogInput]
 }
 
 
