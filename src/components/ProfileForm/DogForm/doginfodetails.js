@@ -9,7 +9,7 @@ class Doginfodetails extends React.Component {
       dogs[e.target.dataset.id][
         e.target.className
       ] = e.target.value.toUpperCase();
-      this.setState({ dogs }, () => console.log(this.state.cats));
+      this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() });
     }

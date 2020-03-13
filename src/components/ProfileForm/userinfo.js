@@ -29,7 +29,7 @@ class UserInfo extends Component {
       dogs[e.target.dataset.id][
         e.target.className
       ] = e.target.value.toUpperCase();
-      this.setState({ dogs }, () => console.log(this.state.cats));
+      this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() });
     }
@@ -105,7 +105,7 @@ class UserInfo extends Component {
           <Form.Group controlId="formBasicDogForms">
             <Form.Label>
               If you have a pet, please fill out your dogs' profiles
-              <button onClick={this.addCat}>Add a dog</button>
+              <button onClick={this.addDog}>Add a dog</button>
               {dogs.map((val, idx) => {
                 let dogId = `dog-${idx}`,
                   ageId = `age-${idx}`,
