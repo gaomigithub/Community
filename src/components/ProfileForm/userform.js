@@ -79,7 +79,6 @@ class UserForm extends Component {
             lastName={lastName}
             userEmail={userEmail}
             prevStep={this.prevStep}
-            dogs={dogs}
           />
           <Allinfo
             dogName={dogs.dogName}

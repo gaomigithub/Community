@@ -26,12 +26,10 @@ class UserInfo extends Component {
   handleChange = e => {
     if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
       let dogs = [...this.state.dogs];
-      dogs[e.target.dataset.id][
-        e.target.className
-      ] = e.target.value.toUpperCase();
+      dogs[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
-      this.setState({ [e.target.name]: e.target.value.toUpperCase() });
+      this.setState({ [e.target.name]: e.target.value });
     }
   };
   addDog = e => {
@@ -103,7 +101,7 @@ class UserInfo extends Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicDogForms">
-            <Form.Label>
+            <Form.Label onChange={this.handleChange}>
               If you have a pet, please fill out your dogs' profiles
               <button onClick={this.addDog}>Add a dog</button>
               {dogs.map((val, idx) => {
@@ -119,6 +117,7 @@ class UserInfo extends Component {
                       data-id={idx}
                       id={dogId}
                       placeholder="Dog Name"
+                      value={dogs[idx].name}
                       className="dogName"
                     />
 
@@ -129,6 +128,7 @@ class UserInfo extends Component {
                       data-id={idx}
                       id={ageId}
                       placeholder="Dog Age"
+                      value={dogs[idx].name}
                       className="dogAge"
                     />
 
@@ -139,6 +139,7 @@ class UserInfo extends Component {
                       data-id={idx}
                       id={breedId}
                       placeholder="Dog Breed"
+                      value={dogs[idx].name}
                       className="dogBreed"
                     />
                   </div>
