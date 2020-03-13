@@ -1,14 +1,7 @@
 import React, { Component, useState } from "react";
-import { Button, Form, Card, Accordion } from "react-bootstrap";
+import { Button, Form, Card } from "react-bootstrap";
 import ImageUpload from "./userphoto";
 import DogForm from "./DogForm/dogForm";
-
-// function dogform() {
-//   const [hasDog] = useState(false);
-//   if (hasDog) {
-//   } else {
-//   }
-// }
 
 class UserInfo extends Component {
   continue = e => {
@@ -16,18 +9,35 @@ class UserInfo extends Component {
     this.props.nextStep();
   };
 
-  createUser = () => {
-    const currentUser = this.state.currentUser;
-    const user = {
-      input: {
-        id: currentUser.attributes.sub,
-        userName: this.props.username,
-        firstName: this.props.firstName,
-        lastName: this.props.lastName,
-        userEmail: this.props.userEmail
-      }
-    };
-    this.addUser(user);
+  // createUser = () => {
+  //   const currentUser = this.state.currentUser;
+  //   const user = {
+  //     input: {
+  //       id: currentUser.attributes.sub,
+  //       userName: this.props.username,
+  //       firstName: this.props.firstName,
+  //       lastName: this.props.lastName,
+  //       userEmail: this.props.userEmail
+  //     }
+  //   };
+  //   this.addUser(user);
+  // };
+
+  handleChange = e => {
+    if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
+      let dogs = [...this.state.dogs];
+      dogs[e.target.dataset.id][
+        e.target.className
+      ] = e.target.value.toUpperCase();
+      this.setState({ dogs }, () => console.log(this.state.cats));
+    } else {
+      this.setState({ [e.target.name]: e.target.value.toUpperCase() });
+    }
+  };
+  addDog = e => {
+    this.setState(prevState => ({
+      dogs: [...prevState.dogs, { dogName: "", dogAge: "", dogBreed: "" }]
+    }));
   };
 
   render() {
@@ -36,7 +46,8 @@ class UserInfo extends Component {
       username,
       firstName,
       lastName,
-      userEmail
+      userEmail,
+      dogs
     } = this.props;
     return (
       <div>
@@ -91,16 +102,48 @@ class UserInfo extends Component {
             />
           </Form.Group>
 
-          {/* <Form.Group controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label="Do you have the dog?"
-            />
-            
-          </Form.Group> */}
           <Form.Group controlId="formBasicDogForms">
             <Form.Label>
               If you have a pet, please fill out your dogs' profiles
+              <button onClick={this.addCat}>Add a dog</button>
+              {dogs.map((val, idx) => {
+                let dogId = `dog-${idx}`,
+                  ageId = `age-${idx}`,
+                  breedId = `breed-${idx}`;
+                return (
+                  <div key={idx}>
+                    <label htmlFor={dogId}>{`Dog #${idx + 1}`}</label>
+                    <input
+                      type="text"
+                      name={dogId}
+                      data-id={idx}
+                      id={dogId}
+                      placeholder="Dog Name"
+                      className="dogName"
+                    />
+
+                    <label htmlFor={ageId}>Age</label>
+                    <input
+                      type="numeric"
+                      name={ageId}
+                      data-id={idx}
+                      id={ageId}
+                      placeholder="Dog Age"
+                      className="dogAge"
+                    />
+
+                    <label htmlFor={breedId}>Breed</label>
+                    <input
+                      type="text"
+                      name={breedId}
+                      data-id={idx}
+                      id={breedId}
+                      placeholder="Dog Breed"
+                      className="dogBreed"
+                    />
+                  </div>
+                );
+              })}
             </Form.Label>
           </Form.Group>
         </Form>

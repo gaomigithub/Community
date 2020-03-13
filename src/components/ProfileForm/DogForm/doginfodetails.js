@@ -1,176 +1,74 @@
-import React, { Component } from "react";
-class Doginfodetails extends Component {
-  continue = e => {
+import React from "react";
+class Doginfodetails extends React.Component {
+  state = {
+    dogs: [{ dogName: "", dogAge: "", dogBreed: "" }]
+  };
+  handleChange = e => {
+    if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
+      let dogs = [...this.state.dogs];
+      dogs[e.target.dataset.id][
+        e.target.className
+      ] = e.target.value.toUpperCase();
+      this.setState({ dogs }, () => console.log(this.state.cats));
+    } else {
+      this.setState({ [e.target.name]: e.target.value.toUpperCase() });
+    }
+  };
+  addDog = e => {
+    this.setState(prevState => ({
+      dogs: [...prevState.dogs, { dogName: "", dogAge: "", dogBreed: "" }]
+    }));
+  };
+
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.nextStep();
-  };
-  state = { count: [] };
-  addDog = () => {
-    let newCount = this.state.count;
-    console.log(this.state.count);
-    newCount.push(1);
-    this.setState({ count: newCount });
-  };
-
-  dogInputForm = (handleChange, dogName, dogAge, dogBreed, aboutMe) => {
-    return (
-      <div className="dogInfoContent">
-        <label>
-          <input
-            type="text"
-            name="dogName"
-            placeholder="Dog Name"
-            onChange={handleChange("dogName")}
-          />
-        </label>
-        <label>
-          <input
-            type="numeric"
-            name="dogAge"
-            placeholder="Dog Age"
-            value={dogAge}
-            onChange={handleChange("dogAge")}
-          ></input>
-        </label>
-        <label>
-          <input
-            type="text"
-            name="dogBreed"
-            placeholder="Breed"
-            value={dogBreed}
-            onChange={handleChange("dogBreed")}
-          ></input>
-        </label>
-        <label>
-          <textarea
-            type="text"
-            name="aboutMe"
-            placeholder="Tell Us More About Your Pet"
-            value={aboutMe}
-            onChange={handleChange("aboutMe")}
-            rows="3"
-          ></textarea>
-        </label>
-      </div>
-    );
-  };
-
-  _renderdoginputForm = (handleChange, dogName, dogAge, dogBreed, aboutMe) => {
-    return (
-      <div className="dogInfoContent">
-        <label>
-          <input
-            type="text"
-            name="dogName"
-            placeholder="Dog Name"
-            value={dogName}
-            onChange={handleChange("dogName")}
-          />
-        </label>
-        <label>
-          <input
-            type="numeric"
-            name="dogAge"
-            placeholder="Dog Age"
-            value={dogAge}
-            onChange={handleChange("dogAge")}
-          ></input>
-        </label>
-        <label>
-          <input
-            type="text"
-            name="dogBreed"
-            placeholder="Breed"
-            value={dogBreed}
-            onChange={handleChange("dogBreed")}
-          ></input>
-        </label>
-        <label>
-          <textarea
-            type="text"
-            name="aboutMe"
-            placeholder="Tell Us More About Your Pet"
-            value={aboutMe}
-            onChange={handleChange("aboutMe")}
-            rows="3"
-          ></textarea>
-        </label>
-      </div>
-
-      //<this.dogInputForm />
-      //   <div>
-      //     {this.state.count.map(() => {
-      //       return this.dogInputForm();
-      //     })}
-      //   </div>
-    );
   };
 
   render() {
-    const { handleChange, dogName, dogAge, dogBreed, aboutMe } = this.props;
-
+    let { dogs } = this.state;
     return (
-      <>
-        <h2>Puppy's Information:</h2>
-        {this.state.count.map(() => {
-          const length = Math.random();
+      <form>
+        {dogs.map((val, idx) => {
+          let dogId = `dog-${idx}`,
+            ageId = `age-${idx}`,
+            breedId = `breed-${idx}`;
           return (
-            <div className="dogInfoContent">
-              <label>
-                <input
-                  type="text"
-                  name="dogName"
-                  placeholder="Dog Name"
-                  value={dogName}
-                  onChange={handleChange("dogName")}
-                />
-              </label>
-              <label>
-                <input
-                  type="numeric"
-                  name="dogAge"
-                  placeholder="Dog Age"
-                  value={dogAge}
-                  onChange={handleChange("dogAge")}
-                ></input>
-              </label>
-              <label>
-                <input
-                  type="text"
-                  name="dogBreed"
-                  placeholder="Breed"
-                  value={dogBreed}
-                  onChange={handleChange("dogBreed")}
-                ></input>
-              </label>
-              <label>
-                <textarea
-                  type="text"
-                  name="aboutMe"
-                  placeholder="Tell Us More About Your Pet"
-                  value={aboutMe}
-                  onChange={handleChange("aboutMe")}
-                  rows="3"
-                ></textarea>
-              </label>
+            <div key={idx}>
+              <label htmlFor={dogId}>{`Dog #${idx + 1}`}</label>
+              <input
+                type="text"
+                name={dogId}
+                data-id={idx}
+                id={dogId}
+                placeholder="Dog Name"
+                className="dogName"
+              />
+
+              <label htmlFor={ageId}>Age</label>
+              <input
+                type="numeric"
+                name={ageId}
+                data-id={idx}
+                id={ageId}
+                placeholder="Dog Age"
+                className="dogAge"
+              />
+
+              <label htmlFor={breedId}>Breed</label>
+              <input
+                type="text"
+                name={breedId}
+                data-id={idx}
+                id={breedId}
+                placeholder="Dog Breed"
+                className="dogBreed"
+              />
             </div>
           );
         })}
-        {/* {this._renderdogInputForm(
-          handleChange,
-          dogName,
-          dogAge,
-          dogBreed,
-          aboutMe
-        )} */}
-        <button className="Add" onClick={this.addDog.bind(this)}>
-          Add >>
-        </button>
-        <button className="Next" onClick={this.continue}>
-          Next >>
-        </button>
-      </>
+      </form>
     );
   }
 }
+
 export default Doginfodetails;

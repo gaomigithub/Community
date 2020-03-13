@@ -39,10 +39,7 @@ class UserForm extends Component {
     lastName: "",
     userEmail: "",
     // dog
-    dogName: "",
-    dogAge: "",
-    dogBreed: "",
-    aboutMe: ""
+    dogs: [{ dogName: "", dogAge: "", dogBreed: "" }]
   };
 
   nextStep = () => {
@@ -71,10 +68,7 @@ class UserForm extends Component {
       lastName,
       userEmail,
       // dog
-      dogName,
-      dogAge,
-      dogBreed,
-      aboutMe
+      dogs
     } = this.state;
     if (step === 1)
       return (
@@ -85,13 +79,13 @@ class UserForm extends Component {
             lastName={lastName}
             userEmail={userEmail}
             prevStep={this.prevStep}
+            dogs={dogs}
           />
-
           <Allinfo
-            dogName={dogName}
-            dogAge={dogAge}
-            dogBreed={dogBreed}
-            aboutMe={aboutMe}
+            dogName={dogs.dogName}
+            dogAge={dogs.dogAge}
+            dogBreed={dogs.dogBreed}
+            aboutMe={dogs.aboutMe}
           />
         </div>
       );
@@ -105,15 +99,17 @@ class UserForm extends Component {
             firstName={firstName}
             lastName={lastName}
             userEmail={userEmail}
+            dogs={dogs}
           />
-          <Doginfodetails
+
+          {/* <Doginfodetails
             handleChange={this.handleChange}
             nextStep={this.nextStep}
             dogName={dogName}
             dogAge={dogAge}
             dogBreed={dogBreed}
             aboutMe={aboutMe}
-          />
+          /> */}
         </div>
       );
   };
