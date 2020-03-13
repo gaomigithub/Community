@@ -1,6 +1,14 @@
-import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { Component, useState } from "react";
+import { Button, Form, Card, Accordion } from "react-bootstrap";
 import ImageUpload from "./userphoto";
+import DogForm from "./DogForm/dogForm";
+
+// function dogform() {
+//   const [hasDog] = useState(false);
+//   if (hasDog) {
+//   } else {
+//   }
+// }
 
 class UserInfo extends Component {
   continue = e => {
@@ -83,13 +91,17 @@ class UserInfo extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicCheckbox">
+          {/* <Form.Group controlId="formBasicCheckbox">
             <Form.Check
               type="checkbox"
               label="Do you have the dog?"
-              // value={}
-              // onChange={handleChange()}
             />
+            
+          </Form.Group> */}
+          <Form.Group controlId="formBasicDogForms">
+            <Form.Label>
+              If you have a pet, please fill out your dogs' profiles
+            </Form.Label>
           </Form.Group>
         </Form>
         <Button variant="success" className="Next" onClick={this.continue}>

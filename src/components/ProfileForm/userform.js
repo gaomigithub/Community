@@ -4,6 +4,8 @@ import Userprofileinfo from "./userprofileinfo.js";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { getUser } from "../../graphql/queries";
+import Doginfodetails from "./DogForm/doginfodetails";
+import Allinfo from "./DogForm/allinfo";
 
 class UserForm extends Component {
   async componentDidMount() {
@@ -31,10 +33,16 @@ class UserForm extends Component {
 
   state = {
     step: 1,
+    // user
     username: "",
     firstName: "",
     lastName: "",
-    userEmail: ""
+    userEmail: "",
+    // dog
+    dogName: "",
+    dogAge: "",
+    dogBreed: "",
+    aboutMe: ""
   };
 
   nextStep = () => {
@@ -55,27 +63,58 @@ class UserForm extends Component {
     this.setState({ [input]: e.target.value });
   };
   showStep = () => {
-    const { step, username, firstName, lastName, userEmail } = this.state;
+    const {
+      step,
+      // user
+      username,
+      firstName,
+      lastName,
+      userEmail,
+      // dog
+      dogName,
+      dogAge,
+      dogBreed,
+      aboutMe
+    } = this.state;
     if (step === 1)
       return (
-        <Userprofileinfo
-          username={username}
-          firstName={firstName}
-          lastName={lastName}
-          userEmail={userEmail}
-          prevStep={this.prevStep}
-        />
+        <div>
+          <Userprofileinfo
+            username={username}
+            firstName={firstName}
+            lastName={lastName}
+            userEmail={userEmail}
+            prevStep={this.prevStep}
+          />
+
+          <Allinfo
+            dogName={dogName}
+            dogAge={dogAge}
+            dogBreed={dogBreed}
+            aboutMe={aboutMe}
+          />
+        </div>
       );
     if (step === 2)
       return (
-        <UserInfo
-          handleChange={this.handleChange}
-          nextStep={this.nextStep}
-          username={username}
-          firstName={firstName}
-          lastName={lastName}
-          userEmail={userEmail}
-        />
+        <div>
+          <UserInfo
+            handleChange={this.handleChange}
+            nextStep={this.nextStep}
+            username={username}
+            firstName={firstName}
+            lastName={lastName}
+            userEmail={userEmail}
+          />
+          <Doginfodetails
+            handleChange={this.handleChange}
+            nextStep={this.nextStep}
+            dogName={dogName}
+            dogAge={dogAge}
+            dogBreed={dogBreed}
+            aboutMe={aboutMe}
+          />
+        </div>
       );
   };
 
