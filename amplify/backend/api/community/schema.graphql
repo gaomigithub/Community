@@ -5,7 +5,7 @@ type User @model(mutations: null, queries: null) {
     userName: String!
     userEmail: String!
     userPhone: String
-    dog: [Dog!] @connection(name: "userDogs")
+    dog: [Dog!] @connection(keyName: "userDogs", fields: ["id"])
 }
 
 
@@ -16,7 +16,6 @@ input userInput {
     userName: String!
     userEmail: String!
     userPhone: String
-    dog: [dogInput]
 }
 
 
@@ -33,27 +32,29 @@ type Query {
 }
 
 
-type Dog @model(mutations: null, queries: null) {
+type Dog @model(mutations: null, queries: null) 
+@key(name: "userDogs", fields: ["ownerID", "firstName", "lastName", "breed", "dob", "sex", "bio", "picture"]){
     id: ID!
+    ownerID: ID!
     firstName: String!
     lastName: String
     breed: String!
     dob: AWSDate!
     sex: Sex!
     bio: String!
-    owner: User @connection(name: "userDogs")
+    owner: User @connection(fields: ["ownerID"])
     picture: String
 }
 
 input dogInput {
     id: ID!
+    ownerID: ID!
     firstName: String!
     lastName: String
     breed: String!
     dob: AWSDate!
     sex: Sex!
     bio: String!
-    owner: userInput
     picture: String
 }
 

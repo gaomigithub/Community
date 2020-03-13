@@ -13,6 +13,7 @@ export const createUser = /* GraphQL */ `
       dog {
         items {
           id
+          ownerID
           firstName
           lastName
           breed
@@ -38,6 +39,7 @@ export const updateUser = /* GraphQL */ `
       dog {
         items {
           id
+          ownerID
           firstName
           lastName
           breed
@@ -55,6 +57,7 @@ export const createDog = /* GraphQL */ `
   mutation CreateDog($input: dogInput!) {
     createDog(input: $input) {
       id
+      ownerID
       firstName
       lastName
       breed
@@ -80,6 +83,7 @@ export const updateDog = /* GraphQL */ `
   mutation UpdateDog($input: dogInput!) {
     updateDog(input: $input) {
       id
+      ownerID
       firstName
       lastName
       breed

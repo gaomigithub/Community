@@ -13,6 +13,7 @@ export const getUser = /* GraphQL */ `
       dog {
         items {
           id
+          ownerID
           firstName
           lastName
           breed
@@ -30,6 +31,7 @@ export const getDogs = /* GraphQL */ `
   query GetDogs($id: ID!) {
     getDogs(id: $id) {
       id
+      ownerID
       firstName
       lastName
       breed
