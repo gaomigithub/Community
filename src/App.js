@@ -7,19 +7,17 @@ import ResultReport from "./components/ProfileForm/resultReport";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
-// import Signup from "./components/signup";
 import MainProfile from "./components/profile";
 import awsconfig from "./aws-exports";
-import { signIn, signOut } from './store/actions/authentication';
+import { signIn, signOut } from "./store/actions/authentication";
 import "./styles/App.css";
 import { Auth, Hub } from "aws-amplify";
-
+// Test pages only
+import Form from "./components/testpage";
 
 Amplify.configure(awsconfig);
 
-
 export default function App() {
-
   return (
     <div>
       <NavigationBar />
@@ -42,6 +40,10 @@ export default function App() {
         </Route>
         <Route path="/login">
           <AppWithAuthenticator />
+        </Route>
+        {/* Test pages below only */}
+        <Route path="/test">
+          <Form />
         </Route>
       </Switch>
       <Footer>
