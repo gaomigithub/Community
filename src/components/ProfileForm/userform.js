@@ -40,8 +40,9 @@ class UserForm extends Component {
     lastName: "",
     userEmail: "",
     // dog
-    dogs: [{ dogName: "", dogAge: "", dogBreed: "" }]
   };
+
+  
 
   nextStep = () => {
     const { step } = this.state;
@@ -60,7 +61,7 @@ class UserForm extends Component {
   goDogs = () => {
     const { step } = this.state;
     this.setState({
-      step: step + 2
+      step: 3
     });
   };
 
@@ -76,7 +77,6 @@ class UserForm extends Component {
       lastName,
       userEmail,
       // dog
-      dogs
     } = this.state;
     if (step === 1)
       return (
@@ -87,12 +87,14 @@ class UserForm extends Component {
             lastName={lastName}
             userEmail={userEmail}
             prevStep={this.prevStep}
+            goDogs={this.goDogs}
           />
           <Allinfo
-            dogName={dogs.dogName}
-            dogAge={dogs.dogAge}
-            dogBreed={dogs.dogBreed}
-            aboutMe={dogs.aboutMe}
+            dogs={this.props.dogs}
+            // dogName={dogs.dogName}
+            // dogAge={dogs.dogAge}
+            // dogBreed={dogs.dogBreed}
+            // aboutMe={dogs.aboutMe}
           />
         </div>
       );
