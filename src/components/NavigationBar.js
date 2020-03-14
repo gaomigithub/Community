@@ -131,6 +131,16 @@ function NavigationBar() {
             Profile
           </Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            componentClass={Link}
+            href="test"
+            to="/test"
+            active={location.pathname === "/test"}
+          >
+            Test
+          </Nav.Link>
+        </Nav.Item>
         {/* </div> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">
