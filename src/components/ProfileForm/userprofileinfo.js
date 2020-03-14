@@ -23,6 +23,10 @@ class Userprofileinfo extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+  toDogs = e => {
+    e.preventDefault();
+    this.props.goDogs();
+  };
 
   // async componentDidMount() {
   //   const user = await Auth.currentAuthenticatedUser();
@@ -72,6 +76,11 @@ class Userprofileinfo extends Component {
               <div class="col px-md-auto">
                 <Button size="lg" variant="success" onClick={this.back} block>
                   Edit
+                </Button>
+              </div>
+              <div class="col px-md-auto">
+                <Button size="lg" variant="success" onClick={this.toDogs} block>
+                  Edit dogs
                 </Button>
               </div>
               <div class="col px-md-auto">
