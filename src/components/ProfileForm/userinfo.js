@@ -9,23 +9,9 @@ class UserInfo extends Component {
     this.props.nextStep();
   };
 
-  // createUser = () => {
-  //   const currentUser = this.state.currentUser;
-  //   const user = {
-  //     input: {
-  //       id: currentUser.attributes.sub,
-  //       userName: this.props.username,
-  //       firstName: this.props.firstName,
-  //       lastName: this.props.lastName,
-  //       userEmail: this.props.userEmail
-  //     }
-  //   };
-  //   this.addUser(user);
-  // };
-
   handleChange = e => {
     if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
-      let dogs = [...this.state.dogs];
+      let dogs = [...this.props.dogs];
       dogs[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
@@ -33,6 +19,7 @@ class UserInfo extends Component {
     }
   };
   addDog = e => {
+    e.preventDefault(); // the page will jump to the page of step1 after the click if dont have this for some reason; problem mark.
     this.setState(prevState => ({
       dogs: [...prevState.dogs, { dogName: "", dogAge: "", dogBreed: "" }]
     }));
