@@ -6,6 +6,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { getUser } from "../../graphql/queries";
 import Doginfodetails from "./DogForm/doginfodetails";
 import Allinfo from "./DogForm/allinfo";
+import DogForm from "./DogForm/dogForm";
 
 class UserForm extends Component {
   async componentDidMount() {
@@ -56,6 +57,13 @@ class UserForm extends Component {
     });
   };
 
+  goDogs = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step + 2
+    });
+  };
+
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
@@ -98,17 +106,14 @@ class UserForm extends Component {
             firstName={firstName}
             lastName={lastName}
             userEmail={userEmail}
-            dogs={dogs}
+            dogs={this.state.dogs}
           />
-
-          {/* <Doginfodetails
-            handleChange={this.handleChange}
-            nextStep={this.nextStep}
-            dogName={dogName}
-            dogAge={dogAge}
-            dogBreed={dogBreed}
-            aboutMe={aboutMe}
-          /> */}
+        </div>
+      );
+    if (step === 3)
+      return (
+        <div>
+          <DogForm />
         </div>
       );
   };
