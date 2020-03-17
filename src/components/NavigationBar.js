@@ -131,7 +131,7 @@ function NavigationBar() {
             Profile
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             componentClass={Link}
             href="test"
@@ -140,7 +140,7 @@ function NavigationBar() {
           >
             Test
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         {/* </div> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">

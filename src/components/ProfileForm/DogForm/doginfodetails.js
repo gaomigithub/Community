@@ -8,7 +8,9 @@ class Doginfodetails extends React.Component {
   continue = e => {
     e.preventDefault();
     this.props.prevStep();
-    this.props.passDogsToParent(this.state.dogs)
+    // this.props.passDogsToParent(this.state.dogs);
+    console.log("after submit", this.state.dogs);
+    this.props.handleChange(this.state.dogs);
   };
 
   handleChange = e => {
@@ -35,66 +37,65 @@ class Doginfodetails extends React.Component {
 
   render() {
     if (this.props.dogs != null) {
-      this.setState({dogs: this.props.dogs})
-    } 
+      this.setState({ dogs: this.props.dogs });
+    }
     let { dogs } = this.state;
-    console.log("dogs from props " + this.props.dogs)
-    console.log("dogs from dotinfodetails map " + dogs)
+    console.log("dogs from props " + this.props.dogs);
+    console.log("dogs from dotinfodetails map " + dogs);
     return (
       <Form.Group controlId="formBasicDogForms">
-            <Form.Label onChange={this.handleChange}>
-              If you have a pet, please fill out your dogs' profiles
-              <button onClick={this.addDog}>Add a dog</button>
-              {dogs.map((val, idx) => {
-                let dogId = `dog-${idx}`,
-                  ageId = `age-${idx}`,
-                  breedId = `breed-${idx}`;
-                return (
-                  <div key={idx}>
-                    <label htmlFor={dogId}>{`Dog #${idx + 1}`}</label>
-                    <input
-                      type="text"
-                      name={dogId}
-                      data-id={idx}
-                      id={dogId}
-                      placeholder="Dog Name"
-                      value={val.dogName}
-                      className="dogName"
-                    />
+        <Form.Label onChange={this.handleChange}>
+          If you have a pet, please fill out your dogs' profiles
+          <button onClick={this.addDog}>Add a dog</button>
+          {dogs.map((val, idx) => {
+            let dogId = `dog-${idx}`,
+              ageId = `age-${idx}`,
+              breedId = `breed-${idx}`;
+            return (
+              <div key={idx}>
+                <label htmlFor={dogId}>{`Dog #${idx + 1}`}</label>
+                <input
+                  type="text"
+                  name={dogId}
+                  data-id={idx}
+                  id={dogId}
+                  placeholder="Dog Name"
+                  value={val.dogName}
+                  className="dogName"
+                />
 
-                    <label htmlFor={ageId}>Age</label>
-                    <input
-                      type="numeric"
-                      name={ageId}
-                      data-id={idx}
-                      id={ageId}
-                      placeholder="Dog Age"
-                      value={dogs[idx].name}
-                      className="dogAge"
-                    />
+                <label htmlFor={ageId}>Age</label>
+                <input
+                  type="numeric"
+                  name={ageId}
+                  data-id={idx}
+                  id={ageId}
+                  placeholder="Dog Age"
+                  value={dogs[idx].name}
+                  className="dogAge"
+                />
 
-                    <label htmlFor={breedId}>Breed</label>
-                    <input
-                      type="text"
-                      name={breedId}
-                      data-id={idx}
-                      id={breedId}
-                      placeholder="Dog Breed"
-                      value={dogs[idx].name}
-                      className="dogBreed"
-                    />
-                  </div>
-                );
-              })}
-            </Form.Label>
-            <div>
-            <button variant="success" className="Submit" onClick={this.continue}>
-              Submit
-            </button>
-            </div>
-          </Form.Group>
-
-     );
+                <label htmlFor={breedId}>Breed</label>
+                <input
+                  type="text"
+                  name={breedId}
+                  data-id={idx}
+                  id={breedId}
+                  placeholder="Dog Breed"
+                  value={dogs[idx].name}
+                  className="dogBreed"
+                />
+              </div>
+            );
+          })}
+        </Form.Label>
+        <div>
+          <button variant="success" className="Submit" onClick={this.continue}>
+            Submit
+          </button>
+        </div>
+      </Form.Group>
+    );
   }
 }
 
