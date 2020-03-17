@@ -9,7 +9,9 @@ import { getUser } from "../../graphql/queries";
 class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
+    // this.submitChanges = this.submitChanges.bind(this);
     this.createUser = this.createUser.bind(this);
+    // this.createDog = this.createDog.bind(this);
   }
 
   state = {
@@ -28,10 +30,16 @@ class Userprofileinfo extends Component {
     this.props.goDogs();
   };
 
-  // async componentDidMount() {
-  //   const user = await Auth.currentAuthenticatedUser();
-  //   this.setState({ currentUser: user });
-  // }
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser();
+    this.setState({ currentUser: user });
+  }
+
+  // submitChanges () => {
+  //   await this.createUser();
+  //   // this.createDog();
+
+  // };
 
   createUser = () => {
     this.props.history.push("./result-report");
@@ -51,8 +59,17 @@ class Userprofileinfo extends Component {
   async addUser(userInput) {
     await API.graphql(graphqlOperation(createUser, userInput))
       .then(data => console.log("Add User Success", data))
-      .catch(err => console.log(err));
+      .catch(err => console.log("create user error", err));
   }
+
+  // createDog = () => {
+  //   const dog = {
+  //     input: {
+  //       id:,
+  //       ownerID:
+  //     }
+  //   }
+  // };
 
   render() {
     const { username, firstName, lastName, userEmail } = this.props;
