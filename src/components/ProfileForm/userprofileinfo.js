@@ -9,8 +9,8 @@ import { getUser } from "../../graphql/queries";
 class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
-    // this.submitChanges = this.submitChanges.bind(this);
-    this.createUser = this.createUser.bind(this);
+    this.submitChanges = this.submitChanges.bind(this);
+    // this.createUser = this.createUser.bind(this);
     // this.createDog = this.createDog.bind(this);
   }
 
@@ -35,14 +35,13 @@ class Userprofileinfo extends Component {
     this.setState({ currentUser: user });
   }
 
-  // submitChanges () => {
-  //   await this.createUser();
-  //   // this.createDog();
-
-  // };
+  submitChanges = () => {
+    this.createUser();
+    // this.createDog();
+    this.props.history.push("./result-report");
+  };
 
   createUser = () => {
-    this.props.history.push("./result-report");
     const currentUser = this.state.currentUser;
     const user = {
       input: {
@@ -104,7 +103,7 @@ class Userprofileinfo extends Component {
                 <Button
                   size="lg"
                   variant="success"
-                  onClick={this.createUser}
+                  onClick={this.submitChanges}
                   block
                 >
                   Submit
