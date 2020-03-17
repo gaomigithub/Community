@@ -13,28 +13,27 @@ AWS.config.update({ region: region });
 var documentClient = new AWS.DynamoDB.DocumentClient({ region: region });
 var ddb_table_name = process.env.STORAGE_DOGTABLE_NAME
 
-function write(params, event, callback) {
-  documentClient.put(params, function(err, data) {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, event.arguments.input);
-    }
-  });
-}
 
-function createDog(event, callback) {
-  const dog = event.arguments.input;
+function getDogs(event, callback) { 
 
-  var params = {
-    TableName: ddb_table_name,
-    Item: dog,
-  };
-  console.log(params);
+    const dogID = event.arguments
 
-  if (Object.keys(event.arguments).length > 0) {
-    write(params, event, callback);
-  }
-}
+    var params = {
+        TableName: ddb_table_name,
+        Key: dogID
+    };
+    console.log(params);
 
-module.exports = createDog;
+    documentClient.get(params, function(err, data){
+        if (err) console.log(err);
+        else {
+            console.log("Success")
+            console.log(data)
+            callback(err, [data.Item])
+        }
+    });
+
+
+}; 
+
+module.exports = getDogs
