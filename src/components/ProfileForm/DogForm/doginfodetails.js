@@ -91,7 +91,7 @@ class Doginfodetails extends React.Component {
         </Form.Label>
         <div>
           <button variant="success" className="Submit" onClick={this.continue}>
-            Submit
+            Next
           </button>
         </div>
       </Form.Group>

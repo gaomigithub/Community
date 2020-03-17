@@ -57,7 +57,7 @@ class Userprofileinfo extends Component {
   render() {
     const { username, firstName, lastName, userEmail } = this.props;
     return (
-      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <div class="pricing-header px-3 py-3  mx-auto text-center">
         <h2>Your Information</h2>
         UserName: <b>{username}</b>
         <br />

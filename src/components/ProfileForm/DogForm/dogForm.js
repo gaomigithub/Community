@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Doginfodetails from "./doginfodetails";
-import Allinfo from "./allinfo";
 import { Button, Form, Card } from "react-bootstrap";
 import UserForm from "../userform";
 class DogForm extends Component {
@@ -22,7 +21,6 @@ class DogForm extends Component {
   };
 
   handleChange = dog => {
-    // let updatedDogs = this.state.dogs.push(dog);
     this.setState({ dogs: dog });
   };
 
