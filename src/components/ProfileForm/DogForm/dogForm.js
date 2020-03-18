@@ -22,6 +22,7 @@ class DogForm extends Component {
 
   handleChange = dogs => {
     this.setState({ dogs: dogs });
+    this.props.handleDogChange(dogs);
   };
 
   showStep = () => {
@@ -39,8 +40,8 @@ class DogForm extends Component {
 
     if (step === 0)
       return (
-        console.log("updated dogform dogs", this.state.dogs),
-        (<UserForm dogs={dogs} />)
+        // console.log("updated dogform dogs", this.state.dogs)
+        <UserForm dogs={dogs}/>
       );
   };
 

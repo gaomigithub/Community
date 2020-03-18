@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import ImageUpload from "./userphoto";
-import DogForm from "./DogForm/dogForm";
+// import DogForm from "./DogForm/dogForm";
 
 class UserInfo extends Component {
   continue = e => {

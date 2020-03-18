@@ -66,9 +66,10 @@ class Userprofileinfo extends Component {
     const currentDog = this.props.dogs
     console.log("dog in userprofileinfo", currentDog)
     currentDog.map((val, idx) => {
+      console.log("dogs sending to database ",val)
       const dog = {
       input: {
-        id: val.id,
+        id: val.id != null ? val.id : val.dogID,
         ownerID: currentUser.attributes.sub,
         dogName: val.dogName,
         age: val.age,
@@ -88,7 +89,7 @@ class Userprofileinfo extends Component {
 
 
   render() {
-    const { username, firstName, lastName, userEmail, dogs } = this.props;
+    let { username, firstName, lastName, userEmail, dogs } = this.props;
     return (
       <div class="pricing-header px-3 py-3  mx-auto text-center">
         <h2>Your Information</h2>

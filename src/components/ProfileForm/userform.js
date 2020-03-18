@@ -5,8 +5,8 @@ import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { getUser, getDogs} from "../../graphql/queries";
 import Doginfodetails from "./DogForm/doginfodetails";
-import Allinfo from "./DogForm/allinfo";
-import DogForm from "./DogForm/dogForm";
+// import Allinfo from "./DogForm/allinfo";
+// import DogForm from "./DogForm/dogForm";
 
 class UserForm extends Component {
 
@@ -56,19 +56,16 @@ class UserForm extends Component {
           // const updateDogs = data.data.getDogs
           this.setState({
             dogs : data.data.getDogs
-          }, () => console.log("current state dogs " + this.state.dogs))
+          })
         }
-        // console.log(data.data.getDogs))
-      }
-        
-      )
+      })
       .catch(err => console.log(err));
   }
 
   nextStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step - 1
+      step: 1
     });
   };
 
@@ -89,6 +86,12 @@ class UserForm extends Component {
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
+
+  handleDogChange = (dogs) => {
+    this.setState({dogs : dogs})
+    console.log("change userform dogs state ", this.state.dogs)
+  }
+
   showStep = () => {
     const {
       step,
@@ -102,6 +105,7 @@ class UserForm extends Component {
 
     if (step === 1)
       return (
+        console.log("current dogs in userform and sending to userprofileinfo ", dogs),
         <div>
           <Userprofileinfo
             username={username}
@@ -132,8 +136,10 @@ class UserForm extends Component {
     if (step === 3)
       return (
         <div>
-          <DogForm
+          <Doginfodetails
           dogs = {dogs}
+          handleDogChange={this.handleDogChange}
+          nextStep={this.nextStep}
            />
         </div>
       );

@@ -31,10 +31,10 @@ class Doginfodetails extends React.Component {
 
   continue = e => {
     e.preventDefault();
-    this.props.prevStep();
+    this.props.nextStep();
     // this.props.passDogsToParent(this.state.dogs);
     console.log("after submit", this.state.dogs);
-    this.props.handleChange(this.state.dogs);
+    this.props.handleDogChange(this.state.dogs);
   };
 
   handleChange = e => {
