@@ -3,12 +3,29 @@ import UserInfo from "./userinfo.js";
 import Userprofileinfo from "./userprofileinfo.js";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
-import { getUser } from "../../graphql/queries";
+import { getUser, getDogs} from "../../graphql/queries";
 import Doginfodetails from "./DogForm/doginfodetails";
 import Allinfo from "./DogForm/allinfo";
 import DogForm from "./DogForm/dogForm";
 
 class UserForm extends Component {
+
+  // ISSUE:
+  // For the dogs in this state, 
+  // 1. we want to get the dogs from DB when the user login, 
+  // 2. and then when user update the dog info, input should be sending back to here and display
+  // 3. BUT it keeps getting the same data from DB
+
+  state = {
+    step: 1,
+    // user
+    username: "",
+    firstName: "",
+    lastName: "",
+    userEmail: "",
+    dogs: []
+  };
+
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser();
     this.setState({ userEmail: user.attributes.email });
@@ -16,7 +33,7 @@ class UserForm extends Component {
     console.log("UserForm current User", user);
 
     this.getUser(user.attributes.sub);
-    console.log(this.state);
+    this.getDogs(user.attributes.sub);
   }
 
   async getUser(userID) {
@@ -32,15 +49,21 @@ class UserForm extends Component {
       .catch(err => console.log(err));
   }
 
-  state = {
-    step: 1,
-    // user
-    username: "",
-    firstName: "",
-    lastName: "",
-    userEmail: ""
-    // dog
-  };
+  async getDogs(userID) {
+    await API.graphql(graphqlOperation(getDogs, {id : userID}))
+      .then((data) => {
+        if (data.data.getDogs != null) {
+          // const updateDogs = data.data.getDogs
+          this.setState({
+            dogs : data.data.getDogs
+          }, () => console.log("current state dogs " + this.state.dogs))
+        }
+        // console.log(data.data.getDogs))
+      }
+        
+      )
+      .catch(err => console.log(err));
+  }
 
   nextStep = () => {
     const { step } = this.state;
@@ -73,9 +96,10 @@ class UserForm extends Component {
       username,
       firstName,
       lastName,
-      userEmail
-      // dog
+      userEmail,
+      dogs
     } = this.state;
+
     if (step === 1)
       return (
         <div>
@@ -86,9 +110,10 @@ class UserForm extends Component {
             userEmail={userEmail}
             prevStep={this.prevStep}
             goDogs={this.goDogs}
+            dogs={dogs}
           />
 
-          <Allinfo dogs={this.props.dogs} />
+          {/* <Allinfo dogs={this.props.dogs} /> */}
         </div>
       );
     if (step === 2)
@@ -101,14 +126,15 @@ class UserForm extends Component {
             firstName={firstName}
             lastName={lastName}
             userEmail={userEmail}
-            dogs={this.state.dogs}
           />
         </div>
       );
     if (step === 3)
       return (
         <div>
-          <DogForm />
+          <DogForm
+          dogs = {dogs}
+           />
         </div>
       );
   };

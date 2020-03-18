@@ -16,20 +16,21 @@ var ddb_table_name = process.env.STORAGE_DOGTABLE_NAME
 
 function getDogs(event, callback) { 
 
-    const dogID = event.arguments
+    const ownerID = event.arguments.id
 
     var params = {
         TableName: ddb_table_name,
-        Key: dogID
+        FilterExpression : 'ownerID = :id',
+        ExpressionAttributeValues : {':id' : ownerID}
     };
     console.log(params);
 
-    documentClient.get(params, function(err, data){
+    documentClient.scan(params, function(err, data){
         if (err) console.log(err);
         else {
             console.log("Success")
             console.log(data)
-            callback(err, [data.Item])
+            callback(err, data.Items)
         }
     });
 

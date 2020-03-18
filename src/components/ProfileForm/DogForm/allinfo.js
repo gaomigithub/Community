@@ -17,9 +17,9 @@ class Allinfo extends Component {
                 <div>
                   Dog Name: <b>{val.dogName}</b>
                   <br />
-                  Dog Age: <b>{val.dogAge}</b>
+                  Dog Age: <b>{val.age}</b>
                   <br />
-                  Dog Breed: <b>{val.dogBreed}</b>
+                  Dog Breed: <b>{val.breed}</b>
                   <br />
                 </div>
               );

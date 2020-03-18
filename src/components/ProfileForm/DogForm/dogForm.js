@@ -5,7 +5,7 @@ import UserForm from "../userform";
 class DogForm extends Component {
   state = {
     step: 1,
-    dogs: [{ dogName: "", dogAge: "", dogBreed: "" }]
+    dogs: this.props.dogs
   };
   nextStep = () => {
     const { step } = this.state;
@@ -20,13 +20,12 @@ class DogForm extends Component {
     });
   };
 
-  handleChange = dog => {
-    this.setState({ dogs: dog });
+  handleChange = dogs => {
+    this.setState({ dogs: dogs });
   };
 
   showStep = () => {
-    let { dogs } = this.state;
-    const { step, dogName, dogAge, dogBreed, aboutMe } = this.state;
+    const { step, dogs } = this.state;
     if (step === 1)
       return (
         <Doginfodetails
@@ -34,7 +33,7 @@ class DogForm extends Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           passDogsToParent={this.callbackFunction}
-          // dogs={this.dogs}
+          dogs={dogs}
         />
       );
 
@@ -46,7 +45,7 @@ class DogForm extends Component {
   };
 
   // handleChange = e => {
-  //   if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
+  //   if (["dogName", "age", "breed"].includes(e.target.className)) {
   //     let dogs = [...this.props.dogs];
   //     dogs[e.target.dataset.id][e.target.className] = e.target.value;
   //     this.setState({ dogs }, () => console.log(this.state.dogs));

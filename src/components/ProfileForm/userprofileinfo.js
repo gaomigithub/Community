@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Button, Row, Col } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
-import { createUser } from "../../graphql/mutations";
+import { createUser, createDog } from "../../graphql/mutations";
 import { getUser } from "../../graphql/queries";
 
 class Userprofileinfo extends Component {
@@ -37,7 +37,7 @@ class Userprofileinfo extends Component {
 
   submitChanges = () => {
     this.createUser();
-    // this.createDog();
+    this.createDog();
     this.props.history.push("./result-report");
   };
 
@@ -61,17 +61,34 @@ class Userprofileinfo extends Component {
       .catch(err => console.log("create user error", err));
   }
 
-  // createDog = () => {
-  //   const dog = {
-  //     input: {
-  //       id:,
-  //       ownerID:
-  //     }
-  //   }
-  // };
+  createDog = () => {
+    const currentUser = this.state.currentUser;
+    const currentDog = this.props.dogs
+    console.log("dog in userprofileinfo", currentDog)
+    currentDog.map((val, idx) => {
+      const dog = {
+      input: {
+        id: val.id,
+        ownerID: currentUser.attributes.sub,
+        dogName: val.dogName,
+        age: val.age,
+        breed: val.breed
+      }
+    };
+    this.addDog(dog)
+  })
+    
+  };
+
+  async addDog(dogInput) {
+    await API.graphql(graphqlOperation(createDog, dogInput))
+      .then(data => console.log("Add Dog Success", data))
+      .catch(err => console.log("create dog error", err));
+  }
+
 
   render() {
-    const { username, firstName, lastName, userEmail } = this.props;
+    const { username, firstName, lastName, userEmail, dogs } = this.props;
     return (
       <div class="pricing-header px-3 py-3  mx-auto text-center">
         <h2>Your Information</h2>
@@ -85,6 +102,29 @@ class Userprofileinfo extends Component {
         <br />
         {/* Own dogs: <b></b>
         <br /> */}
+
+        <h2>
+          Your Dog's Profile
+
+        </h2>
+        {dogs != null ? (
+            dogs.map((val, idx) => {
+              console.log(val);
+              return (
+                <div>
+                  Dog Name: <b>{val.dogName}</b>
+                  <br />
+                  Dog Age: <b>{val.age}</b>
+                  <br />
+                  Dog Breed: <b>{val.breed}</b>
+                  <br />
+                </div>
+              );
+            })
+          ) : (
+            <div>No Dog</div>
+          )}
+
         <Row>
           <Col></Col>
           <Col>

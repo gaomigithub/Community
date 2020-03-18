@@ -1,9 +1,33 @@
 import React from "react";
 import { Button, Form, Card } from "react-bootstrap";
+import { uuid } from 'uuidv4';
+import { getDogs } from '../../../graphql/queries';
+import { Auth } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
+
 class Doginfodetails extends React.Component {
   state = {
-    dogs: [{ dogName: "", dogAge: "", dogBreed: "" }]
+    dogs: this.props.dogs
   };
+
+  // async componentDidMount() {
+  //   const user = await Auth.currentAuthenticatedUser();
+  //   await this.getDogs(user.attributes.sub);
+  //   console.log("current state dogs" + this.state.dogs);
+  // }
+
+  // async getDogs(userID) {
+  //   await API.graphql(graphqlOperation(getDogs, {id : userID}))
+  //     .then(data => 
+  //       data.data.getDogs != null
+  //         ? this.setState({
+  //             dogs : [{dogName: "123", dogAge: "123", dogBreed: "123" }]
+  //           })
+  //         : null
+  //       // console.log(data.data.getDogs)
+  //     )
+  //     .catch(err => console.log(err));
+  // }
 
   continue = e => {
     e.preventDefault();
@@ -14,11 +38,9 @@ class Doginfodetails extends React.Component {
   };
 
   handleChange = e => {
-    if (["dogName", "dogAge", "dogBreed"].includes(e.target.className)) {
+    if (["dogName", "age", "breed"].includes(e.target.className)) {
       let dogs = [...this.state.dogs];
-      dogs[e.target.dataset.id][
-        e.target.className
-      ] = e.target.value.toUpperCase();
+      dogs[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase();
       this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() });
@@ -27,7 +49,7 @@ class Doginfodetails extends React.Component {
 
   addDog = e => {
     this.setState(prevState => ({
-      dogs: [...prevState.dogs, { dogName: "", dogAge: "", dogBreed: "" }]
+      dogs: [...prevState.dogs, {dogID: uuid(), dogName: "", age: "", breed: "" }]
     }));
   };
 
@@ -36,12 +58,12 @@ class Doginfodetails extends React.Component {
   };
 
   render() {
-    if (this.props.dogs != null) {
-      this.setState({ dogs: this.props.dogs });
-    }
+    // if (this.props.dogs != null) {
+    //   this.setState({ dogs: this.props.dogs });
+    // }
     let { dogs } = this.state;
-    console.log("dogs from props " + this.props.dogs);
-    console.log("dogs from dotinfodetails map " + dogs);
+    // console.log("dogs from props " + this.props.dogs);
+    
     return (
       <Form.Group controlId="formBasicDogForms">
         <Form.Label onChange={this.handleChange}>
@@ -60,7 +82,7 @@ class Doginfodetails extends React.Component {
                   data-id={idx}
                   id={dogId}
                   placeholder="Dog Name"
-                  value={val.dogName}
+                  value={val != null ? val.dogName : dogs[idx].name}
                   className="dogName"
                 />
 
@@ -71,8 +93,8 @@ class Doginfodetails extends React.Component {
                   data-id={idx}
                   id={ageId}
                   placeholder="Dog Age"
-                  value={dogs[idx].name}
-                  className="dogAge"
+                  value={val != null ? val.age : dogs[idx].name}
+                  className="age"
                 />
 
                 <label htmlFor={breedId}>Breed</label>
@@ -82,8 +104,8 @@ class Doginfodetails extends React.Component {
                   data-id={idx}
                   id={breedId}
                   placeholder="Dog Breed"
-                  value={dogs[idx].name}
-                  className="dogBreed"
+                  value={val != null ? val.breed : dogs[idx].name}
+                  className="breed"
                 />
               </div>
             );
