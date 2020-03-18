@@ -33,8 +33,16 @@ class Doginfodetails extends React.Component {
     e.preventDefault();
     this.props.nextStep();
     // this.props.passDogsToParent(this.state.dogs);
-    console.log("after submit", this.state.dogs);
-    this.props.handleDogChange(this.state.dogs);
+    let updatedDogs = [];
+    this.state.dogs.map((val, idx) => {
+      if (val.dogName !== "") {
+        updatedDogs.push(val)
+      }
+    })
+    this.setState({dogs : updatedDogs}, () => {
+      console.log("after submit", this.state.dogs);
+      this.props.handleDogChange(this.state.dogs);
+    })
   };
 
   handleChange = e => {
