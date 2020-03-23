@@ -10,8 +10,6 @@ class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
     this.submitChanges = this.submitChanges.bind(this);
-    // this.createUser = this.createUser.bind(this);
-    // this.createDog = this.createDog.bind(this);
   }
 
   state = {
@@ -63,22 +61,21 @@ class Userprofileinfo extends Component {
 
   createDog = () => {
     const currentUser = this.state.currentUser;
-    const currentDog = this.props.dogs
-    console.log("dog in userprofileinfo", currentDog)
+    const currentDog = this.props.dogs;
+    console.log("dog in userprofileinfo", currentDog);
     currentDog.map((val, idx) => {
-      console.log("dogs sending to database ",val)
+      console.log("dogs sending to database ", val);
       const dog = {
-      input: {
-        id: val.id != null ? val.id : val.dogID,
-        ownerID: currentUser.attributes.sub,
-        dogName: val.dogName,
-        age: val.age,
-        breed: val.breed
-      }
-    };
-    this.addDog(dog)
-  })
-    
+        input: {
+          id: val.id != null ? val.id : val.dogID,
+          ownerID: currentUser.attributes.sub,
+          dogName: val.dogName,
+          age: val.age,
+          breed: val.breed
+        }
+      };
+      this.addDog(dog);
+    });
   };
 
   async addDog(dogInput) {
@@ -86,7 +83,6 @@ class Userprofileinfo extends Component {
       .then(data => console.log("Add Dog Success", data))
       .catch(err => console.log("create dog error", err));
   }
-
 
   render() {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
@@ -103,29 +99,24 @@ class Userprofileinfo extends Component {
         <br />
         {/* Own dogs: <b></b>
         <br /> */}
-
-        <h2>
-          Your Dog's Profile
-
-        </h2>
+        <h2>Your Dog's Profile</h2>
         {dogs != null ? (
-            dogs.map((val, idx) => {
-              console.log(val);
-              return (
-                <div>
-                  Dog Name: <b>{val.dogName}</b>
-                  <br />
-                  Dog Age: <b>{val.age}</b>
-                  <br />
-                  Dog Breed: <b>{val.breed}</b>
-                  <br />
-                </div>
-              );
-            })
-          ) : (
-            <div>No Dog</div>
-          )}
-
+          dogs.map((val, idx) => {
+            console.log(val);
+            return (
+              <div>
+                Dog Name: <b>{val.dogName}</b>
+                <br />
+                Dog Age: <b>{val.age}</b>
+                <br />
+                Dog Breed: <b>{val.breed}</b>
+                <br />
+              </div>
+            );
+          })
+        ) : (
+          <div>No Dog</div>
+        )}
         <Row>
           <Col></Col>
           <Col>
@@ -160,10 +151,3 @@ class Userprofileinfo extends Component {
 }
 
 export default withRouter(Userprofileinfo);
-
-// function Userprofile() {
-//   const back = event => {
-//     event.preventDefault();
-//   };
-//   return <div>hi</div>;
-// }

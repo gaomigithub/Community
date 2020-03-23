@@ -48,22 +48,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* <h2 className="subtitle">Let us make your visit more meaningful!</h2>
-        <div className="floats-container trigger">
-          <img src="./assets/time.png" />
-          <p>Reserve on time</p>
-        </div>
-
-        <div className="floats-container-reverse">
-          <img className="c" src="./assets/dogownerfun.png" />
-          <p className="d">Connect with community dog owners.</p>
-        </div>
-
-        <div className="floats-container">
-          <img src="./assets/events.png" />
-          <p>Enjoy events hosted by community businesses.</p>
-        </div> */}
-
         <div>
           <p className="title-last">
             {" "}
