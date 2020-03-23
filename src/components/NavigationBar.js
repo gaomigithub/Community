@@ -19,12 +19,10 @@ function NavigationBar() {
   let button;
   useEffect(() => {
     function handleStatusChange() {
-      // button = <Button variant="success" onClick={userSignOut} className="ml-2">Sign Out</Button>;
       setSignedIn(true);
     }
 
     function handleSignInFailed() {
-      // button = <Button variant="success" onClick={userSignIn} className="ml-2">Sign In </Button>;
       setSignedIn(false);
     }
 
@@ -109,17 +107,6 @@ function NavigationBar() {
             About
           </Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link
-            componentClass={Link}
-            href="/login"
-            to="/login"
-            active={location.pathname === "/login"}
-          >
-            Login
-          </Nav.Link>
-        </Nav.Item> */}
-        {/* <div id="state_signout" style={{ display: "none" }}> */}
         <Nav.Item>
           <Nav.Link
             componentClass={Link}
@@ -130,17 +117,6 @@ function NavigationBar() {
             Profile
           </Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link
-            componentClass={Link}
-            href="test"
-            to="/test"
-            active={location.pathname === "/test"}
-          >
-            Test
-          </Nav.Link>
-        </Nav.Item> */}
-        {/* </div> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">
         <div className="user auth">{button}</div>
