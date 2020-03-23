@@ -4,7 +4,6 @@ import { Button, Row, Col } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog } from "../../graphql/mutations";
-import { getUser } from "../../graphql/queries";
 
 class Userprofileinfo extends Component {
   constructor(props) {

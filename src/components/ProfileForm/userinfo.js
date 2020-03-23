@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Button, Form, Card } from "react-bootstrap";
+import React, { Component } from "react";
+import { Button, Form } from "react-bootstrap";
 import ImageUpload from "./userphoto";
 // import DogForm from "./DogForm/dogForm";
 

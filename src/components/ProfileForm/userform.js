@@ -7,15 +7,8 @@ import { getUser, getDogs } from "../../graphql/queries";
 import Doginfodetails from "./DogForm/doginfodetails";
 
 class UserForm extends Component {
-  // ISSUE:
-  // For the dogs in this state,
-  // 1. we want to get the dogs from DB when the user login,
-  // 2. and then when user update the dog info, input should be sending back to here and display
-  // 3. BUT it keeps getting the same data from DB
-
   state = {
     step: 1,
-    // user
     username: "",
     firstName: "",
     lastName: "",
@@ -50,7 +43,6 @@ class UserForm extends Component {
     await API.graphql(graphqlOperation(getDogs, { id: userID }))
       .then(data => {
         if (data.data.getDogs != null) {
-          // const updateDogs = data.data.getDogs
           this.setState({
             dogs: data.data.getDogs
           });
@@ -117,8 +109,6 @@ class UserForm extends Component {
               goDogs={this.goDogs}
               dogs={dogs}
             />
-
-            {/* <Allinfo dogs={this.props.dogs} /> */}
           </div>
         )
       );

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import { Button, Card } from "react-bootstrap";
 
 class ImageUpload extends React.Component {
