@@ -1,33 +1,11 @@
 import React from "react";
-import { Button, Form, Card } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { uuid } from 'uuidv4';
-import { getDogs } from '../../../graphql/queries';
-import { Auth } from "aws-amplify";
-import { API, graphqlOperation } from "aws-amplify";
 
 class Doginfodetails extends React.Component {
   state = {
     dogs: this.props.dogs
   };
-
-  // async componentDidMount() {
-  //   const user = await Auth.currentAuthenticatedUser();
-  //   await this.getDogs(user.attributes.sub);
-  //   console.log("current state dogs" + this.state.dogs);
-  // }
-
-  // async getDogs(userID) {
-  //   await API.graphql(graphqlOperation(getDogs, {id : userID}))
-  //     .then(data => 
-  //       data.data.getDogs != null
-  //         ? this.setState({
-  //             dogs : [{dogName: "123", dogAge: "123", dogBreed: "123" }]
-  //           })
-  //         : null
-  //       // console.log(data.data.getDogs)
-  //     )
-  //     .catch(err => console.log(err));
-  // }
 
   continue = e => {
     e.preventDefault();
@@ -66,11 +44,8 @@ class Doginfodetails extends React.Component {
   };
 
   render() {
-    // if (this.props.dogs != null) {
-    //   this.setState({ dogs: this.props.dogs });
-    // }
+
     let { dogs } = this.state;
-    // console.log("dogs from props " + this.props.dogs);
     
     return (
       <Form.Group controlId="formBasicDogForms">

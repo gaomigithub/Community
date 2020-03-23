@@ -4,14 +4,11 @@ import { Button, Row, Col } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog } from "../../graphql/mutations";
-import { getUser } from "../../graphql/queries";
 
 class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
     this.submitChanges = this.submitChanges.bind(this);
-    // this.createUser = this.createUser.bind(this);
-    // this.createDog = this.createDog.bind(this);
   }
 
   state = {
@@ -160,10 +157,3 @@ class Userprofileinfo extends Component {
 }
 
 export default withRouter(Userprofileinfo);
-
-// function Userprofile() {
-//   const back = event => {
-//     event.preventDefault();
-//   };
-//   return <div>hi</div>;
-// }

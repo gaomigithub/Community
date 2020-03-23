@@ -5,7 +5,6 @@ import { Auth, Hub } from "aws-amplify";
 import { Button } from "react-bootstrap";
 import { signIn, signOut } from "../store/actions/authentication";
 import { connect } from "react-redux";
-// import { AuthUserState } from "./AuthUserState"
 import { getLoggedInState } from "../store/selectors";
 import authenticationReducer from "../store/reducers/authentication";
 // Function for check User
