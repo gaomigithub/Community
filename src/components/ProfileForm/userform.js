@@ -28,24 +28,24 @@ class UserForm extends Component {
 
   async getUser(userID) {
     await API.graphql(graphqlOperation(getUser, { id: userID }))
-      .then(data =>
-        data.data.getUser != null
-          ? this.setState({
-              firstName: data.data.getUser.firstName,
-              lastName: data.data.getUser.lastName
-            })
-          : null
-      )
+      .then((data) => {
+        if (data.data.getUser != null) {
+          this.setState({
+            firstName: data.data.getUser.firstName,
+            lastName: data.data.getUser.lastName
+          })
+        }
+      })
       .catch(err => console.log(err));
   }
 
   async getDogs(userID) {
     await API.graphql(graphqlOperation(getDogs, { id: userID }))
-      .then(data => {
+      .then((data) => {
         if (data.data.getDogs != null) {
           this.setState({
             dogs: data.data.getDogs
-          });
+          })
         }
       })
       .catch(err => console.log(err));
