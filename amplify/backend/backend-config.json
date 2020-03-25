@@ -69,6 +69,10 @@
 		"dogtable": {
 			"service": "DynamoDB",
 			"providerPlugin": "awscloudformation"
+		},
+		"reservationtable": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }
