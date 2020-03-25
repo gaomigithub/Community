@@ -55,13 +55,33 @@ enum Sex {
   FEMALE
 }
 
-type Recreation @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
+type Reservations @model {
+  id: ID!
+  userID: ID!
+  date: AWSDate!
+  time: ReserveTime!
   type: RecreationType!
-  availableTimeSlot: [AWSDate!]
-  reservedTimeSlot: [AWSDate!]
 }
 
 enum RecreationType {
   BASKETBALL
   TENNIS
 }
+
+type ReserveTime @model {
+  startTime: AWSTime!
+  endTime: AWSTime!
+}
+
+# input ReservationInput {
+#   id: ID!
+#   userID: ID!
+#   date: AWSDate!
+#   time: ReserveTimeInput!
+#   type: RecreationType!
+# }
+
+# input ReserveTimeInput {
+#   startTime: AWSTime!
+#   endTime: AWSTime!
+# }

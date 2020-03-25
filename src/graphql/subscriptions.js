@@ -1,30 +1,69 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateRecreation = /* GraphQL */ `
-  subscription OnCreateRecreation {
-    onCreateRecreation {
+export const onCreateReservations = /* GraphQL */ `
+  subscription OnCreateReservations {
+    onCreateReservations {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const onUpdateRecreation = /* GraphQL */ `
-  subscription OnUpdateRecreation {
-    onUpdateRecreation {
+export const onUpdateReservations = /* GraphQL */ `
+  subscription OnUpdateReservations {
+    onUpdateReservations {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const onDeleteRecreation = /* GraphQL */ `
-  subscription OnDeleteRecreation {
-    onDeleteRecreation {
+export const onDeleteReservations = /* GraphQL */ `
+  subscription OnDeleteReservations {
+    onDeleteReservations {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
+    }
+  }
+`;
+export const onCreateReserveTime = /* GraphQL */ `
+  subscription OnCreateReserveTime {
+    onCreateReserveTime {
+      startTime
+      endTime
+    }
+  }
+`;
+export const onUpdateReserveTime = /* GraphQL */ `
+  subscription OnUpdateReserveTime {
+    onUpdateReserveTime {
+      startTime
+      endTime
+    }
+  }
+`;
+export const onDeleteReserveTime = /* GraphQL */ `
+  subscription OnDeleteReserveTime {
+    onDeleteReserveTime {
+      startTime
+      endTime
     }
   }
 `;
