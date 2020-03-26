@@ -13,13 +13,15 @@ import { signIn, signOut } from "./store/actions/authentication";
 import "./styles/App.css";
 import { Auth, Hub } from "aws-amplify";
 // Test pages only
-import Form from "./components/testpage";
+// import Form from "./components/testpage";
+import ReservationFunctionTesting from "./Templets-ReservationFunction";
 
 Amplify.configure(awsconfig);
 
 export default function App() {
   return (
     <div>
+      <ReservationFunctionTesting />
       <NavigationBar />
       <Switch>
         <Route exact path="/">
@@ -42,9 +44,9 @@ export default function App() {
           <AppWithAuthenticator />
         </Route>
         {/* Test pages below only */}
-        <Route path="/test">
+        {/* <Route path="/test">
           <Form />
-        </Route>
+        </Route> */}
       </Switch>
       <Footer>
         <ul>

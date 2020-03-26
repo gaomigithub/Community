@@ -7,11 +7,20 @@ var storageReservationtableArn = process.env.STORAGE_RESERVATIONTABLE_ARN
 
 Amplify Params - DO NOT EDIT */
 
-exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    return response;
+const createReservation = require('./createReservation');
+// const updateDog = require('./updateDog');
+// const getDogs = require('./getDogs')
+
+exports.handler = function (event, _, callback) {
+    if (event.typeName === 'Mutation') {
+        if (event.fieldName === 'createReservation') {
+            createReservation(event, callback);
+        }
+        // if (event.fieldName === 'updateDog') {
+        //     updateDog(event, callback);
+        // }
+    }
+    // if (event.typeName === 'Query') {
+    //     getDogs(event, callback)
+    //   }
 };
