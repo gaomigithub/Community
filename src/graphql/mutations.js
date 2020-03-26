@@ -97,46 +97,9 @@ export const updateDog = /* GraphQL */ `
     }
   }
 `;
-export const createReservations = /* GraphQL */ `
-  mutation CreateReservations(
-    $input: CreateReservationsInput!
-    $condition: ModelReservationsConditionInput
-  ) {
-    createReservations(input: $input, condition: $condition) {
-      id
-      userID
-      date
-      time {
-        startTime
-        endTime
-      }
-      type
-    }
-  }
-`;
-export const updateReservations = /* GraphQL */ `
-  mutation UpdateReservations(
-    $input: UpdateReservationsInput!
-    $condition: ModelReservationsConditionInput
-  ) {
-    updateReservations(input: $input, condition: $condition) {
-      id
-      userID
-      date
-      time {
-        startTime
-        endTime
-      }
-      type
-    }
-  }
-`;
-export const deleteReservations = /* GraphQL */ `
-  mutation DeleteReservations(
-    $input: DeleteReservationsInput!
-    $condition: ModelReservationsConditionInput
-  ) {
-    deleteReservations(input: $input, condition: $condition) {
+export const createReservation = /* GraphQL */ `
+  mutation CreateReservation($input: ReservationInput!) {
+    createReservation(input: $input) {
       id
       userID
       date

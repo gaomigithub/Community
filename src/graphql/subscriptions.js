@@ -1,48 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateReservations = /* GraphQL */ `
-  subscription OnCreateReservations {
-    onCreateReservations {
-      id
-      userID
-      date
-      time {
-        startTime
-        endTime
-      }
-      type
-    }
-  }
-`;
-export const onUpdateReservations = /* GraphQL */ `
-  subscription OnUpdateReservations {
-    onUpdateReservations {
-      id
-      userID
-      date
-      time {
-        startTime
-        endTime
-      }
-      type
-    }
-  }
-`;
-export const onDeleteReservations = /* GraphQL */ `
-  subscription OnDeleteReservations {
-    onDeleteReservations {
-      id
-      userID
-      date
-      time {
-        startTime
-        endTime
-      }
-      type
-    }
-  }
-`;
 export const onCreateReserveTime = /* GraphQL */ `
   subscription OnCreateReserveTime {
     onCreateReserveTime {

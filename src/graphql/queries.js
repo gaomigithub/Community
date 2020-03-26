@@ -49,9 +49,9 @@ export const getDogs = /* GraphQL */ `
     }
   }
 `;
-export const getReservations = /* GraphQL */ `
-  query GetReservations($id: ID!) {
-    getReservations(id: $id) {
+export const getReservation = /* GraphQL */ `
+  query GetReservation($id: ID!) {
+    getReservation(id: $id) {
       id
       userID
       date
@@ -63,24 +63,17 @@ export const getReservations = /* GraphQL */ `
     }
   }
 `;
-export const listReservationss = /* GraphQL */ `
-  query ListReservationss(
-    $filter: ModelReservationsFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listReservationss(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        userID
-        date
-        time {
-          startTime
-          endTime
-        }
-        type
+export const checkReservation = /* GraphQL */ `
+  query CheckReservation($id: ID!) {
+    checkReservation(id: $id) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
       }
-      nextToken
+      type
     }
   }
 `;

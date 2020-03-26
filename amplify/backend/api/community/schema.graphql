@@ -22,11 +22,14 @@ type Mutation {
   updateUser(input: userInput!): User @function(name: "userfunction-${env}")
   createDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
   updateDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
+  createReservation(input: ReservationInput!): Reservations @function(name: "reservationfunction-${env}")
 }
 
 type Query {
   getUser(id: ID!): User @function(name: "userfunction-${env}")
   getDogs(id: ID!): [Dog] @function(name: "dogfunction-${env}")
+  getReservation(id: ID!): [Reservations] @function(name: "reservationfunction-${env}")
+  checkReservation(id: ID!): [Reservations] @function(name: "reservationfunction-${env}")
 }
 
 type Dog @model(mutations: null, queries: null) {
@@ -55,7 +58,7 @@ enum Sex {
   FEMALE
 }
 
-type Reservations @model {
+type Reservations @model(mutations: null, queries: null) {
   id: ID!
   userID: ID!
   date: AWSDate!
@@ -73,15 +76,15 @@ type ReserveTime @model {
   endTime: AWSTime!
 }
 
-# input ReservationInput {
-#   id: ID!
-#   userID: ID!
-#   date: AWSDate!
-#   time: ReserveTimeInput!
-#   type: RecreationType!
-# }
+input ReservationInput {
+  id: ID!
+  userID: ID!
+  date: AWSDate!
+  time: ReserveTimeInput!
+  type: RecreationType!
+}
 
-# input ReserveTimeInput {
-#   startTime: AWSTime!
-#   endTime: AWSTime!
-# }
+input ReserveTimeInput {
+  startTime: AWSTime!
+  endTime: AWSTime!
+}
