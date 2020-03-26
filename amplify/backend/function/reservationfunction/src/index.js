@@ -8,7 +8,8 @@ var storageReservationtableArn = process.env.STORAGE_RESERVATIONTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 const createReservation = require('./createReservation');
-const getReservation = require('./getReservation')
+const getReservation = require('./getReservation');
+const checkReservation = require('./checkReservation');
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
@@ -17,7 +18,11 @@ exports.handler = function (event, _, callback) {
         }
     }
     if (event.typeName === 'Query') {
-        console.log(event)
-        getReservation(event, callback)
+        if (event.fieldName === 'getReservation') {
+            getReservation(event, callback)
+        }
+        if (event.fieldName === 'checkReservation') {
+            checkReservation(event, callback)
+        }
     }
 };

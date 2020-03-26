@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { createReservation } from './graphql/mutations';
-import { getReservation } from  './graphql/queries';
+import { getReservation, checkReservation } from  './graphql/queries';
 import { API, graphqlOperation } from "aws-amplify";
 
 Amplify.configure(awsconfig);
@@ -14,22 +14,23 @@ class ReservationFunctionTesting extends Component {
     componentDidMount() {
         // Reservation Input Format Example
         const reservationInput ={ input : {
-            id: "1",
-            userID: "test",
+            id: "2",
+            userID: "test2",
             date: "2020-03-26",
             time:  
                 {
-                    startTime: "09:00",
-                    endTime: "10:00"
+                    startTime: "12:00",
+                    endTime: "14:00"
                 },
-            type: "BASKETBALL"
+            type: "TENNIS"
             }
         };
 
-        const userID = "test";
+        const userID = "test2";
     
-        this.addReservation(reservationInput);  
-        this.getReservation(userID);
+        // this.addReservation(reservationInput);  
+        this.checkReservation(userID);
+        // this.getReservation(userID);
     }
     
     async addReservation(reservationInput) {
@@ -42,6 +43,12 @@ class ReservationFunctionTesting extends Component {
         await API.graphql(graphqlOperation(getReservation, {id: userID}))
         .then(data => console.log('Get Reservation from user success ', data ))
         .catch(err => console.log('Get Reservation from user error: ', err))
+    }
+
+    async checkReservation(userID) {
+        await API.graphql(graphqlOperation(checkReservation, {id: userID}))
+        .then(data => console.log('Get All Reservation success ', data ))
+        .catch(err => console.log('Get All Reservation error: ', err))
     }
 
     render() {
