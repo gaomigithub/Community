@@ -71,6 +71,14 @@
         "GetAttRecreationTableName": "Recreation",
         "MutationupdateCurrentUserResolver": "FunctionDirectiveStack",
         "QuerygetCurrentUserResolver": "FunctionDirectiveStack",
-        "MutationcreateUserResolver": "FunctionDirectiveStack"
+        "MutationcreateUserResolver": "FunctionDirectiveStack",
+        "MutationupdateUserResolver": "FunctionDirectiveStack",
+        "DogfunctionLambdaDataSourceRole": "FunctionDirectiveStack",
+        "DogfunctionLambdaDataSource": "FunctionDirectiveStack",
+        "InvokeDogfunctionLambdaDataSource": "FunctionDirectiveStack",
+        "MutationcreateDogResolver": "FunctionDirectiveStack",
+        "MutationupdateDogResolver": "FunctionDirectiveStack",
+        "QuerygetUserResolver": "FunctionDirectiveStack",
+        "QuerygetDogsResolver": "FunctionDirectiveStack"
     }
 }

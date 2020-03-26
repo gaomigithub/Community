@@ -1,42 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Amplify from "aws-amplify";
 import { Switch, Route } from "react-router-dom";
-
-import AppWithAuth from "./components/AppWithAuth";
 import Landing from "./components/Landing";
-// import Login from "./components/Login";
+import AppWithAuthenticator from "./components/AppWithAuth";
+import ResultReport from "./components/ProfileForm/resultReport";
+import About from "./components/About";
 import Footer from "./components/Footer";
 import NavigationBar from "./components/NavigationBar";
-import SignUp from "./components/signup";
+import MainProfile from "./components/profile";
 import awsconfig from "./aws-exports";
-
-// import { withAuthenticator } from "aws-amplify-react"; // or 'aws-amplify-react-native';
-import "bootstrap/dist/css/bootstrap.min.css";
+import { signIn, signOut } from "./store/actions/authentication";
+import "./styles/App.css";
+import { Auth, Hub } from "aws-amplify";
+// Test pages only
+import Form from "./components/testpage";
 
 Amplify.configure(awsconfig);
 
 export default function App() {
   return (
-    <div className="App">
-        <NavigationBar />
-        <Switch>
-          <Route exact path="/">
-            <Landing  />
-          </Route>
-          <Route path="/about">
-            hi
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/AppWithAuth">
-            <AppWithAuth />
-          </Route>
-          <Route path="/login"/>
-            {/* <Login /> */}
-          <Route />
-        </Switch>
-        <Footer />
+    <div>
+      <NavigationBar />
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        {/* Planned to be changed to user profile in this component */}
+        <Route path="/profile">
+          <AppWithAuthenticator />
+        </Route>
+        <Route path="/AppWithAuth">
+          <AppWithAuthenticator />
+        </Route>
+        <Route path="/result-report">
+          <ResultReport />
+        </Route>
+        <Route path="/login">
+          <AppWithAuthenticator />
+        </Route>
+        {/* Test pages below only */}
+        <Route path="/test">
+          <Form />
+        </Route>
+      </Switch>
+      <Footer>
+        <ul>
+          <li>
+            <a href="/"> &copy; Community</a>
+          </li>
+          <li>
+            <a href="/">Terms of Use</a>
+          </li>
+          <li>
+            <a href="/">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/">Contact Us</a>
+          </li>
+        </ul>
+      </Footer>
     </div>
   );
 }

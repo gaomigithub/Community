@@ -3,12 +3,12 @@ import "../styles/signup.css";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-export default function SignUp() {
+export default function Signup() {
   let history = useHistory();
 
- const clickhandler = () => {
+  const clickhandler = () => {
     history.push("/");
-  }
+  };
 
   return (
     <div className="signup-form">
@@ -109,4 +109,3 @@ export default function SignUp() {
     </div>
   );
 }
-

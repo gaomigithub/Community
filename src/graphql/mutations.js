@@ -13,12 +13,11 @@ export const createUser = /* GraphQL */ `
       dog {
         items {
           id
-          firstName
-          lastName
+          ownerID
+          dogName
           breed
-          dob
+          age
           sex
-          bio
           picture
         }
         nextToken
@@ -38,16 +37,63 @@ export const updateUser = /* GraphQL */ `
       dog {
         items {
           id
-          firstName
-          lastName
+          ownerID
+          dogName
           breed
-          dob
+          age
           sex
-          bio
           picture
         }
         nextToken
       }
+    }
+  }
+`;
+export const createDog = /* GraphQL */ `
+  mutation CreateDog($input: dogInput!) {
+    createDog(input: $input) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
+export const updateDog = /* GraphQL */ `
+  mutation UpdateDog($input: dogInput!) {
+    updateDog(input: $input) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
     }
   }
 `;

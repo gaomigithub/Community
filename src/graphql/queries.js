@@ -13,12 +13,11 @@ export const getUser = /* GraphQL */ `
       dog {
         items {
           id
-          firstName
-          lastName
+          ownerID
+          dogName
           breed
-          dob
+          age
           sex
-          bio
           picture
         }
         nextToken
@@ -26,16 +25,15 @@ export const getUser = /* GraphQL */ `
     }
   }
 `;
-export const getDog = /* GraphQL */ `
-  query GetDog($id: ID!) {
-    getDog(id: $id) {
+export const getDogs = /* GraphQL */ `
+  query GetDogs($id: ID!) {
+    getDogs(id: $id) {
       id
-      firstName
-      lastName
+      ownerID
+      dogName
       breed
-      dob
+      age
       sex
-      bio
       owner {
         id
         firstName
@@ -48,35 +46,6 @@ export const getDog = /* GraphQL */ `
         }
       }
       picture
-    }
-  }
-`;
-export const listDogs = /* GraphQL */ `
-  query ListDogs(
-    $filter: ModelDogFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        firstName
-        lastName
-        breed
-        dob
-        sex
-        bio
-        owner {
-          id
-          firstName
-          lastName
-          userName
-          userEmail
-          userPhone
-        }
-        picture
-      }
-      nextToken
     }
   }
 `;
