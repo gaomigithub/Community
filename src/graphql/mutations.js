@@ -111,6 +111,20 @@ export const createReservation = /* GraphQL */ `
     }
   }
 `;
+export const deleteReservation = /* GraphQL */ `
+  mutation DeleteReservation($id: ID!) {
+    deleteReservation(id: $id) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
+      type
+    }
+  }
+`;
 export const createReserveTime = /* GraphQL */ `
   mutation CreateReserveTime(
     $input: CreateReserveTimeInput!

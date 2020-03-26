@@ -10,19 +10,23 @@ Amplify Params - DO NOT EDIT */
 const createReservation = require('./createReservation');
 const getReservation = require('./getReservation');
 const checkReservation = require('./checkReservation');
+const deleteReservation = require('./deleteReservation')
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
         if (event.fieldName === 'createReservation') {
             createReservation(event, callback);
         }
+        if (event.fieldName === 'deleteReservation') {
+            deleteReservation(event, callback);
+        }
     }
     if (event.typeName === 'Query') {
         if (event.fieldName === 'getReservation') {
-            getReservation(event, callback)
+            getReservation(event, callback);
         }
         if (event.fieldName === 'checkReservation') {
-            checkReservation(event, callback)
+            checkReservation(event, callback);
         }
     }
 };

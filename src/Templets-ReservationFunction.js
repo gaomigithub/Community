@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { createReservation } from './graphql/mutations';
+import { createReservation, deleteReservation } from './graphql/mutations';
 import { getReservation, checkReservation } from  './graphql/queries';
 import { API, graphqlOperation } from "aws-amplify";
 
@@ -29,8 +29,9 @@ class ReservationFunctionTesting extends Component {
         const userID = "test2";
     
         // this.addReservation(reservationInput);  
-        this.checkReservation(userID);
+        // this.checkReservation(userID);
         // this.getReservation(userID);
+        this.deleteReservation("1");
     }
     
     async addReservation(reservationInput) {
@@ -49,6 +50,12 @@ class ReservationFunctionTesting extends Component {
         await API.graphql(graphqlOperation(checkReservation, {id: userID}))
         .then(data => console.log('Get All Reservation success ', data ))
         .catch(err => console.log('Get All Reservation error: ', err))
+    }
+
+    async deleteReservation(id) {
+        await API.graphql(graphqlOperation(deleteReservation, {id: id}))
+        .then(data => console.log('Delete Reservation success ', data ))
+        .catch(err => console.log('Delete Reservation error: ', err))
     }
 
     render() {
