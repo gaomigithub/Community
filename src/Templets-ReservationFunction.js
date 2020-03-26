@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { createReservation }  from './graphql/mutations';
+import { createReservation } from './graphql/mutations';
+import { getReservation } from  './graphql/queries';
 import { API, graphqlOperation } from "aws-amplify";
 
 Amplify.configure(awsconfig);
@@ -24,14 +25,23 @@ class ReservationFunctionTesting extends Component {
             type: "BASKETBALL"
             }
         };
+
+        const userID = "test";
     
         this.addReservation(reservationInput);  
+        this.getReservation(userID);
     }
     
     async addReservation(reservationInput) {
         await API.graphql(graphqlOperation(createReservation, reservationInput))
-        .then(data => console.log({ data }))
-        .catch(err => console.log('error: ', err))
+        .then(data => console.log('Create Reservation success ', data))
+        .catch(err => console.log('Create Reservation error: ', err))
+    }
+
+    async getReservation(userID) {
+        await API.graphql(graphqlOperation(getReservation, {id: userID}))
+        .then(data => console.log('Get Reservation from user success ', data ))
+        .catch(err => console.log('Get Reservation from user error: ', err))
     }
 
     render() {

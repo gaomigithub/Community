@@ -8,19 +8,16 @@ var storageReservationtableArn = process.env.STORAGE_RESERVATIONTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 const createReservation = require('./createReservation');
-// const updateDog = require('./updateDog');
-// const getDogs = require('./getDogs')
+const getReservation = require('./getReservation')
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
         if (event.fieldName === 'createReservation') {
             createReservation(event, callback);
         }
-        // if (event.fieldName === 'updateDog') {
-        //     updateDog(event, callback);
-        // }
     }
-    // if (event.typeName === 'Query') {
-    //     getDogs(event, callback)
-    //   }
+    if (event.typeName === 'Query') {
+        console.log(event)
+        getReservation(event, callback)
+    }
 };
