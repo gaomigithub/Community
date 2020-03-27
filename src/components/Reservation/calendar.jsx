@@ -1,44 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
+import setHours from "date-fns/setMinutes";
+import setMinutes from "date-fns/setMinutes";
+import subDays from "date-fns/subDays";
+import addDays from "date-fns/addDays";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Reservation/calendar.css";
 
-class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
+// function handleChange(date) {
+//   this.setState({
+//     startDate: date
+//   });
+// }
+export default function Calendar() {
+  const [startDate, setStartDate] = useState(new Date());
 
-  state = {
-    startDate: new Date()
-  };
-
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-  };
-
-  render() {
-    return (
-      <DatePicker
-        className="calendar-style"
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-        showTimeSelect
-        timeIntervals={60}
-        minDate={moment()}
-        minTime={moment()
-          .hours(11)
-          .minutes(0)}
-        maxTime={moment()
-          .hours(22)
-          .minutes(0)}
-        dateFormat="LLL"
-      />
-    );
-  }
+  return (
+    <DatePicker
+      className="calendar-style"
+      selected={startDate}
+      onChange={date => setStartDate(date)}
+      showTimeSelect
+      // Time Period
+      timeIntervals={60}
+      // Min/Max date
+      minDate={subDays(new Date(), 0)}
+      maxDate={addDays(new Date(), 5)}
+      dateFormat="LLL"
+    />
+  );
 }
-
-export default Calendar;

@@ -36,6 +36,7 @@ class SearchBar extends React.Component {
           <br />
           <span className="search-bar">
             <Calendar />
+            {/* Maybe should be changed to drop down list for the Courts*/}
             <input
               className="search-input"
               placeholder="Court/Street Name"
