@@ -1,0 +1,9 @@
+.calendar-style {
+  margin-left: 20px;
+  height: 34px;
+  font-weight: 400;
+  font-family: helvetica;
+  padding-left: 15px;
+  width: 170px;
+  color: grey;
+}
