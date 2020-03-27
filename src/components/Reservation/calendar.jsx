@@ -19,6 +19,7 @@ export default function Calendar() {
     <DatePicker
       className="calendar-style"
       selected={startDate}
+      // Trigger, can/should be changed to other way?
       onChange={date => setStartDate(date)}
       showTimeSelect
       // Time Period
