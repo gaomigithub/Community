@@ -32,6 +32,7 @@
   padding-left: 15px;
 }
 .search-button {
+  margin-left: 10px;
   padding: 0px 15px;
   height: 34px;
   background-color: limegreen;
@@ -40,4 +41,8 @@
   font-weight: 400;
   font-family: helvetica;
   cursor: pointer;
+}
+.search-dropdown {
+  margin-left: 10px;
+  width: 200px !important;
 }

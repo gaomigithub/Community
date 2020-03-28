@@ -28,17 +28,15 @@ export default function Calendar() {
       className="calendar-style"
       // Trigger, can/should be changed to other way?
       onChange={date => {
-        setStartDate(date)
-        console.log(startDate.get)
+        setStartDate(date);
+        console.log(startDate.get);
       }}
       selected={startDate}
-      showTimeSelect
-      // Time Period
-      timeIntervals={60}
-      // Min/Max date
+      // showTimeSelect
+      // timeIntervals={60}
       minDate={subDays(new Date(), 0)}
       maxDate={addDays(new Date(), 5)}
-      dateFormat="yyyy-MM-dd h:mm:ss a"
+      dateFormat="yyyy-MM-dd"
     />
   );
 }
