@@ -7,20 +7,20 @@ class Doginfodetails extends React.Component {
     dogs: this.props.dogs
   };
 
-  continue = e => {
+  continue = async (e) => {
     e.preventDefault();
-    this.props.nextStep();
     // this.props.passDogsToParent(this.state.dogs);
     let updatedDogs = [];
-    this.state.dogs.map((val, idx) => {
+    await this.state.dogs.map((val, idx) => {
       if (val.dogName !== "") {
         updatedDogs.push(val)
       }
     })
-    this.setState({dogs : updatedDogs}, () => {
+    await this.setState({dogs : updatedDogs}, () => {
       console.log("after submit", this.state.dogs);
       this.props.handleDogChange(this.state.dogs);
     })
+    this.props.nextStep();
   };
 
   handleChange = e => {
@@ -90,6 +90,7 @@ class Doginfodetails extends React.Component {
                   value={val != null ? val.breed : dogs[idx].name}
                   className="breed"
                 />
+                <button>Delete</button>
               </div>
             );
           })}
