@@ -8,6 +8,7 @@ export default function Reservation() {
       <div>
         <SearchBar />
       </div>
+      <div>{/* the buttons/table of Time periods */}</div>
     </div>
   );
 }
