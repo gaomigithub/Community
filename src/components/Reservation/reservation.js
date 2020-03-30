@@ -10,7 +10,9 @@ export default function Reservation() {
         <SearchBar />
         <TimeSlots />
       </div>
-      <div>{/* the buttons/table of Time periods */}</div>
+      <div>
+        <Timetable />
+      </div>
     </div>
   );
 }
