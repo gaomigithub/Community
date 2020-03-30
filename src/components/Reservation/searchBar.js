@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
   // componentDidMount() {
   //   this.props.fetchCourts();
   // }
-  yarnsss;
+
   handleClick(e) {
     e.preventDefault();
     // this.props.searchCourts(this.state.search);

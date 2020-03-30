@@ -5,13 +5,13 @@
 		"env": {
 			"Type": "String"
 		},
-		"storagedogtableName": {
+		"storagereservationtableName": {
 			"Type": "String",
-			"Default": "storagedogtableName"
+			"Default": "storagereservationtableName"
 		},
-		"storagedogtableArn": {
+		"storagereservationtableArn": {
 			"Type": "String",
-			"Default": "storagedogtableArn"
+			"Default": "storagereservationtableArn"
 		}
 	},
 	"Conditions": {
@@ -36,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"dogfunction",
+						"reservationfunction",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"dogfunction",
+									"reservationfunction",
 									"-",
 									{
 										"Ref": "env"
@@ -59,11 +59,11 @@
 						"REGION": {
 							"Ref": "AWS::Region"
 						},
-						"STORAGE_DOGTABLE_NAME": {
-							"Ref": "storagedogtableName"
+						"STORAGE_RESERVATIONTABLE_NAME": {
+							"Ref": "storagereservationtableName"
 						},
-						"STORAGE_DOGTABLE_ARN": {
-							"Ref": "storagedogtableArn"
+						"STORAGE_RESERVATIONTABLE_ARN": {
+							"Ref": "storagereservationtableArn"
 						}
 					}
 				},
@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-community-featuredan-125056-deployment",
-					"S3Key": "amplify-builds/dogfunction-2f78466955692b673164-build.zip"
+					"S3Key": "amplify-builds/reservationfunction-78624b6d4e3251305270-build.zip"
 				}
 			}
 		},
@@ -87,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"communityLambdaRolee615948e",
+						"communityLambdaRole6adb97aa",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"communityLambdaRolee615948e",
+									"communityLambdaRole6adb97aa",
 									"-",
 									{
 										"Ref": "env"
@@ -196,14 +196,14 @@
 							],
 							"Resource": [
 								{
-									"Ref": "storagedogtableArn"
+									"Ref": "storagereservationtableArn"
 								},
 								{
 									"Fn::Join": [
 										"/",
 										[
 											{
-												"Ref": "storagedogtableArn"
+												"Ref": "storagereservationtableArn"
 											},
 											"index/*"
 										]

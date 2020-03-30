@@ -49,26 +49,52 @@ export const getDogs = /* GraphQL */ `
     }
   }
 `;
-export const getRecreation = /* GraphQL */ `
-  query GetRecreation($id: ID!) {
-    getRecreation(id: $id) {
+export const getReservation = /* GraphQL */ `
+  query GetReservation($id: ID!) {
+    getReservation(id: $id) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const listRecreations = /* GraphQL */ `
-  query ListRecreations(
-    $filter: ModelRecreationFilterInput
+export const checkReservation = /* GraphQL */ `
+  query CheckReservation($date: AWSDate!) {
+    checkReservation(date: $date) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
+      type
+    }
+  }
+`;
+export const getReserveTime = /* GraphQL */ `
+  query GetReserveTime($id: ID!) {
+    getReserveTime(id: $id) {
+      startTime
+      endTime
+    }
+  }
+`;
+export const listReserveTimes = /* GraphQL */ `
+  query ListReserveTimes(
+    $filter: ModelReserveTimeFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listRecreations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listReserveTimes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        type
-        availableTimeSlot
-        reservedTimeSlot
+        startTime
+        endTime
       }
       nextToken
     }

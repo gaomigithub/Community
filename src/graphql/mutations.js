@@ -97,39 +97,64 @@ export const updateDog = /* GraphQL */ `
     }
   }
 `;
-export const createRecreation = /* GraphQL */ `
-  mutation CreateRecreation(
-    $input: CreateRecreationInput!
-    $condition: ModelRecreationConditionInput
-  ) {
-    createRecreation(input: $input, condition: $condition) {
+export const createReservation = /* GraphQL */ `
+  mutation CreateReservation($input: ReservationInput!) {
+    createReservation(input: $input) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const updateRecreation = /* GraphQL */ `
-  mutation UpdateRecreation(
-    $input: UpdateRecreationInput!
-    $condition: ModelRecreationConditionInput
-  ) {
-    updateRecreation(input: $input, condition: $condition) {
+export const deleteReservation = /* GraphQL */ `
+  mutation DeleteReservation($id: ID!) {
+    deleteReservation(id: $id) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const deleteRecreation = /* GraphQL */ `
-  mutation DeleteRecreation(
-    $input: DeleteRecreationInput!
-    $condition: ModelRecreationConditionInput
+export const createReserveTime = /* GraphQL */ `
+  mutation CreateReserveTime(
+    $input: CreateReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
   ) {
-    deleteRecreation(input: $input, condition: $condition) {
-      type
-      availableTimeSlot
-      reservedTimeSlot
+    createReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
+    }
+  }
+`;
+export const updateReserveTime = /* GraphQL */ `
+  mutation UpdateReserveTime(
+    $input: UpdateReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
+  ) {
+    updateReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
+    }
+  }
+`;
+export const deleteReserveTime = /* GraphQL */ `
+  mutation DeleteReserveTime(
+    $input: DeleteReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
+  ) {
+    deleteReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
     }
   }
 `;

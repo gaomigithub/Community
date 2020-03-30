@@ -50,7 +50,7 @@ function NavigationBar() {
           break;
       }
     });
-  });
+  }, []);
 
   console.log("signedIn", signedIn);
   let location = useLocation();
