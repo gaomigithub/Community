@@ -10,9 +10,6 @@ export default function Reservation() {
         <SearchBar />
         <TimeSlots />
       </div>
-      <div>
-        <Timetable />
-      </div>
     </div>
   );
 }

@@ -1,15 +1,26 @@
 import React from "react";
 import Calendar from "./calendar";
 import Dropdown from "./locationDropdown";
+import Select from "react-select";
 import "../../styles/Reservation/searchBar.css";
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ""
+      search: "",
+      locations : [
+        { label: "Basketball Court", value: 1 },
+        { label: "Tennis Court", value: 2 }
+      ]
     };
   }
+  
+  Dropdown = () => (
+    <div>
+      <Select options={this.state.locations} />
+    </div>
+  );
 
   // componentDidMount() {
   //   this.props.fetchCourts();
@@ -32,7 +43,6 @@ class SearchBar extends React.Component {
           <br />
           <span className="search-bar">
             <Calendar />
-            {/* Maybe should be changed to drop down list for the Courts*/}
             {/* <input
               className="search-input"
               placeholder="Court/Street Name"
@@ -40,7 +50,7 @@ class SearchBar extends React.Component {
               onChange={e => this.update(e)}
             /> */}
             <div className="search-dropdown">
-              <Dropdown />
+              {Dropdown()}
             </div>
 
             <input className="search-button" type="submit" value="Go"></input>
