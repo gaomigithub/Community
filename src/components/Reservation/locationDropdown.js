@@ -3,7 +3,7 @@ import Select from "react-select";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const locations = [
-  { label: "Dog Park", value: 1 },
+  { label: "Basketball Court", value: 1 },
   { label: "Tennis Court", value: 2 }
 ];
 
