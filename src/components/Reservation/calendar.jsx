@@ -25,7 +25,7 @@ export default function Calendar(props) {
         sendSelectedDate(date)
       }}
       selected={startDate}
-      minDate={subDays(new Date(), 0)}
+      minDate={subDays(new Date(), 5)}
       maxDate={addDays(new Date(), 5)}
       dateFormat="yyyy-MM-dd"
     />

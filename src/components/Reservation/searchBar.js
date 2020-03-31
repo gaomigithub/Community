@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null,
+      date: new Date(),
       type: null,
       locations: [
         { label: "Basketball Court", value: "BASKETBALL" },
