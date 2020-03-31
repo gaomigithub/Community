@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Row, Col, Card, CardGroup } from "react-bootstrap";
+import { Button, Row, Col, Card, CardDeck } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog } from "../../graphql/mutations";
@@ -91,7 +91,7 @@ class Userprofileinfo extends Component {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
     return (
       <div class="pricing-header px-3 py-3  mx-auto text-center">
-        <CardGroup>
+        <CardDeck>
           <Card>
             <Card.Body>
               <Card.Title>Your Information</Card.Title>
@@ -173,7 +173,7 @@ class Userprofileinfo extends Component {
               </small>
             </Card.Footer>
           </Card>
-        </CardGroup>
+        </CardDeck>
         {/* <h2>Your Information</h2>
         UserName: <b>{username}</b>
         <br />
