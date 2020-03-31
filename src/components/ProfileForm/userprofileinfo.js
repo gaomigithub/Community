@@ -27,12 +27,16 @@ class Userprofileinfo extends Component {
     e.preventDefault();
     this.props.goDogs();
   };
+  // New one, function for jump to the reservaiton
+  toReservaiton = e => {
+    this.props.history.push("./reservation");
+  };
 
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser();
     this.setState({ currentUser: user });
   }
-
+  // Sumbition been splitted now
   submitUserChanges = () => {
     this.createUser();
     this.props.history.push("./result-report");
@@ -164,10 +168,11 @@ class Userprofileinfo extends Component {
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">
+                {/* Way for Edit and Create reservaitons */}
                 <Button variant="success" block>
                   Edit Plans
                 </Button>
-                <Button variant="success" block>
+                <Button variant="success" onClick={this.toReservaiton} block>
                   New Plan
                 </Button>
               </small>
