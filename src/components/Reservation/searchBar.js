@@ -55,7 +55,8 @@ class SearchBar extends React.Component {
           <div style={this.props.displayStyle}>
             <TimeSlots 
               date={this.state.date}
-              type={this.state.type}/>
+              type={this.state.type}
+              history={this.props.history}/>
           </div>
         </div>
       </div>

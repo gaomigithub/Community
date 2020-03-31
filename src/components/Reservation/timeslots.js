@@ -112,6 +112,7 @@ class TimeSlots extends Component {
       }
     };
     this.addReservation(reservationInput);
+    this.props.history.push("/profile");
   };
 
   async addReservation(reservationInput) {

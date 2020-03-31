@@ -4,6 +4,7 @@ import { Button, Row, Col, Card, CardDeck } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog } from "../../graphql/mutations";
+import { getReservation } from "../../graphql/queries"
 
 class Userprofileinfo extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class Userprofileinfo extends Component {
   }
 
   state = {
-    currentUser: ""
+    currentUser: "",
+    reservations: null
   };
   continue = e => {
     e.preventDefault();
@@ -35,6 +37,7 @@ class Userprofileinfo extends Component {
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser();
     this.setState({ currentUser: user });
+    this.getReservations(user.attributes.sub)
   }
   // Sumbition been splitted now
   submitUserChanges = () => {
@@ -91,8 +94,18 @@ class Userprofileinfo extends Component {
       .catch(err => console.log("create dog error", err));
   }
 
+  async getReservations(userID) {
+    await API.graphql(graphqlOperation(getReservation, {id : userID}))
+      .then((data) => {
+        console.log("Get Reservation Success", data)
+        this.setState({reservations: data.data.getReservation})
+      })
+      .catch(err => console.log("Get Reservation error", err));
+  }
+
   render() {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
+    let reservations = this.state.reservations;
     return (
       <div class="pricing-header px-3 py-3  mx-auto text-center">
         <CardDeck>
@@ -164,7 +177,25 @@ class Userprofileinfo extends Component {
           <Card>
             <Card.Body>
               <Card.Title>Your Reservations</Card.Title>
-              <Card.Text>{/* something */}</Card.Text>
+              <Card.Text>
+                {reservations != null ? (
+                  reservations.map((val, idx) => {
+                    console.log(val);
+                    return (
+                      <div>
+                        Date: <b>{val.date}</b>
+                        <br />
+                        Reservation Type: <b>{val.type}</b>
+                        <br />
+                        Reservation Time: <b>{`Start: ${val.time.startTime} End: ${val.time.endTime}`}</b>
+                        <br />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>No Reservation</div>
+                )}
+              </Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">
