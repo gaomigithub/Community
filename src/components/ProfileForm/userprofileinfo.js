@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, Card, CardGroup } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog } from "../../graphql/mutations";
@@ -8,7 +8,8 @@ import { createUser, createDog } from "../../graphql/mutations";
 class Userprofileinfo extends Component {
   constructor(props) {
     super(props);
-    this.submitChanges = this.submitChanges.bind(this);
+    this.submitDogChanges = this.submitDogChanges.bind(this);
+    this.submitUserChanges = this.submitUserChanges.bind(this);
   }
 
   state = {
@@ -32,8 +33,11 @@ class Userprofileinfo extends Component {
     this.setState({ currentUser: user });
   }
 
-  submitChanges = () => {
+  submitUserChanges = () => {
     this.createUser();
+    this.props.history.push("./result-report");
+  };
+  submitDogChanges = () => {
     this.createDog();
     this.props.history.push("./result-report");
   };
@@ -87,7 +91,90 @@ class Userprofileinfo extends Component {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
     return (
       <div class="pricing-header px-3 py-3  mx-auto text-center">
-        <h2>Your Information</h2>
+        <CardGroup>
+          <Card>
+            <Card.Body>
+              <Card.Title>Your Information</Card.Title>
+              <Card.Text>
+                {/* something */}
+                UserName: <b>{username}</b>
+                <br />
+                First Name: <b>{firstName}</b>
+                <br />
+                Last Name: <b>{lastName}</b>
+                <br />
+                Email: <b>{userEmail}</b>
+                <br />
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">
+                <Button variant="success" onClick={this.back} block>
+                  Edit Yourself
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={this.submitUserChanges}
+                  block
+                >
+                  Comfirm
+                </Button>
+              </small>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Body>
+              <Card.Title>Your Dogs</Card.Title>
+              <Card.Text>
+                {/* something */}
+                {dogs != null ? (
+                  dogs.map((val, idx) => {
+                    console.log(val);
+                    return (
+                      <div>
+                        Dog Name: <b>{val.dogName}</b>
+                        <br />
+                        Dog Age: <b>{val.age}</b>
+                        <br />
+                        Dog Breed: <b>{val.breed}</b>
+                        <br />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>No Dog</div>
+                )}
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">
+                <Button variant="success" onClick={this.toDogs} block>
+                  Edit for Dogs
+                </Button>
+                <Button variant="success" onClick={this.submitDogChanges} block>
+                  Comfirm
+                </Button>
+              </small>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Body>
+              <Card.Title>Your Reservations</Card.Title>
+              <Card.Text>{/* something */}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">
+                <Button variant="success" block>
+                  Edit Plans
+                </Button>
+                <Button variant="success" block>
+                  New Plan
+                </Button>
+              </small>
+            </Card.Footer>
+          </Card>
+        </CardGroup>
+        {/* <h2>Your Information</h2>
         UserName: <b>{username}</b>
         <br />
         First Name: <b>{firstName}</b>
@@ -96,8 +183,6 @@ class Userprofileinfo extends Component {
         <br />
         Email: <b>{userEmail}</b>
         <br />
-        {/* Own dogs: <b></b>
-        <br /> */}
         <h2>Your Dog's Profile</h2>
         {dogs != null ? (
           dogs.map((val, idx) => {
@@ -115,12 +200,12 @@ class Userprofileinfo extends Component {
           })
         ) : (
           <div>No Dog</div>
-        )}
-        <Row>
+        )} */}
+        {/* <Row>
           <Col></Col>
           <Col>
-            <div class="row mx-md-3 " style={{ margin: "50px" }}>
-              <div class="col px-md-auto">
+            <div class="row mx-md-3 " style={{ margin: "50px" }}> */}
+        {/* <div class="col px-md-auto">
                 <Button size="lg" variant="success" onClick={this.back} block>
                   Edit
                 </Button>
@@ -129,8 +214,8 @@ class Userprofileinfo extends Component {
                 <Button size="lg" variant="success" onClick={this.toDogs} block>
                   Edit dogs
                 </Button>
-              </div>
-              <div class="col px-md-auto">
+              </div> */}
+        {/* <div class="col px-md-auto">
                 <Button
                   size="lg"
                   variant="success"
@@ -139,11 +224,11 @@ class Userprofileinfo extends Component {
                 >
                   Submit
                 </Button>
-              </div>
-            </div>
+              </div> */}
+        {/* </div>
           </Col>
           <Col></Col>
-        </Row>
+        </Row> */}
       </div>
     );
   }
