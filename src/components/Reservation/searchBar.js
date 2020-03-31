@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
               value={this.state.search}
               onChange={e => this.update(e)}
             /> */}
-            <div className="search-dropdown">{Dropdown()}</div>
+            <div className="search-dropdown">{this.Dropdown()}</div>
 
             <input className="search-button" type="submit" value="Go"></input>
           </span>
