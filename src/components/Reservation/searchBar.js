@@ -1,6 +1,5 @@
 import React from "react";
 import Calendar from "./calendar";
-import Dropdown from "./locationDropdown";
 import Select from "react-select";
 import "../../styles/Reservation/searchBar.css";
 
@@ -9,13 +8,13 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       search: "",
-      locations : [
+      locations: [
         { label: "Basketball Court", value: 1 },
         { label: "Tennis Court", value: 2 }
       ]
     };
   }
-  
+
   Dropdown = () => (
     <div>
       <Select options={this.state.locations} />
@@ -49,9 +48,7 @@ class SearchBar extends React.Component {
               value={this.state.search}
               onChange={e => this.update(e)}
             /> */}
-            <div className="search-dropdown">
-              {Dropdown()}
-            </div>
+            <div className="search-dropdown">{Dropdown()}</div>
 
             <input className="search-button" type="submit" value="Go"></input>
           </span>
