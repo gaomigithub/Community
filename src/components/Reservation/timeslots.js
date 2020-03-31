@@ -1,18 +1,21 @@
-import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import React, { Component, useState } from "react";
+import { Container, Row, Button, Col, Alert } from "react-bootstrap";
 import { API, graphqlOperation } from "aws-amplify";
 import { createReservation, deleteReservation } from "../../graphql/mutations";
 import { checkReservation } from "../../graphql/queries";
 import { uuid } from "uuidv4";
 import { Auth } from "aws-amplify";
+import { CSSTransition } from "react-transition-group";
 
 class TimeSlots extends Component {
   state = {
     timeslots: [],
     unavailableTimes: [],
     selectedTimeSlot: null,
-    buttonColor: true,
     user: null
+    // buttonColor: true,
+    // showButton: true,
+    // showMessage: false
   };
 
   async componentDidMount() {
@@ -98,10 +101,6 @@ class TimeSlots extends Component {
     );
   };
 
-  changeColor = () => {
-    this.setState({ buttonColor: !this.state.buttonColor });
-  };
-
   submitChanges = () => {
     let reservationInput = {
       input: {
@@ -121,8 +120,57 @@ class TimeSlots extends Component {
       .catch(err => console.log("Create Reservation error: ", err));
   }
 
+  showNotification() {
+    this.setState({ notification: true }, () =>
+      setTimeout(() => this.setState({ notification: false }), 5000)
+    );
+  }
+
+  // changeColor = () => {
+  //   this.setState({ buttonColor: !this.state.buttonColor });
+  // };
+
+  // TransitionGroup Test
+  // buttonExample = () => {
+  //   return (
+  //     <div>
+  //       {this.state.showButton && (
+  //           <Button
+  //             onClick={() => this.setState({ showMessage: true })}
+  //             size="lg"
+  //           >
+  //             Show Message
+  //           </Button>
+  //         ) &&
+  //         console.log("Transition button")}
+  //       <CSSTransition
+  //         in={this.state.showMessage}
+  //         timeout={300}
+  //         classNames="alert"
+  //         unmountOnExit
+  //         onEnter={() => this.setState({ showButton: false })}
+  //         onExited={() => this.setState({ showButton: true })}
+  //       >
+  //         <Alert
+  //           variant="primary"
+  //           dismissible
+  //           onClose={() => this.setState({ showMessage: false })}
+  //         >
+  //           <Alert.Heading>Animated alert message</Alert.Heading>
+  //           <p>
+  //             This alert message is being transitioned in and out of the DOM.
+  //           </p>
+  //           <Button onClick={() => this.setState({ showMessage: false })}>
+  //             Close
+  //           </Button>
+  //         </Alert>
+  //       </CSSTransition>
+  //     </div>
+  //   );
+  // };
+
   render() {
-    let btn_class = this.state.buttonColor ? "success" : "warning";
+    // let btn_class = this.state.buttonColor ? "success" : "warning";
     let timeslots = this.state.timeslots;
     let unavailableTimes = this.state.unavailableTimes;
     return (
@@ -153,7 +201,8 @@ class TimeSlots extends Component {
                 return (
                   <div className="mb-2">
                     <Button
-                      variant={btn_class}
+                      // variant={btn_class}
+                      variant="success"
                       as="input"
                       type="button"
                       value={`${timeslotsVal.startTime} ~ ${timeslotsVal.endTime}`}
@@ -178,6 +227,7 @@ class TimeSlots extends Component {
                   <Button variant="success" onClick={this.submitChanges}>
                     Submit
                   </Button>
+                  {/* {this.buttonExample} */}
                 </div>
               </Col>
               <Col></Col>
