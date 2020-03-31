@@ -1,58 +1,63 @@
 import React from "react";
 import Calendar from "./calendar";
+import TimeSlots from "./timeslots"
 import Select from "react-select";
 import "../../styles/Reservation/searchBar.css";
+import { Container, Row, Button } from "react-bootstrap";
+import { API, graphqlOperation } from "aws-amplify";
+import { checkReservation } from "../../graphql/queries";
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: "",
+      date: null,
+      type: null,
       locations: [
-        { label: "Basketball Court", value: 1 },
-        { label: "Tennis Court", value: 2 }
+        { label: "Basketball Court", value: "BASKETBALL" },
+        { label: "Tennis Court", value: "TENNIS" }
       ]
     };
   }
 
+  handleChange = (e) => {
+    this.setState({type: e.value}, () => console.log(this.state.type))
+  }
+
   Dropdown = () => (
     <div>
-      <Select options={this.state.locations} />
+      <Select 
+        options={this.state.locations} 
+        onChange={this.handleChange}/>
     </div>
   );
 
-  // componentDidMount() {
-  //   this.props.fetchCourts();
-  // }
-
-  handleClick(e) {
-    e.preventDefault();
-    // this.props.searchCourts(this.state.search);
-  }
-
-  update(e) {
-    this.setState({ search: e.target.value });
+  selectedDate = date => {    
+    this.setState({date : date}, () => {
+      console.log(this.state.date)});
   }
 
   render() {
     return (
-      <div className="search-form">
-        <form onSubmit={e => this.handleClick(e)}>
-          <h2>Planning Today!</h2>
-          <br />
-          <span className="search-bar">
-            <Calendar />
-            {/* <input
-              className="search-input"
-              placeholder="Court/Street Name"
-              value={this.state.search}
-              onChange={e => this.update(e)}
-            /> */}
-            <div className="search-dropdown">{this.Dropdown()}</div>
-
-            <input className="search-button" type="submit" value="Go"></input>
-          </span>
-        </form>
+      <div>
+        <div className="search-form">
+          <form>
+            <h2>Planning Today!</h2>
+            <br />
+            <span className="search-bar">
+              <Calendar selectedDate={this.selectedDate}/>
+              <div className="search-dropdown">{this.Dropdown()}</div>
+              <button className="search-button" type="submit" onClick={this.props.handleClick}>Go</button>
+            </span>
+          </form>
+        </div>
+        <div>
+          <div style={this.props.displayStyle}>
+            <TimeSlots 
+              date={this.state.date}
+              type={this.state.type}/>
+          </div>
+        </div>
       </div>
     );
   }

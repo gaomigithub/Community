@@ -5,22 +5,24 @@ import addDays from "date-fns/addDays";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Reservation/calendar.css";
 
-export default function Calendar() {
+export default function Calendar(props) {
   const [startDate, setStartDate] = useState(new Date());
 
-  // function handleChange (date) {
-  //   setStartDate({
-  //     startDate: date
-  //   })
-  //   console.log("changed startdate ", startDate)
-  // }
+  async function sendSelectedDate(date) {
+    await props.selectedDate(date)
+  }
+
+  useEffect(() => {
+    console.log("changed startdate ", startDate)
+  },[startDate]);
 
   return (
     <DatePicker
       className="calendar-style"
       onChange={date => {
-        setStartDate(date);
-        console.log(startDate.get);
+        console.log("onchange date: ", date)
+        setStartDate(date)
+        sendSelectedDate(date)
       }}
       selected={startDate}
       minDate={subDays(new Date(), 0)}

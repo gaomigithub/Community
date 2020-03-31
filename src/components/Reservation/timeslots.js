@@ -15,10 +15,28 @@ class TimeSlots extends Component {
         this.setState({timeslots : timeslots })
         console.log(this.state.timeslots)
 
-        let unavailableTimes = await this.getUnavailableTime("2020-03-26");
+        let unavailableTimes = await this.getUnavailableTime(this.props.date);
         this.setState({unavailableTimes : unavailableTimes})
         console.log(this.state.unavailableTimes)
     }
+
+    async componentDidUpdate(prevProps) {
+        if (prevProps.date !== this.props.date) {
+            let updatedUnavailableTimes = await this.getUnavailableTime(this.props.date.toISOString().split('T')[0]);
+            this.setState({unavailableTimes : updatedUnavailableTimes})
+        }
+
+        if (prevProps.type !== this.props.type) {
+            let updatedUnavailableTimes = [];
+            let unavailableTimes = this.state.unavailableTimes;
+
+            for (let index = 0; index < unavailableTimes.length; index++) {
+                if (this.props.type === unavailableTimes[index].type)
+                updatedUnavailableTimes.push(unavailableTimes[index]);
+            }
+            this.setState({unavailableTimes : updatedUnavailableTimes})
+        }
+      }
 
     initTime() {
         let timeslots = []
@@ -41,25 +59,6 @@ class TimeSlots extends Component {
         return times;
     }
 
-    // checkAvailableTimeButtons() {
-    //     let timeslots = this.state.timeslots;
-    //     let unavailableTimes = this.state.unavailableTimes;
-
-    //     timeslots.map((timeslotsVal, idx) => {
-    //         let available = true;
-    //         for (let i = 0; i < unavailableTimes.length; i++) {
-    //             if (timeslotsVal.startTime === unavailableTimes[i].time.startTime) {
-    //                 available = false;
-    //                 console.log(`This time ${timeslotsVal.startTime} is unavailable`)
-    //             }
-    //         }
-    //         if (available) {
-    //             console.log(`This time ${timeslotsVal.startTime} is available`)
-    //             return <Button variant="success" as="input" type="button" value={`${timeslotsVal.startTime} ~ ${timeslotsVal.endTime}`} />
-    //         }
-    //     })
-    // }
-
     render() {
         let timeslots = this.state.timeslots;
         let unavailableTimes = this.state.unavailableTimes;
@@ -77,15 +76,17 @@ class TimeSlots extends Component {
                     for (let i = 0; i < unavailableTimes.length; i++) {
                         if (timeslotsVal.startTime === unavailableTimes[i].time.startTime) {
                             available = false;
-                            console.log(`This time ${timeslotsVal.startTime} is unavailable`)
+                            // console.log(`This time ${timeslotsVal.startTime} is unavailable`)
                         }
                     }
                     if (available) {
-                        console.log(`This time ${timeslotsVal.startTime} is available`)
+                        // console.log(`This time ${timeslotsVal.startTime} is available`)
                         return (
                             <Button variant="success" as="input" type="button" value={`${timeslotsVal.startTime} ~ ${timeslotsVal.endTime}`} />
                         )
                     }
+                    // console.log("selected date in timeslots", this.props.date)
+                    // console.log("selected type in timeslots", this.props.type)
                 })}
             </Row>
             </div>

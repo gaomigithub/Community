@@ -6,7 +6,7 @@ import TimeSlots from "./timeslots"
 export default function Reservation() {
 
   const [displayTimeSlots, setDisplay] = useState(false);
-
+  
   function handleClick(e) {
     e.preventDefault();
     setDisplay(true);
@@ -19,10 +19,10 @@ export default function Reservation() {
   return (
     <div>
       <div>
-        <SearchBar 
-        handleClick={handleClick}
-        displayStyle={displayStyle}
-        displayTimeSlots={displayTimeSlots}/>
+        <SearchBar handleClick={handleClick}/>
+        <div style={displayStyle}>
+          <TimeSlots />
+        </div>
       </div>
     </div>
   );
