@@ -1,32 +1,34 @@
 import React from "react";
-import { Form } from "react-bootstrap";
-import { uuid } from 'uuidv4';
+import { Form, Row, Button } from "react-bootstrap";
+import { uuid } from "uuidv4";
 
 class Doginfodetails extends React.Component {
   state = {
     dogs: this.props.dogs
   };
 
-  continue = async (e) => {
+  continue = async e => {
     e.preventDefault();
     // this.props.passDogsToParent(this.state.dogs);
     let updatedDogs = [];
     await this.state.dogs.map((val, idx) => {
       if (val.dogName !== "") {
-        updatedDogs.push(val)
+        updatedDogs.push(val);
       }
-    })
-    await this.setState({dogs : updatedDogs}, () => {
+    });
+    await this.setState({ dogs: updatedDogs }, () => {
       console.log("after submit", this.state.dogs);
       this.props.handleDogChange(this.state.dogs);
-    })
+    });
     this.props.nextStep();
   };
 
   handleChange = e => {
     if (["dogName", "age", "breed"].includes(e.target.className)) {
       let dogs = [...this.state.dogs];
-      dogs[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase();
+      dogs[e.target.dataset.id][
+        e.target.className
+      ] = e.target.value.toUpperCase();
       this.setState({ dogs }, () => console.log(this.state.dogs));
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() });
@@ -35,7 +37,10 @@ class Doginfodetails extends React.Component {
 
   addDog = e => {
     this.setState(prevState => ({
-      dogs: [...prevState.dogs, {dogID: uuid(), dogName: "", age: "", breed: "" }]
+      dogs: [
+        ...prevState.dogs,
+        { dogID: uuid(), dogName: "", age: "", breed: "" }
+      ]
     }));
   };
 
@@ -44,14 +49,12 @@ class Doginfodetails extends React.Component {
   };
 
   render() {
-
     let { dogs } = this.state;
-    
+
     return (
       <Form.Group controlId="formBasicDogForms">
         <Form.Label onChange={this.handleChange}>
           If you have a pet, please fill out your dogs' profiles
-          <button onClick={this.addDog}>Add a dog</button>
           {dogs.map((val, idx) => {
             let dogId = `dog-${idx}`,
               ageId = `age-${idx}`,
@@ -95,11 +98,23 @@ class Doginfodetails extends React.Component {
             );
           })}
         </Form.Label>
-        <div>
-          <button variant="success" className="Submit" onClick={this.continue}>
-            Next
-          </button>
-        </div>
+        <Row>
+          {" "}
+          <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+            <Button variant="success" onClick={this.addDog}>
+              Add a dog
+            </Button>
+          </div>
+          <div>
+            <Button
+              variant="success"
+              className="Submit"
+              onClick={this.continue}
+            >
+              Next
+            </Button>
+          </div>
+        </Row>
       </Form.Group>
     );
   }
