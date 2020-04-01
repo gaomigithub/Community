@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Row, Button } from "react-bootstrap";
 import { uuid } from "uuidv4";
+import { API, graphqlOperation } from "aws-amplify";
+import { deleteDog } from "../../../graphql/mutations";
 
 class Doginfodetails extends React.Component {
   state = {
@@ -48,6 +50,19 @@ class Doginfodetails extends React.Component {
     e.preventDefault();
   };
 
+  delete = async (event) => {
+    let dogs = [...this.state.dogs];
+    let dogID = this.state.dogs[event.target.id].id;
+
+    dogs.splice(event.target.id, 1);
+    this.setState({dogs: dogs})
+
+    await API.graphql(graphqlOperation(deleteDog, {id: `${dogID}`}))
+      .then(data => console.log("Detele Dog Success", data))
+      .catch(err => console.log("Detele Dog error", err));
+    
+  }
+
   render() {
     let { dogs } = this.state;
 
@@ -93,7 +108,7 @@ class Doginfodetails extends React.Component {
                   value={val != null ? val.breed : dogs[idx].name}
                   className="breed"
                 />
-                <button>Delete</button>
+                <button id={idx} onClick={this.delete}>Delete</button>
               </div>
             );
           })}

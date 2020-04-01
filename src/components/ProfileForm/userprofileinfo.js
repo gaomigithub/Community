@@ -98,7 +98,9 @@ class Userprofileinfo extends Component {
     await API.graphql(graphqlOperation(getReservation, {id : userID}))
       .then((data) => {
         console.log("Get Reservation Success", data)
-        this.setState({reservations: data.data.getReservation})
+        let reservations = data.data.getReservation.sort((a, b) => {
+          return new Date(a.date) - new Date(b.date)})
+        this.setState({reservations: reservations})
       })
       .catch(err => console.log("Get Reservation error", err));
   }

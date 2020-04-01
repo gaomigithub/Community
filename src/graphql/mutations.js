@@ -97,6 +97,30 @@ export const updateDog = /* GraphQL */ `
     }
   }
 `;
+export const deleteDog = /* GraphQL */ `
+  mutation DeleteDog($id: ID!) {
+    deleteDog(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
 export const createReservation = /* GraphQL */ `
   mutation CreateReservation($input: ReservationInput!) {
     createReservation(input: $input) {

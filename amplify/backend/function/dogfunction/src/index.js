@@ -8,7 +8,7 @@ var storageDogtableArn = process.env.STORAGE_DOGTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 const createDog = require('./createDog');
-const updateDog = require('./updateDog');
+const deleteDog = require('./deleteDog');
 const getDogs = require('./getDogs')
 
 exports.handler = function (event, _, callback) {
@@ -16,8 +16,8 @@ exports.handler = function (event, _, callback) {
         if (event.fieldName === 'createDog') {
             createDog(event, callback);
         }
-        if (event.fieldName === 'updateDog') {
-            updateDog(event, callback);
+        if (event.fieldName === 'deleteDog') {
+            deleteDog(event, callback);
         }
     }
     if (event.typeName === 'Query') {

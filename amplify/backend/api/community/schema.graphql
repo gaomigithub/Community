@@ -22,6 +22,7 @@ type Mutation {
   updateUser(input: userInput!): User @function(name: "userfunction-${env}")
   createDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
   updateDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
+  deleteDog(id: ID!): Dog @function(name: "dogfunction-${env}")
   createReservation(input: ReservationInput!): Reservations @function(name: "reservationfunction-${env}")
   deleteReservation(id: ID!): Reservations @function(name: "reservationfunction-${env}")
 }
