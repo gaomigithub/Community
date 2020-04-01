@@ -107,7 +107,7 @@ class Userprofileinfo extends Component {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
     let reservations = this.state.reservations;
     return (
-      <div class="pricing-header px-3 py-3  mx-auto text-center">
+      <div className="pricing-header px-3 py-3  mx-auto text-center">
         <CardDeck>
           <Card>
             <Card.Body>
@@ -148,18 +148,18 @@ class Userprofileinfo extends Component {
                   dogs.map((val, idx) => {
                     console.log(val);
                     return (
-                      <div>
+                      <span key={`dog-${idx}`}>
                         Dog Name: <b>{val.dogName}</b>
                         <br />
                         Dog Age: <b>{val.age}</b>
                         <br />
                         Dog Breed: <b>{val.breed}</b>
                         <br />
-                      </div>
+                      </span>
                     );
                   })
                 ) : (
-                  <div>No Dog</div>
+                  <span>No Dog</span>
                 )}
               </Card.Text>
             </Card.Body>
@@ -182,18 +182,18 @@ class Userprofileinfo extends Component {
                   reservations.map((val, idx) => {
                     console.log(val);
                     return (
-                      <div>
+                      <span key={`reservation-${idx}`}>
                         Date: <b>{val.date}</b>
                         <br />
                         Reservation Type: <b>{val.type}</b>
                         <br />
                         Reservation Time: <b>{`Start: ${val.time.startTime} End: ${val.time.endTime}`}</b>
                         <br />
-                      </div>
+                      </span>
                     );
                   })
                 ) : (
-                  <div>No Reservation</div>
+                  <span>No Reservation</span>
                 )}
               </Card.Text>
             </Card.Body>

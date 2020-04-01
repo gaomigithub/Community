@@ -5,10 +5,10 @@ export default function ResultReport() {
   return (
     <div>
       <div
-        class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
+        className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
         style={{ margin: "100px" }}
       >
-        <h1 class="display-4">User Profile</h1>
+        <h1 className="display-4">User Profile</h1>
         <div style={{ margin: "50px" }}>
           Done Successfully!
           <br />

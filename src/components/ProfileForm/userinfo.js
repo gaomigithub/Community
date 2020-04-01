@@ -19,7 +19,7 @@ class UserInfo extends Component {
     } = this.props;
     return (
       <div>
-        <div class="container">
+        <div className="container">
           <ImageUpload />
         </div>
         <Form>

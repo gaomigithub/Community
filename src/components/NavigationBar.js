@@ -89,7 +89,6 @@ function NavigationBar() {
       <Nav>
         <Nav.Item>
           <Nav.Link
-            componentClass={Link}
             href="/"
             to="/"
             active={location.pathname === "/"}
@@ -99,7 +98,6 @@ function NavigationBar() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
-            componentClass={Link}
             href="/about"
             to="/about"
             active={location.pathname === "/about"}
@@ -109,7 +107,6 @@ function NavigationBar() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
-            componentClass={Link}
             href="profile"
             to="/profile"
             active={location.pathname === "/profile"}
