@@ -94,11 +94,6 @@ class UserForm extends Component {
 
     if (step === 1)
       return (
-        console.log(
-          "current dogs in userform and sending to userprofileinfo ",
-          dogs
-        ),
-        (
           <div>
             <Userprofileinfo
               username={username}
@@ -110,7 +105,6 @@ class UserForm extends Component {
               dogs={dogs}
             />
           </div>
-        )
       );
     if (step === 2)
       return (

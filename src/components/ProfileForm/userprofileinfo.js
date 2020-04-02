@@ -136,7 +136,7 @@ class Userprofileinfo extends Component {
                   onClick={this.submitUserChanges}
                   block
                 >
-                  Comfirm
+                  Confirm
                 </Button>
               </small>
             </Card.Footer>
@@ -148,7 +148,6 @@ class Userprofileinfo extends Component {
                 {/* something */}
                 {dogs != null ? (
                   dogs.map((val, idx) => {
-                    console.log(val);
                     return (
                       <span key={`dog-${idx}`}>
                         Dog Name: <b>{val.dogName}</b>
@@ -182,7 +181,6 @@ class Userprofileinfo extends Component {
               <Card.Text>
                 {reservations != null ? (
                   reservations.map((val, idx) => {
-                    console.log(val);
                     return (
                       <span key={`reservation-${idx}`}>
                         Date: <b>{val.date}</b>

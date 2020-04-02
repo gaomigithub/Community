@@ -32,7 +32,12 @@ class TimeSlots extends Component {
       prevProps.date !== this.props.date ||
       prevProps.type !== this.props.type
     ) {
-      let date = this.convertDate(this.props.date);
+      this.checkCurrentReservation();
+    }
+  }
+
+  checkCurrentReservation = async () => {
+    let date = this.convertDate(this.props.date);
       console.log(date);
       let unavailableTimes = await this.getUnavailableTime(date);
       let updatedUnavailableTimes = [];
@@ -41,7 +46,6 @@ class TimeSlots extends Component {
           updatedUnavailableTimes.push(unavailableTimes[index]);
       }
       this.setState({ unavailableTimes: updatedUnavailableTimes });
-    }
   }
 
   convertDate(date) {
@@ -101,7 +105,20 @@ class TimeSlots extends Component {
     );
   };
 
-  submitChanges = () => {
+  submitChanges = async () => {
+    let date = this.convertDate(this.props.date);
+    let unavailableTimes = await this.getUnavailableTime(date);
+
+    for (let index = 0; index < unavailableTimes.length; index++) {
+      if (this.props.type === unavailableTimes[index].type) {
+          if (this.state.selectedTimeSlot.startTime === unavailableTimes[index].time.startTime) {
+              console.log(this.state.selectedTimeSlot.startTime)
+              console.log(unavailableTimes[index].time.startTime)
+              alert("This timeslot you selected is been taken, please choose another one!")
+              return null;
+          }
+      }
+    }
     let reservationInput = {
       input: {
         id: uuid(),
@@ -112,7 +129,7 @@ class TimeSlots extends Component {
       }
     };
     this.addReservation(reservationInput);
-    this.props.history.push("/profile");
+    this.props.history.push("/profile")
   };
 
   async addReservation(reservationInput) {
@@ -200,7 +217,7 @@ class TimeSlots extends Component {
               if (available) {
                 // console.log(`This time ${timeslotsVal.startTime} is available`)
                 return (
-                  <div className="mb-2">
+                  <div key={`timeslot-${idx}`} className="mb-2">
                     <Button
                       // variant={btn_class}
                       variant="success"
