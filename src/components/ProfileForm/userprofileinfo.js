@@ -198,7 +198,7 @@ class Userprofileinfo extends Component {
                     return (
                       <ListGroup.Item key={`reservation-${idx}`}>
                       <Row> 
-                       <Col>
+                       <Col >
                           Date: <b>{val.date}</b>
                           <br />
                           Reservation Type: <b>{val.type}</b>
@@ -207,8 +207,8 @@ class Userprofileinfo extends Component {
                           <br />
                         </Col>
                         
-                        <Col md="auto">
-                          <Button id={idx} variant= "success" size="sm" block>Edit</Button>
+                        <Col md='auto'>
+                          {/* <Button id={idx} variant= "success" size="sm" block>Edit</Button> */}
                           <Button id={val.id} variant= "success" size="sm" block onClick={this.deleteRes}>Delete</Button>
                         </Col>
                       </Row>
