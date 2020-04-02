@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Reservation/calendar.css";
 
 export default function Calendar(props) {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(props.startDate);
 
   async function sendSelectedDate(date) {
     await props.selectedDate(date)
@@ -25,8 +25,8 @@ export default function Calendar(props) {
         sendSelectedDate(date)
       }}
       selected={startDate}
-      minDate={subDays(new Date(), 5)}
-      maxDate={addDays(new Date(), 5)}
+      minDate={subDays(new Date(), 0)}
+      maxDate={addDays(new Date(), 14)}
       dateFormat="yyyy-MM-dd"
     />
   );

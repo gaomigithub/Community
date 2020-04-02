@@ -5,6 +5,7 @@ import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { getUser, getDogs } from "../../graphql/queries";
 import Doginfodetails from "./DogForm/doginfodetails";
+import { Spinner } from "react-bootstrap";
 
 class UserForm extends Component {
   state = {
@@ -13,7 +14,7 @@ class UserForm extends Component {
     firstName: "",
     lastName: "",
     userEmail: "",
-    dogs: []
+    dogs: [],
   };
 
   async componentDidMount() {

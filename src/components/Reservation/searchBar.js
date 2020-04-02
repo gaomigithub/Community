@@ -8,8 +8,8 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
-      type: null,
+      date: this.props.editDate === null ? new Date() : new Date(this.props.editDate),
+      type: this.props.editType === null ? null : this.props.editType,
       locations: [
         { label: "Basketball Court", value: "BASKETBALL" },
         { label: "Tennis Court", value: "TENNIS" }
@@ -25,7 +25,9 @@ class SearchBar extends React.Component {
     <div>
       <Select 
         options={this.state.locations} 
-        onChange={this.handleChange}/>
+        onChange={this.handleChange}
+        // defaultValue={this.state.locations.find(val => {return val.value === this.state.type})}
+        />
     </div>
   );
 
@@ -42,7 +44,9 @@ class SearchBar extends React.Component {
             <h2>Planning Today!</h2>
             <br />
             <span className="search-bar">
-              <Calendar selectedDate={this.selectedDate}/>
+              <Calendar 
+                selectedDate={this.selectedDate}
+                startDate={this.state.date}/>
               <div className="search-dropdown">{this.Dropdown()}</div>
               <button className="search-button" type="submit" onClick={this.props.handleClick}>Go</button>
             </span>

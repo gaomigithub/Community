@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Col, Row, Card, CardDeck, ListGroup } from "react-bootstrap";
+import { Button, Col, Row, Card, CardDeck, ListGroup, Spinner } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser, createDog, deleteReservation } from "../../graphql/mutations";
@@ -16,7 +16,7 @@ class Userprofileinfo extends Component {
 
   state = {
     currentUser: "",
-    reservations: null
+    reservations: null,
   };
   continue = e => {
     e.preventDefault();
@@ -35,10 +35,19 @@ class Userprofileinfo extends Component {
     this.props.history.push("./reservation");
   };
 
+  editReservation = e => {
+    let date = this.state.reservations[e.target.id].date
+    let type = this.state.reservations[e.target.id].type
+    console.log(date, type)
+    this.props.history.push("./reservation", {date: date, type: type});
+  }
+
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser();
     this.setState({ currentUser: user });
-    this.getReservations(user.attributes.sub)
+    setTimeout(2000);
+    await this.getReservations(user.attributes.sub)
+    console.log("componentDidMount is called")
   }
   // Sumbition been splitted now
   submitUserChanges = () => {
@@ -125,7 +134,6 @@ class Userprofileinfo extends Component {
             <Card.Body>
               <Card.Title>Your Information</Card.Title>
               <Card.Text>
-                {/* something */}
                 UserName: <b>{username}</b>
                 <br />
                 First Name: <b>{firstName}</b>
@@ -213,7 +221,7 @@ class Userprofileinfo extends Component {
             </Card.Body>
             <Card.Footer style={{height: "100px"}}>
               <small className="text-muted">
-                <Button variant="success" onClick={this.toReservaiton} block>
+                <Button style={{height:"100%", width:"100%"}} variant="success" onClick={this.toReservaiton} block>
                   New Reservation
                 </Button>
               </small>

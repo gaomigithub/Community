@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 import { API, graphqlOperation } from "aws-amplify";
 import { createReservation } from "../../graphql/mutations";
-import { checkReservation } from "../../graphql/queries";
+import { checkReservation, getReservation } from "../../graphql/queries";
 import { uuid } from "uuidv4";
 import { Auth } from "aws-amplify";
+import "../../styles/Reservation/timeslots.css";
 
 class TimeSlots extends Component {
   state = {
     timeslots: [],
     unavailableTimes: [],
     selectedTimeSlot: null,
-    user: null
+    user: null,
+    userReservations: []
+    // keepPolicy: true
   };
 
   async componentDidMount() {
@@ -21,6 +24,8 @@ class TimeSlots extends Component {
 
     const user = await Auth.currentAuthenticatedUser();
     this.setState({ user: user });
+
+    this.getReservation(user.attributes.sub)
   }
 
   async componentDidUpdate(prevProps) {
@@ -134,16 +139,43 @@ class TimeSlots extends Component {
       .catch(err => console.log("Create Reservation error: ", err));
   }
 
+  async getReservation(userID) {
+    await API.graphql(graphqlOperation(getReservation, {id : userID}))
+    .then((data) => {
+      console.log("Get Reservation Success", data)
+      this.setState({userReservations: data.data.getReservation})
+    })
+    .catch(err => console.log("Get Reservation error", err));
+  }
+
+  // keepPolicy = async (date) => {
+  //   let userReservations = this.state.userReservations;
+  //   let count = 0
+  //   for (let index = 0; index < userReservations.length; index++) {
+  //     if (userReservations[index].date === this.convertDate(date)) {
+  //       count++;
+  //     }
+  //     if (count === 2) {
+  //       console.log("Equal or over 2 today")
+  //       this.setState({keepPolicy: false})
+  //     }
+  //   }
+  //   console.log("Less than 2 today")
+  //   this.setState({keepPolicy: true})
+  // }
+
+
   showNotification() {
     this.setState({ notification: true }, () =>
       setTimeout(() => this.setState({ notification: false }), 5000)
     );
-  }
+  } 
 
   render() {
     // let btn_class = this.state.buttonColor ? "success" : "warning";
     let timeslots = this.state.timeslots;
     let unavailableTimes = this.state.unavailableTimes;
+    // let keepPolicy = this.state.keepPolicy;
     return (
       <Container>
         <div className="mb-2">
@@ -151,6 +183,8 @@ class TimeSlots extends Component {
             <h2 style={{ margin: "20px" }}>Available Time Slots</h2>
           </Row>
         </div>
+        {/* {this.keepPolicy(this.props.date)}
+        {keepPolicy ?  */}
         <div className="mb-2">
           <Row
             className="justify-content-md-center"
@@ -195,8 +229,9 @@ class TimeSlots extends Component {
               </Col>
               <Col></Col>
             </Row>
-          </div>
-        </div>
+          </div> 
+        </div> 
+        {/* : <div>You Have Reached Your Daily Reservation Limit (2).</div>} */}
       </Container>
     );
   }
