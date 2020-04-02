@@ -3,9 +3,6 @@ import Calendar from "./calendar";
 import TimeSlots from "./timeslots"
 import Select from "react-select";
 import "../../styles/Reservation/searchBar.css";
-import { Container, Row, Button } from "react-bootstrap";
-import { API, graphqlOperation } from "aws-amplify";
-import { checkReservation } from "../../graphql/queries";
 
 class SearchBar extends React.Component {
   constructor(props) {

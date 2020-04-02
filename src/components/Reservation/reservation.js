@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchBar from "./searchBar";
-import TimeSlots from "./timeslots"
 import { useHistory } from "react-router-dom"
 
 export default function Reservation() {

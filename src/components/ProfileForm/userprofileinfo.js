@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Button, Row, Col, Card, CardDeck } from "react-bootstrap";
+import { Button, Col, Row, Card, CardDeck, ListGroup } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
-import { createUser, createDog } from "../../graphql/mutations";
+import { createUser, createDog, deleteReservation } from "../../graphql/mutations";
 import { getReservation } from "../../graphql/queries"
 
 class Userprofileinfo extends Component {
@@ -11,6 +11,7 @@ class Userprofileinfo extends Component {
     super(props);
     this.submitDogChanges = this.submitDogChanges.bind(this);
     this.submitUserChanges = this.submitUserChanges.bind(this);
+    this.deleteRes = this.deleteRes.bind(this);
   }
 
   state = {
@@ -105,6 +106,15 @@ class Userprofileinfo extends Component {
       .catch(err => console.log("Get Reservation error", err));
   }
 
+  deleteRes = async (e) => {
+    let resID = e.target.id;
+    await API.graphql(graphqlOperation(deleteReservation, {id: `${resID}`}))
+      .then(data => console.log("Detele Reservation Success", data))
+      .catch(err => console.log("Detele Reservation error", err))
+    
+    this.getReservations(this.state.currentUser.attributes.sub)
+  }
+
   render() {
     let { username, firstName, lastName, userEmail, dogs } = this.props;
     let reservations = this.state.reservations;
@@ -126,7 +136,7 @@ class Userprofileinfo extends Component {
                 <br />
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
+            <Card.Footer style={{height: "100px"}}>
               <small className="text-muted">
                 <Button variant="success" onClick={this.back} block>
                   Edit Yourself
@@ -144,33 +154,30 @@ class Userprofileinfo extends Component {
           <Card>
             <Card.Body>
               <Card.Title>Your Dogs</Card.Title>
-              <Card.Text>
-                {/* something */}
                 {dogs != null ? (
                   dogs.map((val, idx) => {
                     return (
-                      <span key={`dog-${idx}`}>
+                      <ListGroup.Item key={`dog-${idx}`}>
                         Dog Name: <b>{val.dogName}</b>
                         <br />
                         Dog Age: <b>{val.age}</b>
                         <br />
                         Dog Breed: <b>{val.breed}</b>
                         <br />
-                      </span>
+                      </ListGroup.Item>
                     );
                   })
                 ) : (
                   <span>No Dog</span>
                 )}
-              </Card.Text>
             </Card.Body>
-            <Card.Footer>
+            <Card.Footer style={{height: "100px"}}>
               <small className="text-muted">
                 <Button variant="success" onClick={this.toDogs} block>
                   Edit for Dogs
                 </Button>
                 <Button variant="success" onClick={this.submitDogChanges} block>
-                  Comfirm
+                  Confirm
                 </Button>
               </small>
             </Card.Footer>
@@ -178,93 +185,41 @@ class Userprofileinfo extends Component {
           <Card>
             <Card.Body>
               <Card.Title>Your Reservations</Card.Title>
-              <Card.Text>
                 {reservations != null ? (
                   reservations.map((val, idx) => {
                     return (
-                      <span key={`reservation-${idx}`}>
-                        Date: <b>{val.date}</b>
-                        <br />
-                        Reservation Type: <b>{val.type}</b>
-                        <br />
-                        Reservation Time: <b>{`Start: ${val.time.startTime} End: ${val.time.endTime}`}</b>
-                        <br />
-                      </span>
+                      <ListGroup.Item key={`reservation-${idx}`}>
+                      <Row> 
+                       <Col>
+                          Date: <b>{val.date}</b>
+                          <br />
+                          Reservation Type: <b>{val.type}</b>
+                          <br />
+                          Reservation Time: <b>{`Start: ${val.time.startTime} End: ${val.time.endTime}`}</b>
+                          <br />
+                        </Col>
+                        
+                        <Col md="auto">
+                          <Button id={idx} variant= "success" size="sm" block>Edit</Button>
+                          <Button id={val.id} variant= "success" size="sm" block onClick={this.deleteRes}>Delete</Button>
+                        </Col>
+                      </Row>
+                      </ListGroup.Item>
                     );
                   })
                 ) : (
                   <span>No Reservation</span>
                 )}
-              </Card.Text>
             </Card.Body>
-            <Card.Footer>
+            <Card.Footer style={{height: "100px"}}>
               <small className="text-muted">
-                {/* Way for Edit and Create reservaitons */}
-                <Button variant="success" block>
-                  Edit Plans
-                </Button>
                 <Button variant="success" onClick={this.toReservaiton} block>
-                  New Plan
+                  New Reservation
                 </Button>
               </small>
             </Card.Footer>
           </Card>
         </CardDeck>
-        {/* <h2>Your Information</h2>
-        UserName: <b>{username}</b>
-        <br />
-        First Name: <b>{firstName}</b>
-        <br />
-        Last Name: <b>{lastName}</b>
-        <br />
-        Email: <b>{userEmail}</b>
-        <br />
-        <h2>Your Dog's Profile</h2>
-        {dogs != null ? (
-          dogs.map((val, idx) => {
-            console.log(val);
-            return (
-              <div>
-                Dog Name: <b>{val.dogName}</b>
-                <br />
-                Dog Age: <b>{val.age}</b>
-                <br />
-                Dog Breed: <b>{val.breed}</b>
-                <br />
-              </div>
-            );
-          })
-        ) : (
-          <div>No Dog</div>
-        )} */}
-        {/* <Row>
-          <Col></Col>
-          <Col>
-            <div class="row mx-md-3 " style={{ margin: "50px" }}> */}
-        {/* <div class="col px-md-auto">
-                <Button size="lg" variant="success" onClick={this.back} block>
-                  Edit
-                </Button>
-              </div>
-              <div class="col px-md-auto">
-                <Button size="lg" variant="success" onClick={this.toDogs} block>
-                  Edit dogs
-                </Button>
-              </div> */}
-        {/* <div class="col px-md-auto">
-                <Button
-                  size="lg"
-                  variant="success"
-                  onClick={this.submitChanges}
-                  block
-                >
-                  Submit
-                </Button>
-              </div> */}
-        {/* </div>
-          </Col>
-          <Col></Col>
-        </Row> */}
       </div>
     );
   }
