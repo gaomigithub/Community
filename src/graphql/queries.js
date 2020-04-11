@@ -77,6 +77,30 @@ export const checkReservation = /* GraphQL */ `
     }
   }
 `;
+export const getCheckInList = /* GraphQL */ `
+  query GetCheckInList($id: ID!) {
+    getCheckInList(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
 export const getReserveTime = /* GraphQL */ `
   query GetReserveTime($id: ID!) {
     getReserveTime(id: $id) {

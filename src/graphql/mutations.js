@@ -149,6 +149,54 @@ export const deleteReservation = /* GraphQL */ `
     }
   }
 `;
+export const createDogCheckIn = /* GraphQL */ `
+  mutation CreateDogCheckIn($input: dogInput!) {
+    createDogCheckIn(input: $input) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
+export const deleteDogCheckIn = /* GraphQL */ `
+  mutation DeleteDogCheckIn($id: ID!) {
+    deleteDogCheckIn(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+      }
+      picture
+    }
+  }
+`;
 export const createReserveTime = /* GraphQL */ `
   mutation CreateReserveTime(
     $input: CreateReserveTimeInput!

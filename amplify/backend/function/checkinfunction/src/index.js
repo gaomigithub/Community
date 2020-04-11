@@ -7,11 +7,20 @@ var storageCheckintableArn = process.env.STORAGE_CHECKINTABLE_ARN
 
 Amplify Params - DO NOT EDIT */
 
-exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    return response;
+const createDogCheckIn = require('./createDogCheckIn');
+const deleteDogCheckIn = require('./deleteDogCheckIn');
+const getCheckInList = require('./getCheckInList')
+
+exports.handler = function (event, _, callback) {
+    if (event.typeName === 'Mutation') {
+        if (event.fieldName === 'createDogCheckIn') {
+            createDogCheckIn(event, callback);
+        }
+        if (event.fieldName === 'deleteDogCheckIn') {
+            deleteDogCheckIn(event, callback);
+        }
+    }
+    if (event.typeName === 'Query') {
+        getCheckInList(event, callback)
+      }
 };

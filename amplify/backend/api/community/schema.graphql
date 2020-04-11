@@ -25,6 +25,8 @@ type Mutation {
   deleteDog(id: ID!): Dog @function(name: "dogfunction-${env}")
   createReservation(input: ReservationInput!): Reservations @function(name: "reservationfunction-${env}")
   deleteReservation(id: ID!): Reservations @function(name: "reservationfunction-${env}")
+  createDogCheckIn(input: dogInput!): Dog @function(name: "checkinfunction-${env}")
+  deleteDogCheckIn(id: ID!): Dog @function(name: "checkinfunction-${env}")
 }
 
 type Query {
@@ -32,6 +34,7 @@ type Query {
   getDogs(id: ID!): [Dog] @function(name: "dogfunction-${env}")
   getReservation(id: ID!): [Reservations] @function(name: "reservationfunction-${env}")
   checkReservation(date: AWSDate!): [Reservations] @function(name: "reservationfunction-${env}")
+  getCheckInList(id: ID!): [Dog] @function(name: "checkinfunction-${env}")
 }
 
 type Dog @model(mutations: null, queries: null) {
