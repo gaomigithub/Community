@@ -107,6 +107,10 @@
 		"checkintable": {
 			"service": "DynamoDB",
 			"providerPlugin": "awscloudformation"
+		},
+		"s3images": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }
