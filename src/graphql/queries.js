@@ -22,6 +22,7 @@ export const getUser = /* GraphQL */ `
         }
         nextToken
       }
+      picture
     }
   }
 `;
@@ -44,6 +45,7 @@ export const getDogs = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }
@@ -96,6 +98,7 @@ export const getCheckInList = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }

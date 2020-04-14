@@ -102,6 +102,14 @@
         "DeleteReserveTimeResolver": "ReserveTime",
         "GetAttReserveTimeTableStreamArn": "ReserveTime",
         "GetAttReserveTimeDataSourceName": "ReserveTime",
-        "GetAttReserveTimeTableName": "ReserveTime"
+        "GetAttReserveTimeTableName": "ReserveTime",
+        "MutationdeleteDogResolver": "FunctionDirectiveStack",
+        "MutationdeleteReservationResolver": "FunctionDirectiveStack",
+        "CheckinfunctionLambdaDataSourceRole": "FunctionDirectiveStack",
+        "CheckinfunctionLambdaDataSource": "FunctionDirectiveStack",
+        "InvokeCheckinfunctionLambdaDataSource": "FunctionDirectiveStack",
+        "MutationcreateDogCheckInResolver": "FunctionDirectiveStack",
+        "MutationdeleteDogCheckInResolver": "FunctionDirectiveStack",
+        "QuerygetCheckInListResolver": "FunctionDirectiveStack"
     }
 }

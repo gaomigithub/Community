@@ -22,6 +22,7 @@ export const createUser = /* GraphQL */ `
         }
         nextToken
       }
+      picture
     }
   }
 `;
@@ -46,6 +47,7 @@ export const updateUser = /* GraphQL */ `
         }
         nextToken
       }
+      picture
     }
   }
 `;
@@ -68,6 +70,7 @@ export const createDog = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }
@@ -92,6 +95,7 @@ export const updateDog = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }
@@ -116,6 +120,7 @@ export const deleteDog = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }
@@ -168,6 +173,7 @@ export const createDogCheckIn = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }
@@ -192,6 +198,7 @@ export const deleteDogCheckIn = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
       picture
     }

@@ -6,6 +6,7 @@ type User @model(mutations: null, queries: null) {
   userEmail: String!
   userPhone: String
   dog: [Dog!] @connection(name: "userDogs")
+  picture: String
 }
 
 input userInput {
@@ -15,6 +16,7 @@ input userInput {
   userName: String!
   userEmail: String!
   userPhone: String
+  picture: String
 }
 
 type Mutation {
