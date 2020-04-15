@@ -18,6 +18,8 @@ export const createUser = /* GraphQL */ `
           breed
           age
           sex
+          creationTime
+          TTL
           picture
         }
         nextToken
@@ -43,6 +45,8 @@ export const updateUser = /* GraphQL */ `
           breed
           age
           sex
+          creationTime
+          TTL
           picture
         }
         nextToken
@@ -72,6 +76,8 @@ export const createDog = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }
@@ -97,6 +103,8 @@ export const updateDog = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }
@@ -122,6 +130,8 @@ export const deleteDog = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }
@@ -175,6 +185,8 @@ export const createDogCheckIn = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }
@@ -200,6 +212,8 @@ export const deleteDogCheckIn = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }

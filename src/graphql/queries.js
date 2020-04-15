@@ -18,6 +18,8 @@ export const getUser = /* GraphQL */ `
           breed
           age
           sex
+          creationTime
+          TTL
           picture
         }
         nextToken
@@ -47,6 +49,8 @@ export const getDogs = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }
@@ -100,6 +104,8 @@ export const getCheckInList = /* GraphQL */ `
         }
         picture
       }
+      creationTime
+      TTL
       picture
     }
   }

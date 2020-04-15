@@ -14,12 +14,14 @@ import "./styles/App.css";
 import { Auth, Hub } from "aws-amplify";
 // Test pages only
 import Reservation from "./components/Reservation/reservation";
+import CheckInFunctionTesting from "./Templets-CheckInFunction"
 
 Amplify.configure(awsconfig);
 
 export default function App() {
   return (
     <div>
+      <CheckInFunctionTesting />
       <NavigationBar />
       <Switch>
         <Route exact path="/">

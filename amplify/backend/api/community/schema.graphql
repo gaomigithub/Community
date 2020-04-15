@@ -47,6 +47,8 @@ type Dog @model(mutations: null, queries: null) {
   age: String
   sex: Sex
   owner: User @connection(name: "userDogs")
+  creationTime: Int
+  TTL: Int
   picture: String
 }
 
@@ -57,6 +59,8 @@ input dogInput {
   breed: String!
   age: String
   sex: Sex
+  creationTime: Int
+  TTL: Int
   picture: String
 }
 

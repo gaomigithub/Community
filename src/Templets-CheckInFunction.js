@@ -14,19 +14,26 @@ class CheckInFunctionTesting extends Component {
     // For User Function Testing
     componentDidMount() {
         // User Input Format Example
+        let now = new Date();
+        let nowEpoch = Math.floor(now.getTime() / 1000)
+
         const dogInput ={input : {
             id: "2",
             ownerID: "test2",
             dogName: "John2",
             breed: "a",
             age: "3",
-            sex: "MALE"
+            sex: "MALE",
+            creationTime: nowEpoch,
+            TTL: nowEpoch + 300
             }
         };
 
-        // this.createDogCheckIn(dogInput)
+        console.log(now.getTime() / 1000);
+        
+        this.createDogCheckIn(dogInput)
         // this.getCheckInList("2");
-        this.deleteDogCheckIn('1')
+        // this.deleteDogCheckIn('1')
     }
     
     async createDogCheckIn(dogInput) {
