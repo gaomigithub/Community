@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -18,7 +18,7 @@ const InfoWindow = (props) => {
 
 const Marker = (props) => (
   <FaMapMarkerAlt color="tomato" size={30}>
-    <InfoWindow location={props.location} />
+    {/* <InfoWindow location={props.location} /> */}
   </FaMapMarkerAlt>
 );
 
@@ -31,14 +31,14 @@ class SimpleMap extends Component {
         lng: -71.08,
       },
       zoom: 14,
-      location: null,
+      location: "",
     };
   }
 
   _onChildClick = (key, childProps) => {
     this.setState({ location: childProps.location });
     console.log(childProps.location);
-    console.log(this.location);
+    console.log(this.state.location);
   };
 
   render() {
