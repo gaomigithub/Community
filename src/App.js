@@ -15,7 +15,7 @@ import { Auth, Hub } from "aws-amplify";
 // Test pages only
 import Reservation from "./components/Reservation/reservation";
 import CheckInFunctionTesting from "./Templets-CheckInFunction";
-import SimpleMap from "./components/Map";
+import MapContainer from "./components/CheckIn/MapContainer";
 
 Amplify.configure(awsconfig);
 
@@ -48,7 +48,7 @@ export default function App() {
           <Reservation />
         </Route>
         <Route path="/parks">
-          <SimpleMap />
+          <MapContainer />
         </Route>
         {/* Test pages below only */}
       </Switch>
