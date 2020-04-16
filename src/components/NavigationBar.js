@@ -27,16 +27,16 @@ function NavigationBar() {
     }
 
     Auth.currentAuthenticatedUser()
-      .then(user => {
+      .then((user) => {
         console.log("current user ", user);
         handleStatusChange();
       })
-      .catch(e => {
+      .catch((e) => {
         console.log("error: ", e);
         handleSignInFailed();
       });
 
-    Hub.listen("auth", data => {
+    Hub.listen("auth", (data) => {
       console.log("IM CALLED");
       console.log(data);
       switch (data.payload.event) {
@@ -62,8 +62,8 @@ function NavigationBar() {
   function userSignOut() {
     history.push("/");
     Auth.signOut()
-      .then(data => setSignedIn(false))
-      .catch(err => console.log(err));
+      .then((data) => setSignedIn(false))
+      .catch((err) => console.log(err));
   }
 
   console.log("I am what status: ");
@@ -88,11 +88,7 @@ function NavigationBar() {
       <Navbar.Brand href="/">Community</Navbar.Brand>
       <Nav>
         <Nav.Item>
-          <Nav.Link
-            href="/"
-            to="/"
-            active={location.pathname === "/"}
-          >
+          <Nav.Link href="/" to="/" active={location.pathname === "/"}>
             Home
           </Nav.Link>
         </Nav.Item>
@@ -103,6 +99,15 @@ function NavigationBar() {
             active={location.pathname === "/about"}
           >
             About
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            href="/parks"
+            to="/parks"
+            active={location.pathname === "/parks"}
+          >
+            Parks
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -122,7 +127,7 @@ function NavigationBar() {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const signedIn = getLoggedInState(state);
   return { signedIn };
 };
