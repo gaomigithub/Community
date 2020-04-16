@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
 const mapStyles = {
@@ -12,13 +13,28 @@ export class MapContainer extends Component {
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
   };
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
     });
-
+  };
+  onInfoWindowOpen(props, e) {
+    const button = (
+      <button
+        onClick={(e) => {
+          console.log("hmapbuttoni1");
+        }}
+      >
+        Click me & Do something
+      </button>
+    );
+    ReactDOM.render(
+      React.Children.only(button),
+      document.getElementById("iwc")
+    );
+  }
   onClose = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -49,10 +65,14 @@ export class MapContainer extends Component {
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
+            onOpen={(e) => {
+              this.onInfoWindowOpen(this.props, e);
+            }}
             onClose={this.onClose}
           >
             <div>
               <h4>{this.state.selectedPlace.name}</h4>
+              <div id="iwc" />
             </div>
           </InfoWindow>
         </Map>
