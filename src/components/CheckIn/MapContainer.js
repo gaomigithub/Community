@@ -25,6 +25,7 @@ export class MapContainer extends Component {
       <button
         onClick={(e) => {
           console.log("hmapbuttoni1");
+          console.log(`${process.env.REACT_APP_API_KEY}`);
         }}
       >
         Click me & Do something
@@ -82,5 +83,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDn3acXRxymfGDBtUclrpGygyzkXRSuIL8",
+  apiKey: process.env.REACT_APP_API_KEY,
 })(MapContainer);
