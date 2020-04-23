@@ -70,9 +70,11 @@ class Chechin extends Component {
   async checkout() {
     if (this.state.dogs != null) {
       for (const dog of this.state.dogs) {
-        await API.graphql(graphqlOperation(deleteDogCheckIn, { id: dog.id }))
-          .then((data) => console.log("Check Out Dog Success", data))
-          .catch((err) => console.log("Check Out Dog error", err));
+        if (dog.park === this.props.name) {
+          await API.graphql(graphqlOperation(deleteDogCheckIn, { id: dog.id }))
+            .then((data) => console.log("Check Out Dog Success", data))
+            .catch((err) => console.log("Check Out Dog error", err));
+        }
       }
       this.getCheckInList(this.props.name);
     }
