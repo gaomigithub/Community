@@ -7,15 +7,7 @@ export class Switcher extends React.Component {
     super(props);
     this.state = { isMapState: true, name: "hi" };
   }
-  // state = { isMapState: true, name: "hi" };
 
-  // triggerState = () => {
-  //   this.setState({
-  //     ...this.state,
-  //     isMapState: false,
-  //     isCheckinState: true,
-  //   });
-  // };
   handleLocationChange = (parkName) => {
     console.log(parkName);
     this.setState({

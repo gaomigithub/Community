@@ -21,6 +21,7 @@ export const createUser = /* GraphQL */ `
           creationTime
           TTL
           picture
+          park
         }
         nextToken
       }
@@ -48,6 +49,7 @@ export const updateUser = /* GraphQL */ `
           creationTime
           TTL
           picture
+          park
         }
         nextToken
       }
@@ -79,6 +81,7 @@ export const createDog = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
@@ -106,6 +109,7 @@ export const updateDog = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
@@ -133,6 +137,7 @@ export const deleteDog = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
@@ -188,6 +193,7 @@ export const createDogCheckIn = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
@@ -215,6 +221,7 @@ export const deleteDogCheckIn = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;

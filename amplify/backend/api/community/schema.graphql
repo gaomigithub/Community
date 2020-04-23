@@ -25,18 +25,24 @@ type Mutation {
   createDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
   updateDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
   deleteDog(id: ID!): Dog @function(name: "dogfunction-${env}")
-  createReservation(input: ReservationInput!): Reservations @function(name: "reservationfunction-${env}")
-  deleteReservation(id: ID!): Reservations @function(name: "reservationfunction-${env}")
-  createDogCheckIn(input: dogInput!): Dog @function(name: "checkinfunction-${env}")
+  createReservation(input: ReservationInput!): Reservations
+    @function(name: "reservationfunction-${env}")
+  deleteReservation(id: ID!): Reservations
+    @function(name: "reservationfunction-${env}")
+  createDogCheckIn(input: dogInput!): Dog
+    @function(name: "checkinfunction-${env}")
   deleteDogCheckIn(id: ID!): Dog @function(name: "checkinfunction-${env}")
 }
 
 type Query {
   getUser(id: ID!): User @function(name: "userfunction-${env}")
   getDogs(id: ID!): [Dog] @function(name: "dogfunction-${env}")
-  getReservation(id: ID!): [Reservations] @function(name: "reservationfunction-${env}")
-  checkReservation(date: AWSDate!): [Reservations] @function(name: "reservationfunction-${env}")
-  getCheckInList(id: ID!): [Dog] @function(name: "checkinfunction-${env}")
+  getReservation(id: ID!): [Reservations]
+    @function(name: "reservationfunction-${env}")
+  checkReservation(date: AWSDate!): [Reservations]
+    @function(name: "reservationfunction-${env}")
+  getCheckInList(parkName: String!): [Dog]
+    @function(name: "checkinfunction-${env}")
 }
 
 type Dog @model(mutations: null, queries: null) {
@@ -50,6 +56,7 @@ type Dog @model(mutations: null, queries: null) {
   creationTime: Int
   TTL: Int
   picture: String
+  park: String
 }
 
 input dogInput {
@@ -62,6 +69,7 @@ input dogInput {
   creationTime: Int
   TTL: Int
   picture: String
+  park: String
 }
 
 enum Sex {

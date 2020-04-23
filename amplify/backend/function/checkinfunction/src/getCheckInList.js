@@ -11,25 +11,27 @@ var AWS = require("aws-sdk");
 var region = process.env.REGION;
 AWS.config.update({ region: region });
 var documentClient = new AWS.DynamoDB.DocumentClient({ region: region });
-var ddb_table_name = process.env.STORAGE_CHECKINTABLE_NAME
+var ddb_table_name = process.env.STORAGE_CHECKINTABLE_NAME;
 
-function getCheckInList(event, callback) { 
+function getCheckInList(event, callback) {
+  const parkName = event.arguments.parkName;
 
-    var params = {
-        TableName: ddb_table_name
-    };
-    console.log(params);
+  var params = {
+    TableName: ddb_table_name,
+    FilterExpression: "#parkName = :n",
+    ExpressionAttributeValues: { ":n": parkName },
+    ExpressionAttributeNames: { "#parkName": "park" },
+  };
+  console.log(params);
 
-    documentClient.scan(params, function(err, data){
-        if (err) console.log(err);
-        else {
-            console.log("Success")
-            console.log(data)
-            callback(err, data.Items)
-        }
-    });
+  documentClient.scan(params, function (err, data) {
+    if (err) console.log(err);
+    else {
+      console.log("Success");
+      console.log(data);
+      callback(err, data.Items);
+    }
+  });
+}
 
-
-}; 
-
-module.exports = getCheckInList
+module.exports = getCheckInList;

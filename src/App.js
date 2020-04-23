@@ -14,15 +14,15 @@ import "./styles/App.css";
 import { Auth, Hub } from "aws-amplify";
 // Test pages only
 import Reservation from "./components/Reservation/reservation";
-import CheckInFunctionTesting from "./Templets-CheckInFunction";
-import MapContainer from "./components/CheckIn/MapContainer";
+// import MapContainer from "./components/CheckIn/MapContainer";
+import Switcher from "./components/CheckIn/ComponetSwitcher";
+import Chechin from "./components/CheckIn/CheckIn";
 
 Amplify.configure(awsconfig);
 
 export default function App() {
   return (
     <div>
-      <CheckInFunctionTesting />
       <NavigationBar />
       <Switch>
         <Route exact path="/">
@@ -48,7 +48,10 @@ export default function App() {
           <Reservation />
         </Route>
         <Route path="/parks">
-          <MapContainer />
+          <Switcher />
+        </Route>
+        <Route path="/checkin">
+          <Chechin />
         </Route>
         {/* Test pages below only */}
       </Switch>

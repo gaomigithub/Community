@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import { withRouter } from "react-router-dom";
 
 const mapStyles = {
   width: "100%",
@@ -8,6 +9,14 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.toCheckinPage = this.toCheckinPage.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    // this.state = {
+    //   locations: [{ value: "Carleton" }, { value: "North" }],
+    // };
+  }
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
@@ -21,16 +30,10 @@ export class MapContainer extends Component {
     });
   };
   onInfoWindowOpen(props, e) {
-    const button = (
-      <button
-        onClick={(e) => {
-          console.log("hmapbuttoni1");
-          console.log(`${process.env.REACT_APP_API_KEY}`);
-        }}
-      >
-        Click me & Do something
-      </button>
-    );
+    console.log(props);
+    const button = (props = (
+      <button onClick={this.passLocation}>Check Today!</button>
+    ));
     ReactDOM.render(
       React.Children.only(button),
       document.getElementById("iwc")
@@ -44,6 +47,13 @@ export class MapContainer extends Component {
       });
     }
   };
+  toCheckinPage = () => {
+    console.log(this.state.selectedPlace.name);
+  };
+  passLocation = () => {
+    this.props.getLocation(this.state.selectedPlace.name);
+  };
+
   render() {
     return (
       <div style={{ height: "90vh", width: "100%" }}>
@@ -82,6 +92,8 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_API_KEY,
-})(MapContainer);
+export default withRouter(
+  GoogleApiWrapper({
+    apiKey: process.env.REACT_APP_API_KEY,
+  })(MapContainer)
+);

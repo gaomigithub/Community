@@ -21,6 +21,7 @@ export const getUser = /* GraphQL */ `
           creationTime
           TTL
           picture
+          park
         }
         nextToken
       }
@@ -52,6 +53,7 @@ export const getDogs = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
@@ -84,8 +86,8 @@ export const checkReservation = /* GraphQL */ `
   }
 `;
 export const getCheckInList = /* GraphQL */ `
-  query GetCheckInList($id: ID!) {
-    getCheckInList(id: $id) {
+  query GetCheckInList($parkName: String!) {
+    getCheckInList(parkName: $parkName) {
       id
       ownerID
       dogName
@@ -107,6 +109,7 @@ export const getCheckInList = /* GraphQL */ `
       creationTime
       TTL
       picture
+      park
     }
   }
 `;
