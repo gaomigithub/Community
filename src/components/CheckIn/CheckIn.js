@@ -5,6 +5,8 @@ import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
 import { createDogCheckIn, deleteDogCheckIn } from "../../graphql/mutations";
 import { getCheckInList, getDogs } from "../../graphql/queries";
+import dogiconImg from "../../img/iconfinder_Puppy_5439767.png";
+
 
 class Chechin extends Component {
   constructor(props) {
@@ -80,10 +82,13 @@ class Chechin extends Component {
     }
   }
 
+  handleDogImgError(e) {
+    e.target.src = dogiconImg;
+  }
+
   render() {
     let checkinList = this.state.checkinList;
-    // let name = this.props.name;
-    // console.log(name);
+
     return (
       <div className="pricing-header px-3 py-3  mx-auto text-center">
         <CardDeck>
@@ -123,7 +128,14 @@ class Chechin extends Component {
                   checkinList.map((val, idx) => {
                     return (
                       <Card key={`checkin-${idx}`}>
-                        <Card.Img variant="top" src="holder.js/100px160" />
+                        <div>
+                          <img
+                            src={val.picture}
+                            className="previewicon"
+                            onError={this.handleDogImgError}
+                            alt="dog-img"
+                          />
+                        </div>
                         <Card.Body>
                           <Card.Title>{val.dogName}</Card.Title>
                         </Card.Body>
