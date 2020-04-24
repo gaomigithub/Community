@@ -9,7 +9,8 @@ Amplify Params - DO NOT EDIT */
 
 const createDog = require('./createDog');
 const deleteDog = require('./deleteDog');
-const getDogs = require('./getDogs')
+const getDogs = require('./getDogs');
+const getDog = require('./getDog');
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
@@ -21,6 +22,11 @@ exports.handler = function (event, _, callback) {
         }
     }
     if (event.typeName === 'Query') {
-        getDogs(event, callback)
+        if (event.fieldName === 'getDogs') {
+            getDogs(event, callback)
+        }
+        if (event.fieldName === 'getDog') {
+            getDog(event, callback)
+        }
       }
 };

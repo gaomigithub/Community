@@ -7,6 +7,7 @@ import { signIn, signOut } from "../store/actions/authentication";
 import { connect } from "react-redux";
 import { getLoggedInState } from "../store/selectors";
 import authenticationReducer from "../store/reducers/authentication";
+import { Col, Row } from "react-bootstrap";
 // Function for check User
 // function checkUser() {
 //   Auth.currentAuthenticatedUser()
@@ -17,6 +18,9 @@ import authenticationReducer from "../store/reducers/authentication";
 function NavigationBar() {
   const [signedIn, setSignedIn] = useState(false);
   let button;
+  let parkNav;
+  let profileNav;
+
   useEffect(() => {
     function handleStatusChange() {
       setSignedIn(true);
@@ -74,6 +78,31 @@ function NavigationBar() {
         Sign Out
       </Button>
     );
+
+    parkNav = (
+        <Nav.Item>
+          <Nav.Link
+            href="/parks"
+            to="/parks"
+            active={location.pathname === "/parks"}
+          >
+            Parks
+          </Nav.Link>
+        </Nav.Item>
+    );
+      
+    profileNav = (
+        <Nav.Item>
+          <Nav.Link
+            href="profile"
+            to="/profile"
+            active={location.pathname === "/profile"}
+          >
+            Profile
+          </Nav.Link>
+        </Nav.Item>
+    );
+
   } else {
     console.log("Signed Out");
     button = (
@@ -81,6 +110,7 @@ function NavigationBar() {
         Sign In
       </Button>
     );
+    parkNav = (<div></div>)
   }
 
   return (
@@ -101,7 +131,9 @@ function NavigationBar() {
             About
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {profileNav}
+        {parkNav}
+        {/* <Nav.Item>
           <Nav.Link
             href="/parks"
             to="/parks"
@@ -118,7 +150,7 @@ function NavigationBar() {
           >
             Profile
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
       <Navbar.Collapse className="justify-content-end">
         <div className="user auth">{button}</div>

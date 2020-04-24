@@ -20,7 +20,7 @@ class UserInfo extends Component {
     return (
       <div>
         <div className="container">
-          <ImageUpload />
+          <ImageUpload handleImgChange={this.props.handleImgChange}/>
         </div>
         <Form>
           <Form.Group controlId="formBasicEmail">

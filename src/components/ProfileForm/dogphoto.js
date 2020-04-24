@@ -4,27 +4,26 @@ import { Storage, API, graphqlOperation } from "aws-amplify";
 import config from "../../aws-exports";
 import uuid from "uuid/v4";
 import "../../styles/photo.css";
-import headiconImg from "../../img/iconfinder_user_1902268.png";
+import headiconImg from "../../img/iconfinder_Puppy_5439767.png";
 import { Auth } from "aws-amplify";
-import { getUser } from "../../graphql/queries";
+import { getDog } from "../../graphql/queries";
 
-class ImageUpload extends React.Component {
+class DogImageUpload extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { file: null, imagePreviewUrl: "", userImageUrl: "" };
+    this.state = { file: null, imagePreviewUrl: "", dogImageUrl: "" };
   }
 
   async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser();
-    await this.getUserImage(user.attributes.sub)
+    await this.getDogImage(this.props.dogId)
   }
 
-  async getUserImage(userID) {
-    await API.graphql(graphqlOperation(getUser, { id: userID }))
+  async getDogImage(dogID) {
+    await API.graphql(graphqlOperation(getDog, { id: dogID }))
       .then((data) => {
-        if (data.data.getUser != null) {
+        if (data.data.getDog != null) {
           this.setState({
-            userImageUrl: data.data.getUser.picture,
+            dogImageUrl: data.data.getDog.picture,
           });
         }
       })
@@ -52,8 +51,8 @@ class ImageUpload extends React.Component {
         await Storage.put(key, file, {
           contentType: mimeType,
         });
-        this.setState({ userImageUrl: url });
-        this.props.handleImgChange(url);
+        this.setState({ dogImageUrl: url });
+        this.props.handleDogImgChange(this.props.dogId, this.state.dogImageUrl)
       } catch (err) {
         console.log("error: ", err);
       }
@@ -81,7 +80,7 @@ class ImageUpload extends React.Component {
   }
 
   render() {
-    let { imagePreviewUrl, userImageUrl } = this.state;
+    let { imagePreviewUrl, dogImageUrl } = this.state;
     let $imagePreview = null;
 
     // if imagepreviewurl != null, display imagepreview
@@ -89,19 +88,19 @@ class ImageUpload extends React.Component {
     // if api get user image != null, display userImg
 
     if (imagePreviewUrl) {
-      $imagePreview = <img src={imagePreviewUrl} className="headicon" alt="user-preview-img"/>;
+      $imagePreview = <img src={imagePreviewUrl} className="headicon" alt="dog-preview-img"/>;
     } 
     else {
-      if (userImageUrl) {
+      if (dogImageUrl) {
         $imagePreview = (
           <div>
-            <img src={userImageUrl} className="headicon" onError={this.handleImgError} alt="user-img"/>
+            <img src={dogImageUrl} className="headicon" onError={this.handleImgError} alt="dog-img"/>
           </div>
         )
       } else {
         $imagePreview = (
           <div>
-            <img src={headiconImg} className="headicon" alt="user-default-img"/>
+            <img src={headiconImg} className="headicon" alt="dog-default-img"/>
           </div>
         );
       }
@@ -111,14 +110,10 @@ class ImageUpload extends React.Component {
     return (
       <div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Card style={{ width: "30rem" }}>
+          <Card style={{ width: "15rem" }}>
             <div style={{ display: "flex", justifyContent: "center" }}>
               {$imagePreview}
             </div>
-            <Card.Body>
-              <Card.Title>Your Photo</Card.Title>
-              <Card.Text>Take a quick review after uploading.</Card.Text>
-            </Card.Body>
             <Card.Body>
               <form>
                 <input
@@ -130,7 +125,7 @@ class ImageUpload extends React.Component {
                   type="submit"
                   onClick={(e) => this.handleSubmit(e)}
                 >
-                  Upload Image
+                  Upload
                 </Button>
               </form>
             </Card.Body>
@@ -141,4 +136,4 @@ class ImageUpload extends React.Component {
   }
 }
 
-export default ImageUpload;
+export default DogImageUpload;

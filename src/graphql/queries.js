@@ -29,6 +29,34 @@ export const getUser = /* GraphQL */ `
     }
   }
 `;
+export const getDog = /* GraphQL */ `
+  query GetDog($id: ID!) {
+    getDog(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+        picture
+      }
+      creationTime
+      TTL
+      picture
+      park
+    }
+  }
+`;
 export const getDogs = /* GraphQL */ `
   query GetDogs($id: ID!) {
     getDogs(id: $id) {

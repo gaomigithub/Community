@@ -15,6 +15,7 @@ class UserForm extends Component {
     lastName: "",
     userEmail: "",
     dogs: [],
+    photo: ""
   };
 
   async componentDidMount() {
@@ -33,7 +34,8 @@ class UserForm extends Component {
         if (data.data.getUser != null) {
           this.setState({
             firstName: data.data.getUser.firstName,
-            lastName: data.data.getUser.lastName
+            lastName: data.data.getUser.lastName,
+            photo: data.data.getUser.picture
           })
         }
       })
@@ -82,6 +84,11 @@ class UserForm extends Component {
     console.log("change userform dogs state ", this.state.dogs);
   };
 
+  handleImgChange = imgUrl => {
+    this.setState({photo: imgUrl});
+    console.log("changing user img url", this.state.photo)
+  }
+
   showStep = () => {
     const {
       step,
@@ -90,7 +97,8 @@ class UserForm extends Component {
       firstName,
       lastName,
       userEmail,
-      dogs
+      dogs,
+      photo
     } = this.state;
 
     if (step === 1)
@@ -104,6 +112,7 @@ class UserForm extends Component {
               prevStep={this.prevStep}
               goDogs={this.goDogs}
               dogs={dogs}
+              photo={photo}
             />
           </div>
       );
@@ -112,6 +121,7 @@ class UserForm extends Component {
         <div>
           <UserInfo
             handleChange={this.handleChange}
+            handleImgChange={this.handleImgChange}
             nextStep={this.nextStep}
             username={username}
             firstName={firstName}
