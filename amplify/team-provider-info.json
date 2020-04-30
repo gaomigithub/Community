@@ -21,7 +21,11 @@
                 "userfunction": {},
                 "usertable": {},
                 "dogfunction": {},
-                "dogtable": {}
+                "dogtable": {},
+                "reservationfunction": {},
+                "checkinfunction": {},
+                "reservationtable": {},
+                "checkintable": {}
             }
         }
     },
