@@ -6,6 +6,7 @@ type User @model(mutations: null, queries: null) {
   userEmail: String!
   userPhone: String
   dog: [Dog!] @connection(name: "userDogs")
+  picture: String
 }
 
 input userInput {
@@ -15,6 +16,7 @@ input userInput {
   userName: String!
   userEmail: String!
   userPhone: String
+  picture: String
 }
 
 type Mutation {
@@ -22,11 +24,26 @@ type Mutation {
   updateUser(input: userInput!): User @function(name: "userfunction-${env}")
   createDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
   updateDog(input: dogInput!): Dog @function(name: "dogfunction-${env}")
+  deleteDog(id: ID!): Dog @function(name: "dogfunction-${env}")
+  createReservation(input: ReservationInput!): Reservations
+    @function(name: "reservationfunction-${env}")
+  deleteReservation(id: ID!): Reservations
+    @function(name: "reservationfunction-${env}")
+  createDogCheckIn(input: dogInput!): Dog
+    @function(name: "checkinfunction-${env}")
+  deleteDogCheckIn(id: ID!): Dog @function(name: "checkinfunction-${env}")
 }
 
 type Query {
   getUser(id: ID!): User @function(name: "userfunction-${env}")
+  getDog(id: ID!): Dog @function(name: "dogfunction-${env}")
   getDogs(id: ID!): [Dog] @function(name: "dogfunction-${env}")
+  getReservation(id: ID!): [Reservations]
+    @function(name: "reservationfunction-${env}")
+  checkReservation(date: AWSDate!): [Reservations]
+    @function(name: "reservationfunction-${env}")
+  getCheckInList(parkName: String!): [Dog]
+    @function(name: "checkinfunction-${env}")
 }
 
 type Dog @model(mutations: null, queries: null) {
@@ -37,7 +54,10 @@ type Dog @model(mutations: null, queries: null) {
   age: String
   sex: Sex
   owner: User @connection(name: "userDogs")
+  creationTime: Int
+  TTL: Int
   picture: String
+  park: String
 }
 
 input dogInput {
@@ -47,7 +67,10 @@ input dogInput {
   breed: String!
   age: String
   sex: Sex
+  creationTime: Int
+  TTL: Int
   picture: String
+  park: String
 }
 
 enum Sex {
@@ -55,13 +78,33 @@ enum Sex {
   FEMALE
 }
 
-type Recreation @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
+type Reservations @model(mutations: null, queries: null) {
+  id: ID!
+  userID: ID!
+  date: AWSDate!
+  time: ReserveTime!
   type: RecreationType!
-  availableTimeSlot: [AWSDate!]
-  reservedTimeSlot: [AWSDate!]
 }
 
 enum RecreationType {
   BASKETBALL
   TENNIS
+}
+
+type ReserveTime @model {
+  startTime: AWSTime!
+  endTime: AWSTime!
+}
+
+input ReservationInput {
+  id: ID!
+  userID: ID!
+  date: AWSDate!
+  time: ReserveTimeInput!
+  type: RecreationType!
+}
+
+input ReserveTimeInput {
+  startTime: AWSTime!
+  endTime: AWSTime!
 }

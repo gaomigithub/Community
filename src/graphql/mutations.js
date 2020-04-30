@@ -18,10 +18,14 @@ export const createUser = /* GraphQL */ `
           breed
           age
           sex
+          creationTime
+          TTL
           picture
+          park
         }
         nextToken
       }
+      picture
     }
   }
 `;
@@ -42,10 +46,14 @@ export const updateUser = /* GraphQL */ `
           breed
           age
           sex
+          creationTime
+          TTL
           picture
+          park
         }
         nextToken
       }
+      picture
     }
   }
 `;
@@ -68,8 +76,12 @@ export const createDog = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
+      creationTime
+      TTL
       picture
+      park
     }
   }
 `;
@@ -92,44 +104,157 @@ export const updateDog = /* GraphQL */ `
         dog {
           nextToken
         }
+        picture
       }
+      creationTime
+      TTL
       picture
+      park
     }
   }
 `;
-export const createRecreation = /* GraphQL */ `
-  mutation CreateRecreation(
-    $input: CreateRecreationInput!
-    $condition: ModelRecreationConditionInput
-  ) {
-    createRecreation(input: $input, condition: $condition) {
-      type
-      availableTimeSlot
-      reservedTimeSlot
+export const deleteDog = /* GraphQL */ `
+  mutation DeleteDog($id: ID!) {
+    deleteDog(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+        picture
+      }
+      creationTime
+      TTL
+      picture
+      park
     }
   }
 `;
-export const updateRecreation = /* GraphQL */ `
-  mutation UpdateRecreation(
-    $input: UpdateRecreationInput!
-    $condition: ModelRecreationConditionInput
-  ) {
-    updateRecreation(input: $input, condition: $condition) {
+export const createReservation = /* GraphQL */ `
+  mutation CreateReservation($input: ReservationInput!) {
+    createReservation(input: $input) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
     }
   }
 `;
-export const deleteRecreation = /* GraphQL */ `
-  mutation DeleteRecreation(
-    $input: DeleteRecreationInput!
-    $condition: ModelRecreationConditionInput
-  ) {
-    deleteRecreation(input: $input, condition: $condition) {
+export const deleteReservation = /* GraphQL */ `
+  mutation DeleteReservation($id: ID!) {
+    deleteReservation(id: $id) {
+      id
+      userID
+      date
+      time {
+        startTime
+        endTime
+      }
       type
-      availableTimeSlot
-      reservedTimeSlot
+    }
+  }
+`;
+export const createDogCheckIn = /* GraphQL */ `
+  mutation CreateDogCheckIn($input: dogInput!) {
+    createDogCheckIn(input: $input) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+        picture
+      }
+      creationTime
+      TTL
+      picture
+      park
+    }
+  }
+`;
+export const deleteDogCheckIn = /* GraphQL */ `
+  mutation DeleteDogCheckIn($id: ID!) {
+    deleteDogCheckIn(id: $id) {
+      id
+      ownerID
+      dogName
+      breed
+      age
+      sex
+      owner {
+        id
+        firstName
+        lastName
+        userName
+        userEmail
+        userPhone
+        dog {
+          nextToken
+        }
+        picture
+      }
+      creationTime
+      TTL
+      picture
+      park
+    }
+  }
+`;
+export const createReserveTime = /* GraphQL */ `
+  mutation CreateReserveTime(
+    $input: CreateReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
+  ) {
+    createReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
+    }
+  }
+`;
+export const updateReserveTime = /* GraphQL */ `
+  mutation UpdateReserveTime(
+    $input: UpdateReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
+  ) {
+    updateReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
+    }
+  }
+`;
+export const deleteReserveTime = /* GraphQL */ `
+  mutation DeleteReserveTime(
+    $input: DeleteReserveTimeInput!
+    $condition: ModelReserveTimeConditionInput
+  ) {
+    deleteReserveTime(input: $input, condition: $condition) {
+      startTime
+      endTime
     }
   }
 `;

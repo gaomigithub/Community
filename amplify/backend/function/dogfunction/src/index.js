@@ -8,19 +8,25 @@ var storageDogtableArn = process.env.STORAGE_DOGTABLE_ARN
 Amplify Params - DO NOT EDIT */
 
 const createDog = require('./createDog');
-const updateDog = require('./updateDog');
-const getDogs = require('./getDogs')
+const deleteDog = require('./deleteDog');
+const getDogs = require('./getDogs');
+const getDog = require('./getDog');
 
 exports.handler = function (event, _, callback) {
     if (event.typeName === 'Mutation') {
         if (event.fieldName === 'createDog') {
             createDog(event, callback);
         }
-        if (event.fieldName === 'updateDog') {
-            updateDog(event, callback);
+        if (event.fieldName === 'deleteDog') {
+            deleteDog(event, callback);
         }
     }
     if (event.typeName === 'Query') {
-        getDogs(event, callback)
+        if (event.fieldName === 'getDogs') {
+            getDogs(event, callback)
+        }
+        if (event.fieldName === 'getDog') {
+            getDog(event, callback)
+        }
       }
 };

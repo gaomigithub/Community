@@ -19,8 +19,8 @@ class UserInfo extends Component {
     } = this.props;
     return (
       <div>
-        <div class="container">
-          <ImageUpload />
+        <div className="container">
+          <ImageUpload handleImgChange={this.props.handleImgChange}/>
         </div>
         <Form>
           <Form.Group controlId="formBasicEmail">

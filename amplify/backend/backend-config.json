@@ -59,6 +59,36 @@
 					]
 				}
 			]
+		},
+		"reservationfunction": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "reservationtable",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"checkinfunction": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "checkintable",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"storage": {
@@ -68,6 +98,18 @@
 		},
 		"dogtable": {
 			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"reservationtable": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"checkintable": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"s3images": {
+			"service": "S3",
 			"providerPlugin": "awscloudformation"
 		}
 	}

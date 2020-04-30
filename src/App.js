@@ -13,7 +13,10 @@ import { signIn, signOut } from "./store/actions/authentication";
 import "./styles/App.css";
 import { Auth, Hub } from "aws-amplify";
 // Test pages only
-import Form from "./components/testpage";
+import Reservation from "./components/Reservation/reservation";
+// import MapContainer from "./components/CheckIn/MapContainer";
+import Switcher from "./components/CheckIn/ComponetSwitcher";
+import Chechin from "./components/CheckIn/CheckIn";
 
 Amplify.configure(awsconfig);
 
@@ -41,10 +44,16 @@ export default function App() {
         <Route path="/login">
           <AppWithAuthenticator />
         </Route>
-        {/* Test pages below only */}
-        <Route path="/test">
-          <Form />
+        <Route path="/reservation">
+          <Reservation />
         </Route>
+        <Route path="/parks">
+          <Switcher />
+        </Route>
+        <Route path="/checkin">
+          <Chechin />
+        </Route>
+        {/* Test pages below only */}
       </Switch>
       <Footer>
         <ul>

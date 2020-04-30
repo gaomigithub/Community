@@ -7,7 +7,7 @@ class Allinfo extends Component {
   render() {
     const { dogs } = this.props;
     return (
-      <div class="pricing-header px-3 py-3  mx-auto text-center">
+      <div className="pricing-header px-3 py-3  mx-auto text-center">
         <h2>
           Your Dog's Profile
           {dogs != null ? (
