@@ -58,7 +58,7 @@ class Chechin extends Component {
     if (this.state.dogs != null) {
       for (const dog of this.state.dogs) {
         dog.creationTime = nowEpoch;
-        dog.TTL = nowEpoch + 86400;
+        dog.TTL = nowEpoch + 10800;
         dog.park = this.props.name;
         delete dog["owner"];
         await API.graphql(graphqlOperation(createDogCheckIn, { input: dog }))
