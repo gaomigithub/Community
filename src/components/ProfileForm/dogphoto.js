@@ -53,8 +53,10 @@ class DogImageUpload extends React.Component {
         });
         this.setState({ dogImageUrl: url });
         this.props.handleDogImgChange(this.props.dogId, this.state.dogImageUrl)
+        alert("Image Uploaded")
       } catch (err) {
         console.log("error: ", err);
+        alert("Something Happened Wrong")
       }
     }
   };

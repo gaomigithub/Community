@@ -70,7 +70,7 @@ class Userprofileinfo extends Component {
     this.createUser();
     this.createDog();
     this.props.history.push("./result-report");
-  }
+  };
   // submitUserChanges = () => {
   //   this.createUser();
   //   this.props.history.push("./result-report");
@@ -204,16 +204,21 @@ class Userprofileinfo extends Component {
             </Card.Body>
             <Card.Footer style={{ height: "100px" }}>
               <small className="text-muted">
-                <Button variant="success" onClick={this.back} block>
+                <Button
+                  variant="success"
+                  style={{ height: "100%", width: "100%" }}
+                  onClick={this.back}
+                  block
+                >
                   Edit Yourself
                 </Button>
-                <Button
+                {/* <Button
                   variant="success"
                   onClick={this.submitChanges}
                   block
                 >
                   Confirm
-                </Button>
+                </Button> */}
               </small>
             </Card.Footer>
           </Card>
@@ -254,12 +259,17 @@ class Userprofileinfo extends Component {
             </Card.Body>
             <Card.Footer style={{ height: "100px" }}>
               <small className="text-muted">
-                <Button variant="success" onClick={this.toDogs} block>
+                <Button
+                  variant="success"
+                  style={{ height: "100%", width: "100%" }}
+                  onClick={this.toDogs}
+                  block
+                >
                   Edit for Dogs
                 </Button>
-                <Button variant="success" onClick={this.submitChanges} block>
+                {/* <Button variant="success" onClick={this.submitChanges} block>
                   Confirm
-                </Button>
+                </Button> */}
               </small>
             </Card.Footer>
           </Card>
@@ -315,6 +325,35 @@ class Userprofileinfo extends Component {
             </Card.Footer>
           </Card>
         </CardDeck>
+
+        {/* One option */}
+        <Row style={{marginTop:"20px"}}>
+          <Col></Col>
+          <Col>
+            {" "}
+            <Button
+              variant="success"
+              onClick={this.submitChanges}
+              size="lg"
+              block
+            >
+              Submit
+            </Button>
+          </Col>
+          <Col></Col>
+        </Row>
+
+        {/* Other option */}
+        {/* <div style={{ margin: "20px", marginLeft: "30%", marginRight: "30%" }}>
+          <Button
+            variant="success"
+            onClick={this.submitChanges}
+            size="lg"
+            block
+          >
+            Submit
+          </Button>
+        </div> */}
       </div>
     );
   }

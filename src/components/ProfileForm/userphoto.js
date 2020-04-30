@@ -54,8 +54,10 @@ class ImageUpload extends React.Component {
         });
         this.setState({ userImageUrl: url });
         this.props.handleImgChange(url);
+        alert("Image Uploaded")
       } catch (err) {
         console.log("error: ", err);
+        alert("Something Happened Wrong")
       }
     }
   };
